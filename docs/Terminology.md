@@ -62,4 +62,4 @@ to the topology.
 This tutorial will use a standard command and data handling topology. A single `HelloWorld` component instance called
 `helloWorld` will be added to the standard topology.
 
-**Next:**[Getting Started: Creating an F´ Project](./NewProject.md)
+**Next:** [Getting Started: Creating an F´ Project](./NewProject.md)
