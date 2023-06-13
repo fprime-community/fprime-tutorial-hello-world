@@ -14,7 +14,8 @@ namespace MyComponents {
   // Construction, initialization, and destruction
   // ----------------------------------------------------------------------
 
-  HelloWorld:: HelloWorld(const char *const compName) : HelloWorldComponentBase(compName),
+  HelloWorld:: HelloWorld(const char *const compName) : 
+    HelloWorldComponentBase(compName),
     m_greetingCount(0)
   {
 

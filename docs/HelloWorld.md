@@ -175,7 +175,10 @@ void HelloWorld:: SAY_HELLO_cmdHandler(FwOpcodeType opCode, U32 cmdSeq, const Fw
 > ```c++
 > HelloWorld:: HelloWorld() :
 >   m_greetingCount(0),
->   HelloWorldComponentBase(compName) {}
+>   HelloWorldComponentBase(compName) 
+>   {
+>   
+>   }
 > ```
 
 The component should build without errors by running `fprime-util build`.  Resolve any errors that occur before
