@@ -1,0 +1,4 @@
+[submodule "fprime"]
+	path = fprime
+	url = https://github.com/nasa/fprime.git
+	branch = devel

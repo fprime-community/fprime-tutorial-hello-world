@@ -1,0 +1,6 @@
+.DS_Store
+.vscode
+venv
+**/build-artifacts
+**/build-automatic-*
+**-template
