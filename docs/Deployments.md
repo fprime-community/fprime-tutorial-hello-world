@@ -175,5 +175,5 @@ been able to perform the following actions:
 To explore components more in-depth and see how components communicate with one another, see the
 [Math Component Tutorial](../MathComponent/Tutorial.md).
 
-**Next:** [Math Component Tutorial](.../fprime-tutorial-math-component)
+**Next:** [Math Component Tutorial](./fprime-tutorial-math-component)
 
