@@ -14,4 +14,4 @@ could dive deeper into concepts through the [Math Component Tutorial](../MathCom
 
 **Next:** [Getting Started: Creating an F´ Project](./docs/NewProject.md)
 
-**Optional:** [F Prime Terminoogy: Learn the Concepts of F Prime](./docs/Terminology.md)
+**Optional:** [F Prime Terminology: Learn the Concepts of F Prime](./docs/Terminology.md)
