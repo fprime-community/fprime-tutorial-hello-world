@@ -4,5 +4,6 @@ venv
 **/build-artifacts
 **/build-fprime-*
 **-template
+**/logs
 
 # Comment 
