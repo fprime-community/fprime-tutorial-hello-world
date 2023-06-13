@@ -1,0 +1,7 @@
+/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Fw/Buffer/Buffer.fpp
+/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Fw/Com/Com.fpp
+/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Fw/Log/Log.fpp
+/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Fw/Ports/SuccessCondition/SuccessCondition.fpp
+/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Fw/Tlm/Tlm.fpp
+/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Svc/Sched/Sched.fpp
+/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/config/AcConstants.fpp

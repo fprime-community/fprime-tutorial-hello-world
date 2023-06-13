@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc ../../../lib/Darwin/libSvc_TlmPacketizer.a CMakeFiles/Svc_TlmPacketizer.dir/TlmPacketizer.cpp.o CMakeFiles/Svc_TlmPacketizer.dir/TlmPacketizerComponentAc.cpp.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib ../../../lib/Darwin/libSvc_TlmPacketizer.a

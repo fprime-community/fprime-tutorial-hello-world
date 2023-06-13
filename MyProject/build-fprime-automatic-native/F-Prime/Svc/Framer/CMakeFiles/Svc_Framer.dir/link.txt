@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc ../../../lib/Darwin/libSvc_Framer.a CMakeFiles/Svc_Framer.dir/Framer.cpp.o CMakeFiles/Svc_Framer.dir/FramerComponentAc.cpp.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib ../../../lib/Darwin/libSvc_Framer.a

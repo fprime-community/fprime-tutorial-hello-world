@@ -1,0 +1,3 @@
+/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Svc/FileManager/Commands.fppi
+/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Svc/FileManager/Events.fppi
+/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Svc/FileManager/Telemetry.fppi

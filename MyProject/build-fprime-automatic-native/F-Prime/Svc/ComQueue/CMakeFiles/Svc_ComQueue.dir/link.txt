@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc ../../../lib/Darwin/libSvc_ComQueue.a CMakeFiles/Svc_ComQueue.dir/ComQueue.cpp.o CMakeFiles/Svc_ComQueue.dir/BuffQueueDepthArrayAc.cpp.o CMakeFiles/Svc_ComQueue.dir/ComQueueDepthArrayAc.cpp.o CMakeFiles/Svc_ComQueue.dir/QueueTypeEnumAc.cpp.o CMakeFiles/Svc_ComQueue.dir/ComQueueComponentAc.cpp.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib ../../../lib/Darwin/libSvc_ComQueue.a

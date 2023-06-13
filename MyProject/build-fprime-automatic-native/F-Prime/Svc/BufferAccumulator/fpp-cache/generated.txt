@@ -1,0 +1,7 @@
+BufferAccumulatorComponentAi.xml
+BufferAccumulator_BlockModeEnumAc.cpp
+BufferAccumulator_BlockModeEnumAc.hpp
+BufferAccumulator_BlockModeEnumAi.xml
+BufferAccumulator_OpStateEnumAc.cpp
+BufferAccumulator_OpStateEnumAc.hpp
+BufferAccumulator_OpStateEnumAi.xml

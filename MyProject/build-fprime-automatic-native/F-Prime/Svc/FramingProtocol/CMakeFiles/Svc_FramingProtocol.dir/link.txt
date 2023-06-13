@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc ../../../lib/Darwin/libSvc_FramingProtocol.a CMakeFiles/Svc_FramingProtocol.dir/DeframingProtocol.cpp.o CMakeFiles/Svc_FramingProtocol.dir/FramingProtocol.cpp.o CMakeFiles/Svc_FramingProtocol.dir/FprimeProtocol.cpp.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib ../../../lib/Darwin/libSvc_FramingProtocol.a

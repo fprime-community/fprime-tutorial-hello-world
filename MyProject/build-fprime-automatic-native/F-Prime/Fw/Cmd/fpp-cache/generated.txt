@@ -1,0 +1,12 @@
+CmdPortAc.cpp
+CmdPortAc.hpp
+CmdPortAi.xml
+CmdRegPortAc.cpp
+CmdRegPortAc.hpp
+CmdRegPortAi.xml
+CmdResponseEnumAc.cpp
+CmdResponseEnumAc.hpp
+CmdResponseEnumAi.xml
+CmdResponsePortAc.cpp
+CmdResponsePortAc.hpp
+CmdResponsePortAi.xml

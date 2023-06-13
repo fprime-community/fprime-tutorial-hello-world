@@ -1,0 +1,8 @@
+/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Fw/Buffer/Buffer.fpp
+/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Fw/Cmd/Cmd.fpp
+/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Fw/Log/Log.fpp
+/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Fw/Tlm/Tlm.fpp
+/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Svc/BufferAccumulator/Commands.fppi
+/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Svc/BufferAccumulator/Events.fppi
+/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Svc/BufferAccumulator/Telemetry.fppi
+/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Svc/Ping/Ping.fpp

@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc ../../../lib/Darwin/libDrv_LinuxUartDriver.a CMakeFiles/Drv_LinuxUartDriver.dir/LinuxUartDriver.cpp.o CMakeFiles/Drv_LinuxUartDriver.dir/LinuxUartDriverComponentAc.cpp.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib ../../../lib/Darwin/libDrv_LinuxUartDriver.a

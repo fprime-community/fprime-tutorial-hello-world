@@ -1,0 +1,4 @@
+/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Fw/Buffer/Buffer.fpp
+/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Fw/Log/Log.fpp
+/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Fw/Tlm/Tlm.fpp
+/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/config/AcConstants.fpp

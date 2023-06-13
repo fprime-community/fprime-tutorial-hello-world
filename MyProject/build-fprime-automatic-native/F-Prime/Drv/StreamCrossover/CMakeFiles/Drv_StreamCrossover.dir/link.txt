@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc ../../../lib/Darwin/libDrv_StreamCrossover.a CMakeFiles/Drv_StreamCrossover.dir/StreamCrossover.cpp.o CMakeFiles/Drv_StreamCrossover.dir/StreamCrossoverComponentAc.cpp.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib ../../../lib/Darwin/libDrv_StreamCrossover.a

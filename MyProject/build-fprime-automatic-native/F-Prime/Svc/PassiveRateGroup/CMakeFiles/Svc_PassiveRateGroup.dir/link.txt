@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc ../../../lib/Darwin/libSvc_PassiveRateGroup.a CMakeFiles/Svc_PassiveRateGroup.dir/PassiveRateGroup.cpp.o CMakeFiles/Svc_PassiveRateGroup.dir/PassiveRateGroupComponentAc.cpp.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib ../../../lib/Darwin/libSvc_PassiveRateGroup.a

@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc ../../../lib/Darwin/libUtils_Types.a CMakeFiles/Utils_Types.dir/CircularBuffer.cpp.o CMakeFiles/Utils_Types.dir/Queue.cpp.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib ../../../lib/Darwin/libUtils_Types.a

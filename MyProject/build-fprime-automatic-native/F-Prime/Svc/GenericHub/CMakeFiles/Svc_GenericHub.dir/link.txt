@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc ../../../lib/Darwin/libSvc_GenericHub.a CMakeFiles/Svc_GenericHub.dir/GenericHubComponentImpl.cpp.o CMakeFiles/Svc_GenericHub.dir/GenericHubComponentAc.cpp.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib ../../../lib/Darwin/libSvc_GenericHub.a

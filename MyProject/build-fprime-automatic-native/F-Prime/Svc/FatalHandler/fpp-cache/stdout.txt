@@ -1,0 +1,2 @@
+/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Svc/Fatal/Fatal.fpp
+/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/config/FpConfig.fpp

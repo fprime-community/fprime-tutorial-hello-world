@@ -1,0 +1,3 @@
+/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Drv/ByteStreamDriverModel/ByteStreamDriverModel.fpp
+/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Fw/Log/Log.fpp
+/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Fw/Time/Time.fpp

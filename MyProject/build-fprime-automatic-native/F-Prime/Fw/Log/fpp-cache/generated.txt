@@ -1,0 +1,9 @@
+LogPortAc.cpp
+LogPortAc.hpp
+LogPortAi.xml
+LogSeverityEnumAc.cpp
+LogSeverityEnumAc.hpp
+LogSeverityEnumAi.xml
+LogTextPortAc.cpp
+LogTextPortAc.hpp
+LogTextPortAi.xml

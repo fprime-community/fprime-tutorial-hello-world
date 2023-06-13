@@ -1,0 +1,4 @@
+SystemResourceEnabledEnumAc.cpp
+SystemResourceEnabledEnumAc.hpp
+SystemResourceEnabledEnumAi.xml
+SystemResourcesComponentAi.xml

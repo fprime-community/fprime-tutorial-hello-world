@@ -1,0 +1,12 @@
+SendFileCompletePortAc.cpp
+SendFileCompletePortAc.hpp
+SendFileCompletePortAi.xml
+SendFileRequestPortAc.cpp
+SendFileRequestPortAc.hpp
+SendFileRequestPortAi.xml
+SendFileResponseSerializableAc.cpp
+SendFileResponseSerializableAc.hpp
+SendFileResponseSerializableAi.xml
+SendFileStatusEnumAc.cpp
+SendFileStatusEnumAc.hpp
+SendFileStatusEnumAi.xml

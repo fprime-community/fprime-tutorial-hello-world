@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc ../../../lib/Darwin/libFw_Test.a CMakeFiles/Fw_Test.dir/String.cpp.o CMakeFiles/Fw_Test.dir/UnitTestAssert.cpp.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib ../../../lib/Darwin/libFw_Test.a
