@@ -1,0 +1,142 @@
+Hit Ctrl-C to quit
+EVENT: (1280) (2:1686676292,107701) DIAGNOSTIC: (cmdDisp) OpCodeRegistered : Opcode 0x500 registered to port 0 slot 0
+EVENT: (1280) (2:1686676292,107757) DIAGNOSTIC: (cmdDisp) OpCodeRegistered : Opcode 0x501 registered to port 0 slot 1
+EVENT: (1280) (2:1686676292,107767) DIAGNOSTIC: (cmdDisp) OpCodeRegistered : Opcode 0x502 registered to port 0 slot 2
+EVENT: (1280) (2:1686676292,107774) DIAGNOSTIC: (cmdDisp) OpCodeRegistered : Opcode 0x503 registered to port 0 slot 3
+EVENT: (1280) (2:1686676292,107782) DIAGNOSTIC: (cmdDisp) OpCodeRegistered : Opcode 0x600 registered to port 1 slot 4
+EVENT: (1280) (2:1686676292,107788) DIAGNOSTIC: (cmdDisp) OpCodeRegistered : Opcode 0x601 registered to port 1 slot 5
+EVENT: (1280) (2:1686676292,107795) DIAGNOSTIC: (cmdDisp) OpCodeRegistered : Opcode 0x602 registered to port 1 slot 6
+EVENT: (1280) (2:1686676292,107801) DIAGNOSTIC: (cmdDisp) OpCodeRegistered : Opcode 0x603 registered to port 1 slot 7
+EVENT: (1280) (2:1686676292,107807) DIAGNOSTIC: (cmdDisp) OpCodeRegistered : Opcode 0x604 registered to port 1 slot 8
+EVENT: (1280) (2:1686676292,107813) DIAGNOSTIC: (cmdDisp) OpCodeRegistered : Opcode 0x605 registered to port 1 slot 9
+EVENT: (1280) (2:1686676292,107820) DIAGNOSTIC: (cmdDisp) OpCodeRegistered : Opcode 0x606 registered to port 1 slot 10
+EVENT: (1280) (2:1686676292,107826) DIAGNOSTIC: (cmdDisp) OpCodeRegistered : Opcode 0x607 registered to port 1 slot 11
+EVENT: (1280) (2:1686676292,107832) DIAGNOSTIC: (cmdDisp) OpCodeRegistered : Opcode 0xb00 registered to port 2 slot 12
+EVENT: (1280) (2:1686676292,107838) DIAGNOSTIC: (cmdDisp) OpCodeRegistered : Opcode 0xb02 registered to port 2 slot 13
+EVENT: (1280) (2:1686676292,107844) DIAGNOSTIC: (cmdDisp) OpCodeRegistered : Opcode 0xb03 registered to port 2 slot 14
+EVENT: (1280) (2:1686676292,107851) DIAGNOSTIC: (cmdDisp) OpCodeRegistered : Opcode 0x700 registered to port 3 slot 15
+EVENT: (1280) (2:1686676292,107857) DIAGNOSTIC: (cmdDisp) OpCodeRegistered : Opcode 0x701 registered to port 3 slot 16
+EVENT: (1280) (2:1686676292,107863) DIAGNOSTIC: (cmdDisp) OpCodeRegistered : Opcode 0x702 registered to port 3 slot 17
+EVENT: (1280) (2:1686676292,107869) DIAGNOSTIC: (cmdDisp) OpCodeRegistered : Opcode 0x800 registered to port 4 slot 18
+EVENT: (1280) (2:1686676292,107875) DIAGNOSTIC: (cmdDisp) OpCodeRegistered : Opcode 0x801 registered to port 4 slot 19
+EVENT: (1280) (2:1686676292,107881) DIAGNOSTIC: (cmdDisp) OpCodeRegistered : Opcode 0x802 registered to port 4 slot 20
+EVENT: (1280) (2:1686676292,107888) DIAGNOSTIC: (cmdDisp) OpCodeRegistered : Opcode 0x803 registered to port 4 slot 21
+EVENT: (1280) (2:1686676292,107894) DIAGNOSTIC: (cmdDisp) OpCodeRegistered : Opcode 0x804 registered to port 4 slot 22
+EVENT: (1280) (2:1686676292,107900) DIAGNOSTIC: (cmdDisp) OpCodeRegistered : Opcode 0x805 registered to port 4 slot 23
+EVENT: (1280) (2:1686676292,107906) DIAGNOSTIC: (cmdDisp) OpCodeRegistered : Opcode 0x806 registered to port 4 slot 24
+EVENT: (1280) (2:1686676292,107912) DIAGNOSTIC: (cmdDisp) OpCodeRegistered : Opcode 0x2000 registered to port 5 slot 25
+EVENT: (1280) (2:1686676292,107918) DIAGNOSTIC: (cmdDisp) OpCodeRegistered : Opcode 0x2001 registered to port 5 slot 26
+EVENT: (1280) (2:1686676292,107924) DIAGNOSTIC: (cmdDisp) OpCodeRegistered : Opcode 0x2002 registered to port 5 slot 27
+EVENT: (1280) (2:1686676292,107931) DIAGNOSTIC: (cmdDisp) OpCodeRegistered : Opcode 0xf00 registered to port 6 slot 28
+EVENT: (1280) (2:1686676292,107937) DIAGNOSTIC: (cmdDisp) OpCodeRegistered : Opcode 0xd00 registered to port 7 slot 29
+EVENT: (1280) (2:1686676292,107943) DIAGNOSTIC: (cmdDisp) OpCodeRegistered : Opcode 0x4a00 registered to port 8 slot 30
+EVENT: (1280) (2:1686676292,107950) DIAGNOSTIC: (cmdDisp) OpCodeRegistered : Opcode 0x4a01 registered to port 8 slot 31
+EVENT: (3334) (2:1686676292,107973) WARNING_HI: (prmDb) PrmFileReadError : Parameter file read failed in stage OPEN (0) with record 0 and error 1
+[WARNING] High task priority of 140 being clamped to 47
+[WARNING] High task priority of 101 being clamped to 47
+[WARNING] High task priority of 100 being clamped to 47
+[WARNING] High task priority of 98 being clamped to 47
+[WARNING] High task priority of 100 being clamped to 47
+[ERROR] Failed to send framed data: 2
+[WARNING] High task priority of 100 being clamped to 47
+[WARNING] High task priority of 100 being clamped to 47
+[WARNING] High task priority of 50 being clamped to 47
+[WARNING] High task priority of 96 being clamped to 47
+[WARNING] High task priority of 120 being clamped to 47
+[WARNING] High task priority of 119 being clamped to 47
+EVENT: (512) (2:1686676292,108357) DIAGNOSTIC: (rateGroup1) RateGroupStarted : Rate group started.
+[WARNING] High task priority of 118 being clamped to 47
+EVENT: (768) (2:1686676292,108384) DIAGNOSTIC: (rateGroup2) RateGroupStarted : Rate group started.
+[WARNING] High task priority of 97 being clamped to 47
+EVENT: (1024) (2:1686676292,108409) DIAGNOSTIC: (rateGroup3) RateGroupStarted : Rate group started.
+[WARNING] High task priority of 100 being clamped to 47
+Connected to 0.0.0.0:50000 as a tcp client
+EVENT: (3840) (2:1686676317,94891) ACTIVITY_HI: (helloWorld) Hello : I say: sup b
+EVENT: (1281) (2:1686676317,94882) COMMAND: (cmdDisp) OpCodeDispatched : Opcode 0xf00 dispatched to port 6
+EVENT: (1282) (2:1686676317,94991) COMMAND: (cmdDisp) OpCodeCompleted : Opcode 0xf00 completed
+EVENT: (3840) (2:1686676331,660236) ACTIVITY_HI: (helloWorld) Hello : I say: sup b
+EVENT: (1281) (2:1686676331,660229) COMMAND: (cmdDisp) OpCodeDispatched : Opcode 0xf00 dispatched to port 6
+EVENT: (1282) (2:1686676331,660312) COMMAND: (cmdDisp) OpCodeCompleted : Opcode 0xf00 completed
+EVENT: (1281) (2:1686676357,400786) COMMAND: (cmdDisp) OpCodeDispatched : Opcode 0xf00 dispatched to port 6
+EVENT: (3840) (2:1686676357,400795) ACTIVITY_HI: (helloWorld) Hello : I say: sup b
+EVENT: (1282) (2:1686676357,400868) COMMAND: (cmdDisp) OpCodeCompleted : Opcode 0xf00 completed
+EVENT: (1281) (2:1686676357,600227) COMMAND: (cmdDisp) OpCodeDispatched : Opcode 0xf00 dispatched to port 6
+EVENT: (3840) (2:1686676357,600234) ACTIVITY_HI: (helloWorld) Hello : I say: sup b
+EVENT: (1282) (2:1686676357,600305) COMMAND: (cmdDisp) OpCodeCompleted : Opcode 0xf00 completed
+EVENT: (1281) (2:1686676357,783281) COMMAND: (cmdDisp) OpCodeDispatched : Opcode 0xf00 dispatched to port 6
+EVENT: (3840) (2:1686676357,783290) ACTIVITY_HI: (helloWorld) Hello : I say: sup b
+EVENT: (1282) (2:1686676357,783357) COMMAND: (cmdDisp) OpCodeCompleted : Opcode 0xf00 completed
+EVENT: (1281) (2:1686676357,988803) COMMAND: (cmdDisp) OpCodeDispatched : Opcode 0xf00 dispatched to port 6
+EVENT: (3840) (2:1686676357,988810) ACTIVITY_HI: (helloWorld) Hello : I say: sup b
+EVENT: (1282) (2:1686676357,988899) COMMAND: (cmdDisp) OpCodeCompleted : Opcode 0xf00 completed
+EVENT: (1281) (2:1686676358,204793) COMMAND: (cmdDisp) OpCodeDispatched : Opcode 0xf00 dispatched to port 6
+EVENT: (3840) (2:1686676358,204801) ACTIVITY_HI: (helloWorld) Hello : I say: sup b
+EVENT: (1282) (2:1686676358,204847) COMMAND: (cmdDisp) OpCodeCompleted : Opcode 0xf00 completed
+EVENT: (1281) (2:1686676358,421666) COMMAND: (cmdDisp) OpCodeDispatched : Opcode 0xf00 dispatched to port 6
+EVENT: (3840) (2:1686676358,421674) ACTIVITY_HI: (helloWorld) Hello : I say: sup b
+EVENT: (1282) (2:1686676358,421749) COMMAND: (cmdDisp) OpCodeCompleted : Opcode 0xf00 completed
+EVENT: (1281) (2:1686676359,112206) COMMAND: (cmdDisp) OpCodeDispatched : Opcode 0xf00 dispatched to port 6
+EVENT: (3840) (2:1686676359,112214) ACTIVITY_HI: (helloWorld) Hello : I say: sup b
+EVENT: (1282) (2:1686676359,112303) COMMAND: (cmdDisp) OpCodeCompleted : Opcode 0xf00 completed
+EVENT: (1281) (2:1686676359,330829) COMMAND: (cmdDisp) OpCodeDispatched : Opcode 0xf00 dispatched to port 6
+EVENT: (3840) (2:1686676359,330838) ACTIVITY_HI: (helloWorld) Hello : I say: sup b
+EVENT: (1282) (2:1686676359,330915) COMMAND: (cmdDisp) OpCodeCompleted : Opcode 0xf00 completed
+EVENT: (1281) (2:1686676359,563814) COMMAND: (cmdDisp) OpCodeDispatched : Opcode 0xf00 dispatched to port 6
+EVENT: (3840) (2:1686676359,563825) ACTIVITY_HI: (helloWorld) Hello : I say: sup b
+EVENT: (1282) (2:1686676359,563923) COMMAND: (cmdDisp) OpCodeCompleted : Opcode 0xf00 completed
+EVENT: (1281) (2:1686676359,770771) COMMAND: (cmdDisp) OpCodeDispatched : Opcode 0xf00 dispatched to port 6
+EVENT: (3840) (2:1686676359,770781) ACTIVITY_HI: (helloWorld) Hello : I say: sup b
+EVENT: (1282) (2:1686676359,770874) COMMAND: (cmdDisp) OpCodeCompleted : Opcode 0xf00 completed
+EVENT: (1281) (2:1686676360,19452) COMMAND: (cmdDisp) OpCodeDispatched : Opcode 0xf00 dispatched to port 6
+EVENT: (3840) (2:1686676360,19463) ACTIVITY_HI: (helloWorld) Hello : I say: sup b
+EVENT: (1282) (2:1686676360,19612) COMMAND: (cmdDisp) OpCodeCompleted : Opcode 0xf00 completed
+EVENT: (1281) (2:1686676360,223193) COMMAND: (cmdDisp) OpCodeDispatched : Opcode 0xf00 dispatched to port 6
+EVENT: (3840) (2:1686676360,223205) ACTIVITY_HI: (helloWorld) Hello : I say: sup b
+EVENT: (1282) (2:1686676360,223313) COMMAND: (cmdDisp) OpCodeCompleted : Opcode 0xf00 completed
+EVENT: (1281) (2:1686676360,604339) COMMAND: (cmdDisp) OpCodeDispatched : Opcode 0xf00 dispatched to port 6
+EVENT: (3840) (2:1686676360,604350) ACTIVITY_HI: (helloWorld) Hello : I say: sup b
+EVENT: (1282) (2:1686676360,604436) COMMAND: (cmdDisp) OpCodeCompleted : Opcode 0xf00 completed
+EVENT: (1281) (2:1686676369,713000) COMMAND: (cmdDisp) OpCodeDispatched : Opcode 0xf00 dispatched to port 6
+EVENT: (3840) (2:1686676369,713008) ACTIVITY_HI: (helloWorld) Hello : I say: sup b
+EVENT: (1282) (2:1686676369,713079) COMMAND: (cmdDisp) OpCodeCompleted : Opcode 0xf00 completed
+EVENT: (1281) (2:1686676369,893731) COMMAND: (cmdDisp) OpCodeDispatched : Opcode 0xf00 dispatched to port 6
+EVENT: (3840) (2:1686676369,893739) ACTIVITY_HI: (helloWorld) Hello : I say: sup b
+EVENT: (1282) (2:1686676369,893803) COMMAND: (cmdDisp) OpCodeCompleted : Opcode 0xf00 completed
+EVENT: (1281) (2:1686676370,94676) COMMAND: (cmdDisp) OpCodeDispatched : Opcode 0xf00 dispatched to port 6
+EVENT: (3840) (2:1686676370,94682) ACTIVITY_HI: (helloWorld) Hello : I say: sup b
+EVENT: (1282) (2:1686676370,94741) COMMAND: (cmdDisp) OpCodeCompleted : Opcode 0xf00 completed
+EVENT: (1281) (2:1686676370,251515) COMMAND: (cmdDisp) OpCodeDispatched : Opcode 0xf00 dispatched to port 6
+EVENT: (3840) (2:1686676370,251524) ACTIVITY_HI: (helloWorld) Hello : I say: sup b
+EVENT: (1282) (2:1686676370,251579) COMMAND: (cmdDisp) OpCodeCompleted : Opcode 0xf00 completed
+EVENT: (1281) (2:1686676370,437030) COMMAND: (cmdDisp) OpCodeDispatched : Opcode 0xf00 dispatched to port 6
+EVENT: (3840) (2:1686676370,437038) ACTIVITY_HI: (helloWorld) Hello : I say: sup b
+EVENT: (1282) (2:1686676370,437118) COMMAND: (cmdDisp) OpCodeCompleted : Opcode 0xf00 completed
+EVENT: (1281) (2:1686676370,642673) COMMAND: (cmdDisp) OpCodeDispatched : Opcode 0xf00 dispatched to port 6
+EVENT: (3840) (2:1686676370,642680) ACTIVITY_HI: (helloWorld) Hello : I say: sup b
+EVENT: (1282) (2:1686676370,642756) COMMAND: (cmdDisp) OpCodeCompleted : Opcode 0xf00 completed
+EVENT: (1281) (2:1686676373,773258) COMMAND: (cmdDisp) OpCodeDispatched : Opcode 0xf00 dispatched to port 6
+EVENT: (3840) (2:1686676373,773264) ACTIVITY_HI: (helloWorld) Hello : I say: sup b
+EVENT: (1282) (2:1686676373,773359) COMMAND: (cmdDisp) OpCodeCompleted : Opcode 0xf00 completed
+EVENT: (1281) (2:1686676373,955955) COMMAND: (cmdDisp) OpCodeDispatched : Opcode 0xf00 dispatched to port 6
+EVENT: (3840) (2:1686676373,955993) ACTIVITY_HI: (helloWorld) Hello : I say: sup b
+EVENT: (1282) (2:1686676373,956060) COMMAND: (cmdDisp) OpCodeCompleted : Opcode 0xf00 completed
+EVENT: (1281) (2:1686676374,159279) COMMAND: (cmdDisp) OpCodeDispatched : Opcode 0xf00 dispatched to port 6
+EVENT: (3840) (2:1686676374,159285) ACTIVITY_HI: (helloWorld) Hello : I say: sup b
+EVENT: (1282) (2:1686676374,159370) COMMAND: (cmdDisp) OpCodeCompleted : Opcode 0xf00 completed
+EVENT: (1281) (2:1686676374,358180) COMMAND: (cmdDisp) OpCodeDispatched : Opcode 0xf00 dispatched to port 6
+EVENT: (3840) (2:1686676374,358191) ACTIVITY_HI: (helloWorld) Hello : I say: sup b
+EVENT: (1282) (2:1686676374,358283) COMMAND: (cmdDisp) OpCodeCompleted : Opcode 0xf00 completed
+EVENT: (1281) (2:1686676374,623389) COMMAND: (cmdDisp) OpCodeDispatched : Opcode 0xf00 dispatched to port 6
+EVENT: (3840) (2:1686676374,623398) ACTIVITY_HI: (helloWorld) Hello : I say: sup b
+EVENT: (1282) (2:1686676374,623454) COMMAND: (cmdDisp) OpCodeCompleted : Opcode 0xf00 completed
+EVENT: (3840) (2:1686676374,875014) ACTIVITY_HI: (helloWorld) Hello : I say: sup b
+EVENT: (1281) (2:1686676374,875006) COMMAND: (cmdDisp) OpCodeDispatched : Opcode 0xf00 dispatched to port 6
+EVENT: (1282) (2:1686676374,875072) COMMAND: (cmdDisp) OpCodeCompleted : Opcode 0xf00 completed
+EVENT: (1281) (2:1686676375,614982) COMMAND: (cmdDisp) OpCodeDispatched : Opcode 0xf00 dispatched to port 6
+EVENT: (3840) (2:1686676375,614991) ACTIVITY_HI: (helloWorld) Hello : I say: sup b
+EVENT: (1282) (2:1686676375,615057) COMMAND: (cmdDisp) OpCodeCompleted : Opcode 0xf00 completed
+EVENT: (3840) (2:1686676375,799035) ACTIVITY_HI: (helloWorld) Hello : I say: sup b
+EVENT: (1281) (2:1686676375,799028) COMMAND: (cmdDisp) OpCodeDispatched : Opcode 0xf00 dispatched to port 6
+EVENT: (1282) (2:1686676375,799099) COMMAND: (cmdDisp) OpCodeCompleted : Opcode 0xf00 completed
+[WARNING] Failed to recv from port with status -8 and errno 9
+Exiting...
