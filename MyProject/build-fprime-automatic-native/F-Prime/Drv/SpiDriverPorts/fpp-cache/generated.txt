@@ -1,3 +1,0 @@
-SpiReadWritePortAc.cpp
-SpiReadWritePortAc.hpp
-SpiReadWritePortAi.xml

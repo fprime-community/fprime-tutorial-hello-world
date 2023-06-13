@@ -1,2 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc ../../../lib/Darwin/libSvc_BufferLogger.a CMakeFiles/Svc_BufferLogger.dir/BufferLogger.cpp.o CMakeFiles/Svc_BufferLogger.dir/BufferLoggerFile.cpp.o CMakeFiles/Svc_BufferLogger.dir/BufferLogger_LogStateEnumAc.cpp.o CMakeFiles/Svc_BufferLogger.dir/BufferLoggerComponentAc.cpp.o
-/Library/Developer/CommandLineTools/usr/bin/ranlib ../../../lib/Darwin/libSvc_BufferLogger.a

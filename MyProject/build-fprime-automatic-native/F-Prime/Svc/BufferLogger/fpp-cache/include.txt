@@ -1,3 +1,0 @@
-/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Svc/BufferLogger/Commands.fppi
-/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Svc/BufferLogger/Events.fppi
-/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Svc/BufferLogger/Telemetry.fppi

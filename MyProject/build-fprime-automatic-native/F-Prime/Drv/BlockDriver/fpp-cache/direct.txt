@@ -1,7 +1,0 @@
-/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Drv/BlockDriver/Tlm.fppi
-/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Drv/DataTypes/DataTypes.fpp
-/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Fw/Time/Time.fpp
-/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Fw/Tlm/Tlm.fpp
-/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Svc/Cycle/Cycle.fpp
-/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Svc/Ping/Ping.fpp
-/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Svc/Sched/Sched.fpp

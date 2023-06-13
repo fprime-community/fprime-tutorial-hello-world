@@ -1,6 +1,0 @@
-/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Fw/Cmd/Cmd.fpp
-/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Fw/Log/Log.fpp
-/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Fw/Time/Time.fpp
-/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Fw/Tlm/Tlm.fpp
-/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Svc/Sched/Sched.fpp
-/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/config/FpConfig.fpp

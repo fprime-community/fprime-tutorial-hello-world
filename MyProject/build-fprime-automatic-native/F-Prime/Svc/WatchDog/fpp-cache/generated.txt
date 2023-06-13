@@ -1,3 +1,0 @@
-WatchDogPortAc.cpp
-WatchDogPortAc.hpp
-WatchDogPortAi.xml

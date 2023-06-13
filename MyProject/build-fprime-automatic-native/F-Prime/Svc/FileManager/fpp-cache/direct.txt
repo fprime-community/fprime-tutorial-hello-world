@@ -1,7 +1,0 @@
-/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Fw/Cmd/Cmd.fpp
-/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Fw/Log/Log.fpp
-/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Fw/Tlm/Tlm.fpp
-/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Svc/FileManager/Commands.fppi
-/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Svc/FileManager/Events.fppi
-/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Svc/FileManager/Telemetry.fppi
-/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Svc/Ping/Ping.fpp

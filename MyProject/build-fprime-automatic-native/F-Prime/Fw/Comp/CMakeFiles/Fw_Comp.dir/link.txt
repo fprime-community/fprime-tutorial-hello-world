@@ -1,2 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc ../../../lib/Darwin/libFw_Comp.a CMakeFiles/Fw_Comp.dir/PassiveComponentBase.cpp.o
-/Library/Developer/CommandLineTools/usr/bin/ranlib ../../../lib/Darwin/libFw_Comp.a

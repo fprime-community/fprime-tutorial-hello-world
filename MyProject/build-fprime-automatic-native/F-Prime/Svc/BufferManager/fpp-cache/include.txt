@@ -1,2 +1,0 @@
-/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Svc/BufferManager/Events.fppi
-/Users/asloan/fprime-tutorial-hello-world/MyProject/fprime/Svc/BufferManager/Telemetry.fppi

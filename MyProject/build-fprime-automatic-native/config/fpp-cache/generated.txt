@@ -1,2 +1,0 @@
-FppConstantsAc.cpp
-FppConstantsAc.hpp

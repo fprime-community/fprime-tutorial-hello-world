@@ -1,2 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc ../../../lib/Darwin/libDrv_Ip.a CMakeFiles/Drv_Ip.dir/IpSocket.cpp.o CMakeFiles/Drv_Ip.dir/TcpClientSocket.cpp.o CMakeFiles/Drv_Ip.dir/TcpServerSocket.cpp.o CMakeFiles/Drv_Ip.dir/UdpSocket.cpp.o CMakeFiles/Drv_Ip.dir/SocketReadTask.cpp.o
-/Library/Developer/CommandLineTools/usr/bin/ranlib ../../../lib/Darwin/libDrv_Ip.a

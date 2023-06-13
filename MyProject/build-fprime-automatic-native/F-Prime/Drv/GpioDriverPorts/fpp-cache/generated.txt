@@ -1,6 +1,0 @@
-GpioReadPortAc.cpp
-GpioReadPortAc.hpp
-GpioReadPortAi.xml
-GpioWritePortAc.cpp
-GpioWritePortAc.hpp
-GpioWritePortAi.xml

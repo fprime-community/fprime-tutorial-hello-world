@@ -1,2 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc ../../lib/Darwin/libUtils.a CMakeFiles/Utils.dir/RateLimiter.cpp.o CMakeFiles/Utils.dir/TokenBucket.cpp.o CMakeFiles/Utils.dir/LockGuard.cpp.o CMakeFiles/Utils.dir/CRCChecker.cpp.o
-/Library/Developer/CommandLineTools/usr/bin/ranlib ../../lib/Darwin/libUtils.a

@@ -1,2 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc ../../../lib/Darwin/libSvc_ActiveTextLogger.a CMakeFiles/Svc_ActiveTextLogger.dir/ActiveTextLoggerImpl.cpp.o CMakeFiles/Svc_ActiveTextLogger.dir/LogFile.cpp.o CMakeFiles/Svc_ActiveTextLogger.dir/ActiveTextLoggerComponentAc.cpp.o
-/Library/Developer/CommandLineTools/usr/bin/ranlib ../../../lib/Darwin/libSvc_ActiveTextLogger.a

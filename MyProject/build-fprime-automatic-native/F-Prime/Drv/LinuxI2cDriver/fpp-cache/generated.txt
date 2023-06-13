@@ -1,1 +1,0 @@
-LinuxI2cDriverComponentAi.xml

@@ -1,2 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc ../../../lib/Darwin/libSvc_BufferRepeater.a CMakeFiles/Svc_BufferRepeater.dir/BufferRepeater.cpp.o CMakeFiles/Svc_BufferRepeater.dir/BufferRepeaterComponentAc.cpp.o
-/Library/Developer/CommandLineTools/usr/bin/ranlib ../../../lib/Darwin/libSvc_BufferRepeater.a
