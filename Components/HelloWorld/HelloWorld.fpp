@@ -1,4 +1,4 @@
-module MyComponents {
+module Components {
     @ Example Component for F Prime FSW framework.
     active component HelloWorld {
 

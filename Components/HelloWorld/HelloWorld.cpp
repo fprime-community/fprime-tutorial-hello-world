@@ -5,10 +5,10 @@
 // ======================================================================
 
 
-#include <MyComponents/HelloWorld/HelloWorld.hpp>
+#include <Components/HelloWorld/HelloWorld.hpp>
 #include <FpConfig.hpp>
 
-namespace MyComponents {
+namespace Components {
 
   // ----------------------------------------------------------------------
   // Construction, initialization, and destruction
@@ -49,4 +49,4 @@ namespace MyComponents {
     this->cmdResponse_out(opCode, cmdSeq, Fw::CmdResponse::OK);
   }
 
-} // end namespace MyComponents
+} // end namespace Components

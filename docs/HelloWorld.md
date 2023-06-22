@@ -6,7 +6,7 @@ tutorial and have the tools sourced as shown in the [conclusion](./NewProject.md
 F´ components encapsulate the various parts of system behavior. These components can interact with the ground system
 through [commands](./../README.md#command), [events](./../README.md#event), and
 [telemetry channels](./../README.md#telemetry-channel). Components communicate with other components through
-[ports](./../README.md#port), which covered in-depth in [another tutorial](https://github.com/fprime-community/fprime-tutorial-math-component). 
+[ports](./../README.md#port), which are covered in-depth in [another tutorial](https://github.com/fprime-community/fprime-tutorial-math-component). 
 
 ### Prerequisites:
 - [Hello World: Creating an F´ Project](./NewProject.md)
@@ -32,19 +32,17 @@ These are a simple set of requirements for this component.
 
 ## Creating the Hello World Component
 
-The next step is to create the new component. First, create a directory called `MyComponents` to contain this project's
-components and change into that directory.
+The next step is to create the new component. The project contains a `Components/` directory to create components in. 
 
 ```bash
 # In: MyProject
-mkdir -p MyComponents
-cd MyComponents
+cd Components
 ```
 
 Creating a new component is accomplished with the following command:
 
 ```bash
-# In: MyProject/MyComponents
+# In: MyProject/Components
 fprime-util new --component
 ```
 This command will ask for some input. You should respond with the following answers:
@@ -53,7 +51,7 @@ This command will ask for some input. You should respond with the following answ
 [INFO] Cookiecutter source: using builtin
 component_name [MyComponent]: HelloWorld
 component_short_description [Example Component for F Prime FSW framework.]: Hello World Tutorial Component
-component_namespace [HelloWorld]: MyComponents
+component_namespace [HelloWorld]: Components
 Select component_kind:
 1 - active
 2 - passive
@@ -75,20 +73,19 @@ Select enable_parameters:
 1 - yes
 2 - no
 Choose from 1, 2 [1]: 1
-[INFO] Found CMake file at 'MyProject/project.cmake'
-Add component MyComponents/HelloWorld to MyProject/project.cmake at end of file (yes/no)? yes
+[INFO] Found CMake file at 'Components/CMakeLists.txt'
+Add component Components/HelloWorld to Components/CMakeLists.txt at end of file (yes/no)? yes
 Generate implementation files (yes/no)? yes
 ```
 
 > For any other questions, select the default response.
 
-This will create a new component called "HelloWorld" in the "MyProject" namespace. This new component will be able to
-define commands, events, telemetry channels, and parameters.
+This will create a new component called "HelloWorld" in the "Components" namespace. This new component will be able to define commands, events, telemetry channels, and parameters.
 
 We should navigate to the component's directory and look around:
 
 ```bash
-# In: MyProject/MyComponents
+# In: MyProject/Components
 cd HelloWorld
 ls
 ```
@@ -135,7 +132,7 @@ telemetry GreetingCount: U32
 With this step completed you can generate a basic implementation with the following command:
 
 ```bash
-# In: MyProject/MyComponents/HelloWorld
+# In: MyProject/Components/HelloWorld
 fprime-util impl
 ```
 

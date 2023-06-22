@@ -82,7 +82,7 @@ module MyDeployment {
     stack size Default.STACK_SIZE \
     priority 96
 
-  instance helloWorld: MyComponents.HelloWorld base id 0x0F00 \
+  instance helloWorld: Components.HelloWorld base id 0x0F00 \
     queue size Default.QUEUE_SIZE \
     stack size Default.STACK_SIZE \
     priority 50

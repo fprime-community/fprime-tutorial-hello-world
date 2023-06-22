@@ -1,4 +1,4 @@
-# MyComponents::HelloWorld
+# Components::HelloWorld
 
 Example Component for F Prime FSW framework.
 
