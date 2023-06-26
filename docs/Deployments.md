@@ -28,28 +28,28 @@ fprime-util new --deployment
 This command will ask for some input. Respond with the following answers:
 
 ```
-deployment_name [MyDeployment]: MyDeployment
+deployment_name [MyDeployment]: HelloWorldDeployment
 ```
 
 > For any other questions, select the default response.
 
-At this point, the `MyDeployment` has been created, but our `HelloWorld` component has not been added to the deployment.
+At this point, the `HelloWorldDeployment` has been created, but our `HelloWorld` component has not been added to the deployment.
 
 ## Adding The Hello World Component
 
-In this section the `HelloWorld` component will be added to the `MyDeployment` deployment. This can be done by adding the component to the topology defined in `MyDeployment/Top`. 
+In this section the `HelloWorld` component will be added to the `HelloWorldDeployment` deployment. This can be done by adding the component to the topology defined in `HelloWorldDeployment/Top`. 
 
 Topologies instantiate all the components in a running system and link them together. For some port types, like the commanding, event, and telemetry ports used by `HelloWorld`, the connections are made automatically. 
 In addition, the topology specifies how to construct the component instance. This is also done automatically unless the component has specific configuration.
 
 In order to add a component to the topology, it must be added to the topology model. An instance definition and an instance initializer must both be added.
 
-To add an instance definition, add `instance helloWorld` to the instance definition list in the `topology MyDeployment` section of `MyDeployment/Top/topology.fpp`. This is shown below.
+To add an instance definition, add `instance helloWorld` to the instance definition list in the `topology HelloWorldDeployment` section of `HelloWorldDeployment/Top/topology.fpp`. This is shown below.
 
-Edit `MyDeployment/Top/topology.fpp`:
+Edit `HelloWorldDeployment/Top/topology.fpp`:
 ```
 ...
-    topology MyDeployment {
+    topology HelloWorldDeployment {
         # ----------------------------------------------------------------------
         # Instances used in the topology
         # ----------------------------------------------------------------------
@@ -93,9 +93,9 @@ Add to `MyDeploymment/Top/instances.fpp`:
 
 Finally, our new telemetry channel should be added to our telemetry packet specification. For this tutorial the
 channel can be ignored as the deployment will not use the telemetry packetizer. Add the following to the `ignore`
-section of `MyDeployment/Top/MyDeploymentPackets.xml`.
+section of `HelloWorldDeployment/Top/HelloWorldDeploymentPackets.xml`.
 
-Update `MyDeployment/Top/MyDeploymentPackets.xml`:
+Update `HelloWorldDeployment/Top/HelloWorldDeploymentPackets.xml`:
 ```
     <ignore>
         ...
@@ -107,7 +107,7 @@ Since this component has no custom ports nor does it require special configurati
 completed. The deployment can now be set up and built using the following commands:
 
 ```
-# In: MyProject/MyDeployment
+# In: MyProject/HelloWorldDeployment
 fprime-util build -j4
 ```
 > Resolve any errors that occur before continuing to the running section.

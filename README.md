@@ -70,7 +70,7 @@ commands received.
 Deployments are a single build of F´ software. Each deployment results in one software executable that can be run along
 with other associated files. Each deployment has a topology that defines the system.
 
-This tutorial will create the `MyDeployment` deployment, run this deployment, and test it through the F´ GDS.
+This tutorial will create the `HelloWorldDeployment` deployment, run this deployment, and test it through the F´ GDS.
 
 #### Topology
 

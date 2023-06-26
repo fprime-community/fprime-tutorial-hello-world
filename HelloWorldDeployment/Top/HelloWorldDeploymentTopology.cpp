@@ -1,11 +1,11 @@
 // ======================================================================
-// \title  MyDeploymentTopology.cpp
+// \title  HelloWorldDeploymentTopology.cpp
 // \brief cpp file containing the topology instantiation code
 //
 // ======================================================================
 // Provides access to autocoded functions
-#include <MyDeployment/Top/MyDeploymentTopologyAc.hpp>
-#include <MyDeployment/Top/MyDeploymentPacketsAc.hpp>
+#include <HelloWorldDeployment/Top/HelloWorldDeploymentTopologyAc.hpp>
+#include <HelloWorldDeployment/Top/HelloWorldDeploymentPacketsAc.hpp>
 
 // Necessary project-specified types
 #include <Fw/Types/MallocAllocator.hpp>
@@ -16,7 +16,7 @@
 #include <Os/Mutex.hpp>
 
 // Allows easy reference to objects in FPP/autocoder required namespaces
-using namespace MyDeployment;
+using namespace HelloWorldDeployment;
 
 // Instantiate a system logger that will handle Fw::Logger::logMsg calls
 Os::Log logger;
@@ -111,11 +111,11 @@ void configureTopology() {
     uplink.setup(deframing);
 
     // Note: Uncomment when using Svc:TlmPacketizer
-    //tlmSend.setPacketList(MyDeploymentPacketsPkts, MyDeploymentPacketsIgnore, 1);
+    //tlmSend.setPacketList(HelloWorldDeploymentPacketsPkts, HelloWorldDeploymentPacketsIgnore, 1);
 }
 
-// Public functions for use in main program are namespaced with deployment name MyDeployment
-namespace MyDeployment {
+// Public functions for use in main program are namespaced with deployment name HelloWorldDeployment
+namespace HelloWorldDeployment {
 void setupTopology(const TopologyState& state) {
     // Autocoded initialization. Function provided by autocoder.
     initComponents(state);
@@ -151,7 +151,7 @@ void startSimulatedCycle(U32 milliseconds) {
 
     // Main loop
     while (cycling) {
-        MyDeployment::blockDrv.callIsr();
+        HelloWorldDeployment::blockDrv.callIsr();
         Os::Task::delay(milliseconds);
 
         cycleLock.lock();
@@ -179,4 +179,4 @@ void teardownTopology(const TopologyState& state) {
     cmdSeq.deallocateBuffer(mallocator);
     fileUplinkBufferManager.cleanup();
 }
-};  // namespace MyDeployment
+};  // namespace HelloWorldDeployment

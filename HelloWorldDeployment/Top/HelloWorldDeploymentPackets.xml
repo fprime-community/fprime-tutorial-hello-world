@@ -1,6 +1,6 @@
-<packets name="MyDeploymentPackets" namespace="MyDeployment" size="111">
+<packets name="HelloWorldDeploymentPackets" namespace="HelloWorldDeployment" size="111">
 
-    <import_topology>MyDeployment/Top/MyDeploymentTopologyAppAi.xml</import_topology>
+    <import_topology>HelloWorldDeployment/Top/HelloWorldDeploymentTopologyAppAi.xml</import_topology>
 
     <packet name="CDH" id="1" level="1">
         <channel name="cmdDisp.CommandsDispatched"/>
