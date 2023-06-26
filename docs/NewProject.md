@@ -60,7 +60,7 @@ This will show the following files:
 > 
 > ```bash
 > # In: MyProject
-> source venv/bin/activate
+> . venv/bin/activate
 >```
 >
 > Make sure to load these tools any time you are working with the this project.
@@ -89,7 +89,7 @@ within this new project's folder:
 
 ```bash
 # In: MyProject
-source venv/bin/activate
+. venv/bin/activate
 ```
 > Use this command if your virtual environment is not already running. 
 
