@@ -1,4 +1,4 @@
-module MyDeployment {
+module HelloWorldDeployment {
 
   # ----------------------------------------------------------------------
   # Symbolic constants for port numbers
@@ -15,7 +15,7 @@ module MyDeployment {
       uplink
     }
 
-  topology MyDeployment {
+  topology HelloWorldDeployment {
 
     # ----------------------------------------------------------------------
     # Instances used in the topology
@@ -129,7 +129,7 @@ module MyDeployment {
       fileUplink.bufferSendOut -> fileUplinkBufferManager.bufferSendIn
     }
 
-    connections MyDeployment {
+    connections HelloWorldDeployment {
       # Add here connections to user-defined components
     }
 

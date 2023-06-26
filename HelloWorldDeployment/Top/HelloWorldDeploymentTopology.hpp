@@ -1,17 +1,17 @@
 // ======================================================================
-// \title  MyDeploymentTopology.hpp
+// \title  HelloWorldDeploymentTopology.hpp
 // \brief header file containing the topology instantiation definitions
 //
 // ======================================================================
-#ifndef MYDEPLOYMENT_MYDEPLOYMENTTOPOLOGY_HPP
-#define MYDEPLOYMENT_MYDEPLOYMENTTOPOLOGY_HPP
-// Included for access to MyDeployment::TopologyState and MyDeployment::ConfigObjects::pingEntries. These definitions are required by the
+#ifndef HelloWorldDeployment_HelloWorldDeploymentTOPOLOGY_HPP
+#define HelloWorldDeployment_HelloWorldDeploymentTOPOLOGY_HPP
+// Included for access to HelloWorldDeployment::TopologyState and HelloWorldDeployment::ConfigObjects::pingEntries. These definitions are required by the
 // autocoder, but are also used in this hand-coded topology.
-#include <MyDeployment/Top/MyDeploymentTopologyDefs.hpp>
+#include <HelloWorldDeployment/Top/HelloWorldDeploymentTopologyDefs.hpp>
 
-// Remove unnecessary MyDeployment:: qualifications
-using namespace MyDeployment;
-namespace MyDeployment {
+// Remove unnecessary HelloWorldDeployment:: qualifications
+using namespace HelloWorldDeployment;
+namespace HelloWorldDeployment {
 /**
  * \brief initialize and run the F´ topology
  *
@@ -32,7 +32,7 @@ namespace MyDeployment {
  * custom tasks often start radio communication it is convenient to start them last.
  *
  * The state argument carries command line inputs used to setup the topology. For an explanation of the required type
- * MyDeployment::TopologyState see: MyDeploymentTopologyDefs.hpp.
+ * HelloWorldDeployment::TopologyState see: HelloWorldDeploymentTopologyDefs.hpp.
  *
  * \param state: object shuttling CLI arguments (hostname, port) needed to construct the topology
  */
@@ -53,7 +53,7 @@ void setupTopology(const TopologyState& state);
  * Step 1, 2, 3, and 4 must occur in-order as the tasks must be stopped before being joined. These tasks must be stopped
  * and joined before any active resources may be deallocated.
  *
- * For an explanation of the required type MyDeployment::TopologyState see: MyDeploymentTopologyDefs.hpp.
+ * For an explanation of the required type HelloWorldDeployment::TopologyState see: HelloWorldDeploymentTopologyDefs.hpp.
  *
  * \param state: state object provided to setupTopology
  */
@@ -82,5 +82,5 @@ void startSimulatedCycle(U32 milliseconds = 1000);
  */
 void stopSimulatedCycle();
 
-} // namespace MyDeployment
+} // namespace HelloWorldDeployment
 #endif

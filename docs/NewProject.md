@@ -23,7 +23,7 @@ pip install fprime-tools
 Now that the tools are installed a new F´ project should be created. An F´ project internalizes the version of F´ that
 the project will build upon and provides the user the basic setup for creating, building, and testing components.
 
-In order to make a new project, run the following command and answer the questions as indicated below:
+In order to make a new project, run the following command:
 
 ```bash
 fprime-util new --project
@@ -39,15 +39,27 @@ Select install_venv:
 Choose from 1, 2 [1]: 1
 ```
 
-Use the default for anything not specified. This command will take a moment to run.
+Use the default for anything not specified. This command will take a moment to run as it needs to clone the core F´ repository.
 
 The above command creates a new F´ project structure in a folder called `MyProject`, uses the `devel` branch of F´ as
 the basis for the project, and sets up the matching tools in a new Virtual Environment.
 
+We should navigate to the projects's directory and look around:
+
+```bash
+cd MyProject
+ls
+```
+This will show the following files:
+1. `fprime/`: F´ repository. Contains core F´ components, the API for the build system, among others
+2. `settings.ini`: allows users to set various settings to control the build
+3. `CMakeList.txt` and `project.cmake`: CMake files defining the build system
+4. `Components/`: directory to place user components in
+
 > Load the tools for this project via the virtual environment.
 > 
 > ```bash
-> cd MyProject
+> # In: MyProject
 > . venv/bin/activate
 >```
 >
@@ -64,8 +76,7 @@ fprime-util generate
 fprime-util build -j4
 ```
 
-> `fprime-util generate` sets up the build environment for a project/deployment. It only needs to be done once. At the
-> end of this tutorial, a new deployment will be created and `fprime-util generate` will also be used then.
+> `fprime-util generate` sets up the build environment for a project/deployment. It only needs to be done once.
 
 ## Conclusion
 
