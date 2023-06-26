@@ -1,7 +1,7 @@
 # Hello World: Introduction and F´ Terminology
 
-> Note: Tutorials can be browsed through our website or through the GitHub repository:
-> -> [Go to the website](https://fprime-community.github.io/fprime-tutorial-hello-world)
+> Note: Tutorials can be browsed through our website or through the GitHub repository:\
+> -> [Go to the website](https://fprime-community.github.io/fprime-tutorial-hello-world)\
 > -> [Go to the GitHub repository](https://github.com/fprime-community/fprime-tutorial-hello-world)
 
 The Hello World tutorial is designed to teach new users the basics of F´ usage, instruct existing users on new
