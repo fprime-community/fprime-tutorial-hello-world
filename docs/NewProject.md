@@ -32,7 +32,7 @@ fprime-util new --project
 This command will ask for some input. Respond with the following answers:
 ```
 Project name [MyProject]: MyProject
-F' version (select branch or tag) [devel]: devel
+F´ version (select branch or tag) [devel]: devel
 Install virtual environment?:
 1 - yes
 2 - no
