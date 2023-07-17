@@ -32,10 +32,11 @@ These are a simple set of requirements for this component.
 
 ## Creating the Hello World Component
 
-The next step is to create the new component. The project contains a `Components/` directory to create components in. 
+The next step is to create the new component. In a terminal, navigate to the project's root directory and run the following:
 
 ```bash
 # In: MyProject
+mkdir Components
 cd Components
 ```
 
