@@ -28,7 +28,7 @@ fprime-util new --deployment
 This command will ask for some input. Respond with the following answers:
 
 ```
-deployment_name [MyDeployment]: HelloWorldDeployment
+Deployment name [MyDeployment]: HelloWorldDeployment
 ```
 
 > For any other questions, select the default response.

@@ -31,9 +31,9 @@ fprime-util new --project
 
 This command will ask for some input. Respond with the following answers:
 ```
-project_name [MyProject]: MyProject
-fprime_branch_or_tag [devel]: devel
-Select install_venv:
+Project name [MyProject]: MyProject
+F´ version (select branch or tag) [devel]: devel
+Install virtual environment?:
 1 - yes
 2 - no
 Choose from 1, 2 [1]: 1

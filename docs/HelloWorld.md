@@ -49,27 +49,27 @@ This command will ask for some input. You should respond with the following answ
 
 ```
 [INFO] Cookiecutter source: using builtin
-component_name [MyComponent]: HelloWorld
-component_short_description [Example Component for F Prime FSW framework.]: Hello World Tutorial Component
-component_namespace [HelloWorld]: Components
-Select component_kind:
+Component name [MyComponent]: HelloWorld
+Component short description [Component for F Prime FSW framework.]: Hello World Tutorial Component
+Component namespace [Components]: Components
+Select component kind:
 1 - active
 2 - passive
 3 - queued
 Choose from 1, 2, 3 [1]: 1
-Select enable_commands:
+Enable Commands?:
 1 - yes
 2 - no
 Choose from 1, 2 [1]: 1
-Select enable_telemetry:
+Enable telemetry?:
 1 - yes
 2 - no
 Choose from 1, 2 [1]: 1
-Select enable_events:
+Enable Events:
 1 - yes
 2 - no
 Choose from 1, 2 [1]: 1
-Select enable_parameters:
+Enable Parameters:
 1 - yes
 2 - no
 Choose from 1, 2 [1]: 1
