@@ -11,12 +11,12 @@ This tutorial will walk new users through creating a new F´ project.
 ## Bootstrapping F´
 
 An F´ [project](./../README.md#project) ties to a specific version of tools to work with F´.  In order to create
-this project and install the correct version of tools, an initial bootstrap version of F´ tools must be installed. This
-is accomplished with the following command:
+this project and install the correct version of tools, an initial bootstrap version of F´ tools must be installed onto your system.
 
-```bash
-pip install fprime-tools
-```
+To do this you should follow the following steps from the [F´  installation guide](https://nasa.github.io/fprime/INSTALL.html):
+
+1. Ensure you meet the [F´ System Requirements](https://nasa.github.io/fprime/INSTALL.html#requirements)
+2. [Bootstrap the F´ tools](https://nasa.github.io/fprime/INSTALL.html#bootstrapping-the-f-development-environment)
 
 ## Creating a New F´ Project
 
