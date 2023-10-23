@@ -3,7 +3,7 @@
   <ul>
     <!-- empty list for consistent spacing between items -->
   </ul>
-<h4><a href="/fprime-workshop-led-blinker">HelloWorld Tutorial</a></h4>
+<h4><a href="/fprime-tutorial-hello-worldr">HelloWorld Tutorial</a></h4>
   <ol>
     <li><a href="/fprime-tutorial-hello-world/">Terminology</a></li>
     <li><a href="/fprime-tutorial-hello-world/docs/NewProject.html">Creating an F´ Project</a></li>
