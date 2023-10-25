@@ -35,7 +35,7 @@ module HelloWorldDeployment {
     instance fileManager
     instance fileUplink
     instance fileUplinkBufferManager
-    instance linuxTime
+    instance posixTime
     instance prmDb
     instance rateGroup1
     instance rateGroup2
@@ -62,7 +62,7 @@ module HelloWorldDeployment {
 
     text event connections instance textLogger
 
-    time connections instance linuxTime
+    time connections instance posixTime
 
     health connections instance $health
 
