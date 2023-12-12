@@ -169,7 +169,7 @@ void HelloWorld:: SAY_HELLO_cmdHandler(FwOpcodeType opCode, U32 cmdSeq, const Fw
 > 
 > **HelloWorld.hpp: Adding New Member Variable**
 > ```c++
-> private:
+> PRIVATE:
 >     U32 m_greetingCount;
 > ```
 > Should be added inside the `class` definition in `HelloWorld.hpp`.
