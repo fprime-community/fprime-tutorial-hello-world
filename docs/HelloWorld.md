@@ -139,8 +139,8 @@ fprime-util impl
 `fprime-util impl` creates `HelloWorld.hpp-template` and `HelloWorld.cpp-template` which contain empty functions based on what we have written in the FPP file. While normally one would merge new templates with the existing code, we will instead overwrite the existing implementations as we have not edited those files yet. To do this:
 
 ```bash
-mv HelloWorld.hpp-template HelloWorld.hpp
-mv HelloWorld.cpp-template HelloWorld.cpp
+mv HelloWorld.template.hpp HelloWorld.hpp
+mv HelloWorld.template.cpp HelloWorld.cpp
 ```
 We are now ready for implementing component behavior.
 
@@ -169,7 +169,7 @@ void HelloWorld:: SAY_HELLO_cmdHandler(FwOpcodeType opCode, U32 cmdSeq, const Fw
 > 
 > **HelloWorld.hpp: Adding New Member Variable**
 > ```c++
-> private:
+> PRIVATE:
 >     U32 m_greetingCount;
 > ```
 > Should be added inside the `class` definition in `HelloWorld.hpp`.
