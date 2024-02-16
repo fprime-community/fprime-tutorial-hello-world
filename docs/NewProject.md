@@ -1,10 +1,9 @@
 # Hello World: Creating an F´ Project 
 
-This tutorial will walk new users through creating a new F´ project.
+This tutorial will walk new users through creating a new F´ project. First, ensure you meet the [F´ System Requirements](https://nasa.github.io/fprime/INSTALL.html#requirements).
 
 ### Tutorial Steps:
 - [Bootstrapping F´](#bootstrapping-f)
-- [Creating a New F´ Project](#creating-a-new-f-project)
 - [Building the New F´ Project](#building-the-new-f-project)
 - [Conclusion](#conclusion)
 
@@ -13,10 +12,27 @@ This tutorial will walk new users through creating a new F´ project.
 An F´ [project](./../README.md#project) ties to a specific version of tools to work with F´. In order to create
 this project and install the correct version of tools, you should perform a bootstrap of F´.
 
-To do this you should follow the following steps from the [F´ installation guide](https://nasa.github.io/fprime/INSTALL.html):
+### 1. Install the F´ Bootstrap tool
 
-1. Ensure you meet the [F´ System Requirements](https://nasa.github.io/fprime/INSTALL.html#requirements)
-2. [Bootstrap your F´ project](https://nasa.github.io/fprime/INSTALL.html#creating-a-new-f-project)
+
+The F´ Bootstrap tool is responsible for creating a new F´ project and installing the Python dependencies within the project's virtual environment. Install the fprime-bootstrap tool with:
+```
+pip install fprime-bootstrap
+```
+
+### 2. Create a new project
+
+The entrypoint to developing with F´ is creating a new project. This will clone the F´ repository and install the full tool suite of the specified version for working with the selected version of F´. To create a new project, run:
+```
+fprime-bootstrap project
+```
+
+This command will ask for some input. Sample responses are below:
+```
+  [1/1] Project name (MyProject): MyProject
+```
+
+### 3. Understanding the project structure
 
 Bootstrapping your F´ project created a folder called `MyProject` (or any name you chose) containing the standard F´ project structure as well as the virtual environment up containing the tools to work with F´.
 
@@ -33,14 +49,14 @@ This will show the following files:
 4. `Components/`: directory to place user components in
 4. `fprime-venv/`: this directory is the virtual environment containing the Python tools to work with F´
 
-> Load the tools for this project via the virtual environment.
-> 
-> ```bash
-> # In: MyProject
-> . fprime-venv/bin/activate
->```
->
-> Make sure to load these tools any time you are working with the this project.
+### 4. Activate the virtual environment
+Activate the virtual environment to use the F´ tool suite.
+
+```bash
+# in MyProject/
+. fprime-venv/bin/activate
+```
+> Always remember to activate the virtual environment whenever you work with this F´  project.
 
 ## Building the New F´ Project
 
@@ -50,10 +66,12 @@ created components, and will build the F´ framework supplied components.
 ```bash
 cd MyProject
 fprime-util generate
-fprime-util build -j4
+fprime-util build
 ```
 
 > `fprime-util generate` sets up the build environment for a project/deployment. It only needs to be done once.
+
+> `fprime-util build` can be sped up by building in parrallel on multiple cores, using the `-j <N>` option. For example, `fprime-util build -j16`
 
 ## Conclusion
 
