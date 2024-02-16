@@ -27,23 +27,23 @@ The entrypoint to developing with F´ is creating a new project. This will clone
 fprime-bootstrap project
 ```
 
-This command will ask for some input. Sample responses are below:
+This command will ask for a project name. We will use the default: `MyProject`
 ```
   [1/1] Project name (MyProject): MyProject
 ```
 
 ### 3. Understanding the project structure
 
-Bootstrapping your F´ project created a folder called `MyProject` (or any name you chose) containing the standard F´ project structure as well as the virtual environment up containing the tools to work with F´.
+Bootstrapping your F´ project created a folder called `MyProject` (or any name you chose) containing the standard F´ project structure as well as the [virtual environment](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/) containing the tools to work with F´.
 
-We should navigate to the projects's directory and look around:
+We should navigate to the project's directory and look around:
 
 ```bash
 cd MyProject
 ls
 ```
 This will show the following files:
-1. `fprime/`: F´ repository. Contains core F´ components, the API for the build system, among others
+1. `fprime/`: F´ repository, this is a git submodule that points to https://github.com/nasa/fprime. Contains core F´ components, the API for the build system, among others
 2. `settings.ini`: allows users to set various settings to control the build
 3. `CMakeList.txt` and `project.cmake`: CMake files defining the build system
 4. `Components/`: directory to place user components in
