@@ -164,25 +164,26 @@ void HelloWorld:: SAY_HELLO_cmdHandler(FwOpcodeType opCode, U32 cmdSeq, const Fw
     this->cmdResponse_out(opCode, cmdSeq, Fw::CmdResponse::OK);
 }
 ```
-> We must also add the m_greetingCount member variable to the class defined in `HelloWorld.hpp` and the constructor
-> defined in `HelloWorld.cpp`. This looks like:
-> 
-> **HelloWorld.hpp: Adding New Member Variable**
-> ```c++
-> PRIVATE:
->     U32 m_greetingCount;
-> ```
-> Should be added inside the `class` definition in `HelloWorld.hpp`.
->
-> **HelloWorld.cpp: Updating Constructor**
-> ```c++
-> HelloWorld:: HelloWorld(const char *const compName) : HelloWorldComponentBase(compName),
->     m_greetingCount(0)
-> {
->
-> }
-> ```
-> Should be added to the `HelloWorld` constructor at the top of the file.
+We must also add both the a prototype for the command handler and the `m_greetingCount` member variable to the class defined in `HelloWorld.hpp` and the constructor defined in `HelloWorld.cpp`. This looks like:
+
+**HelloWorld.hpp: Adding New Function Prototype and Member Variable**
+
+```c++
+  PRIVATE:
+      void SAY_HELLO_cmdHandler(FwOpcodeType opCode, U32 cmdSeq, const Fw::CmdStringArg& greeting);
+      U32 m_greetingCount;
+```
+Should be added inside the `class` definition in `HelloWorld.hpp`.
+
+**HelloWorld.cpp: Updating Constructor**
+```c++
+HelloWorld:: HelloWorld(const char *const compName) : HelloWorldComponentBase(compName),
+     m_greetingCount(0)
+{
+
+}
+```
+Should be added to the `HelloWorld` constructor at the top of the file.
 
 The component should build without errors by running `fprime-util build`.  Resolve any errors that occur before
 proceeding to the next section. Remember to always save before you build, unsaved changes will not be included in the build.
