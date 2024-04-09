@@ -104,7 +104,7 @@ To build this component run `fprime-util build` in the current folder.
 A component model defines the interface of the component with the rest of the F´ system and with the ground system F´
 communicates with. In this case we intend to define a command, an event, and a telemetry channel as specified above.
 
-Open the model file `HelloWorld.fpp` and add replace the line:
+Open the model file `HelloWorld.fpp` and replace the line:
 
 ```
 async command TODO opcode 0
