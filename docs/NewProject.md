@@ -84,7 +84,7 @@ within this new project's folder:
 
 ```bash
 # In: MyProject
-. venv/bin/activate
+. fprime-venv/bin/activate
 ```
 > Use this command if your virtual environment is not already running. 
 
