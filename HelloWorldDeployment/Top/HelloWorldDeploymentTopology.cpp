@@ -52,18 +52,18 @@ enum TopologyConstants {
 
 // Ping entries are autocoded, however; this code is not properly exported. Thus, it is copied here.
 Svc::Health::PingEntry pingEntries[] = {
-    {PingEntries::blockDrv::WARN, PingEntries::blockDrv::FATAL, "blockDrv"},
-    {PingEntries::tlmSend::WARN, PingEntries::tlmSend::FATAL, "chanTlm"},
-    {PingEntries::cmdDisp::WARN, PingEntries::cmdDisp::FATAL, "cmdDisp"},
-    {PingEntries::cmdSeq::WARN, PingEntries::cmdSeq::FATAL, "cmdSeq"},
-    {PingEntries::eventLogger::WARN, PingEntries::eventLogger::FATAL, "eventLogger"},
-    {PingEntries::fileDownlink::WARN, PingEntries::fileDownlink::FATAL, "fileDownlink"},
-    {PingEntries::fileManager::WARN, PingEntries::fileManager::FATAL, "fileManager"},
-    {PingEntries::fileUplink::WARN, PingEntries::fileUplink::FATAL, "fileUplink"},
-    {PingEntries::prmDb::WARN, PingEntries::prmDb::FATAL, "prmDb"},
-    {PingEntries::rateGroup1::WARN, PingEntries::rateGroup1::FATAL, "rateGroup1"},
-    {PingEntries::rateGroup2::WARN, PingEntries::rateGroup2::FATAL, "rateGroup2"},
-    {PingEntries::rateGroup3::WARN, PingEntries::rateGroup3::FATAL, "rateGroup3"},
+    {PingEntries::HelloWorldDeployment_blockDrv::WARN, PingEntries::HelloWorldDeployment_blockDrv::FATAL, "blockDrv"},
+    {PingEntries::HelloWorldDeployment_tlmSend::WARN, PingEntries::HelloWorldDeployment_tlmSend::FATAL, "chanTlm"},
+    {PingEntries::HelloWorldDeployment_cmdDisp::WARN, PingEntries::HelloWorldDeployment_cmdDisp::FATAL, "cmdDisp"},
+    {PingEntries::HelloWorldDeployment_cmdSeq::WARN, PingEntries::HelloWorldDeployment_cmdSeq::FATAL, "cmdSeq"},
+    {PingEntries::HelloWorldDeployment_eventLogger::WARN, PingEntries::HelloWorldDeployment_eventLogger::FATAL, "eventLogger"},
+    {PingEntries::HelloWorldDeployment_fileDownlink::WARN, PingEntries::HelloWorldDeployment_fileDownlink::FATAL, "fileDownlink"},
+    {PingEntries::HelloWorldDeployment_fileManager::WARN, PingEntries::HelloWorldDeployment_fileManager::FATAL, "fileManager"},
+    {PingEntries::HelloWorldDeployment_fileUplink::WARN, PingEntries::HelloWorldDeployment_fileUplink::FATAL, "fileUplink"},
+    {PingEntries::HelloWorldDeployment_prmDb::WARN, PingEntries::HelloWorldDeployment_prmDb::FATAL, "prmDb"},
+    {PingEntries::HelloWorldDeployment_rateGroup1::WARN, PingEntries::HelloWorldDeployment_rateGroup1::FATAL, "rateGroup1"},
+    {PingEntries::HelloWorldDeployment_rateGroup2::WARN, PingEntries::HelloWorldDeployment_rateGroup2::FATAL, "rateGroup2"},
+    {PingEntries::HelloWorldDeployment_rateGroup3::WARN, PingEntries::HelloWorldDeployment_rateGroup3::FATAL, "rateGroup3"},
 };
 
 /**
