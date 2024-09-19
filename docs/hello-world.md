@@ -85,7 +85,7 @@ This tutorial will use a standard command and data handling topology. A single `
 
 ## 1. Creating an F´ Project 
 
-This tutorial will walk new users through creating a new F´ project. First, ensure you meet the [F´ System Requirements](https://github.jpl.nasa.gov/pages/ashleysa/fprime-website-mkdocs-dev/latest/getting-started/getting-started/installing-fprime#system-requirements).
+This tutorial will walk new users through creating a new F´ project. First, ensure you meet the [F´ System Requirements](https://github.jpl.nasa.gov/pages/ashleysa/fprime-website-mkdocs-dev/latest/getting-started/installing-fprime#system-requirements).
 
 ### Tutorial Steps:
 
@@ -95,7 +95,7 @@ This tutorial will walk new users through creating a new F´ project. First, ens
 
 ### Bootstrapping F´
 
-An F´ [project](https://github.jpl.nasa.gov/pages/ashleysa/fprime-website-mkdocs-dev/latest/getting-started/getting-started/projects) ties to a specific version of tools to work with F´. In order to create
+An F´ [project](https://github.jpl.nasa.gov/pages/ashleysa/fprime-website-mkdocs-dev/latest/getting-started/projects) ties to a specific version of tools to work with F´. In order to create
 this project and install the correct version of tools, you should perform a bootstrap of F´.
 
 #### 1. Install the F´ Bootstrap tool
