@@ -149,7 +149,7 @@ void startSimulatedCycle(U32 milliseconds) {
     // Main loop
     while (cycling) {
         HelloWorldDeployment::blockDrv.callIsr();
-        Os::Task::delay(Fw::Time(milliseconds/1000, milliseconds % 1000));
+        Os::Task::delay(Fw::TimeInterval(milliseconds/1000, milliseconds % 1000));
 
         cycleLock.lock();
         cycling = cycleFlag;
