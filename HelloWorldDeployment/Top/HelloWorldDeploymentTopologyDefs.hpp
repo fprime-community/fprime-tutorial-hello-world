@@ -48,40 +48,40 @@ struct TopologyState {
  * ```
  */
 namespace PingEntries {
-namespace blockDrv {
+namespace HelloWorldDeployment_blockDrv {
 enum { WARN = 3, FATAL = 5 };
 }
-namespace tlmSend {
+namespace HelloWorldDeployment_tlmSend {
 enum { WARN = 3, FATAL = 5 };
 }
-namespace cmdDisp {
+namespace HelloWorldDeployment_cmdDisp {
 enum { WARN = 3, FATAL = 5 };
 }
-namespace cmdSeq {
+namespace HelloWorldDeployment_cmdSeq {
 enum { WARN = 3, FATAL = 5 };
 }
-namespace eventLogger {
+namespace HelloWorldDeployment_eventLogger {
 enum { WARN = 3, FATAL = 5 };
 }
-namespace fileDownlink {
+namespace HelloWorldDeployment_fileDownlink {
 enum { WARN = 3, FATAL = 5 };
 }
-namespace fileManager {
+namespace HelloWorldDeployment_fileManager {
 enum { WARN = 3, FATAL = 5 };
 }
-namespace fileUplink {
+namespace HelloWorldDeployment_fileUplink {
 enum { WARN = 3, FATAL = 5 };
 }
-namespace prmDb {
+namespace HelloWorldDeployment_prmDb {
 enum { WARN = 3, FATAL = 5 };
 }
-namespace rateGroup1 {
+namespace HelloWorldDeployment_rateGroup1 {
 enum { WARN = 3, FATAL = 5 };
 }
-namespace rateGroup2 {
+namespace HelloWorldDeployment_rateGroup2 {
 enum { WARN = 3, FATAL = 5 };
 }
-namespace rateGroup3 {
+namespace HelloWorldDeployment_rateGroup3 {
 enum { WARN = 3, FATAL = 5 };
 }
 }  // namespace PingEntries

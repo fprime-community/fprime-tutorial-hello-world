@@ -9,7 +9,6 @@
 
 // Necessary project-specified types
 #include <Fw/Types/MallocAllocator.hpp>
-#include <Os/Log.hpp>
 #include <Svc/FramingProtocol/FprimeProtocol.hpp>
 
 // Used for 1Hz synthetic cycling
@@ -18,8 +17,6 @@
 // Allows easy reference to objects in FPP/autocoder required namespaces
 using namespace HelloWorldDeployment;
 
-// Instantiate a system logger that will handle Fw::Logger::logMsg calls
-Os::Log logger;
 
 // The reference topology uses a malloc-based allocator for components that need to allocate memory during the
 // initialization phase.
@@ -55,18 +52,18 @@ enum TopologyConstants {
 
 // Ping entries are autocoded, however; this code is not properly exported. Thus, it is copied here.
 Svc::Health::PingEntry pingEntries[] = {
-    {PingEntries::blockDrv::WARN, PingEntries::blockDrv::FATAL, "blockDrv"},
-    {PingEntries::tlmSend::WARN, PingEntries::tlmSend::FATAL, "chanTlm"},
-    {PingEntries::cmdDisp::WARN, PingEntries::cmdDisp::FATAL, "cmdDisp"},
-    {PingEntries::cmdSeq::WARN, PingEntries::cmdSeq::FATAL, "cmdSeq"},
-    {PingEntries::eventLogger::WARN, PingEntries::eventLogger::FATAL, "eventLogger"},
-    {PingEntries::fileDownlink::WARN, PingEntries::fileDownlink::FATAL, "fileDownlink"},
-    {PingEntries::fileManager::WARN, PingEntries::fileManager::FATAL, "fileManager"},
-    {PingEntries::fileUplink::WARN, PingEntries::fileUplink::FATAL, "fileUplink"},
-    {PingEntries::prmDb::WARN, PingEntries::prmDb::FATAL, "prmDb"},
-    {PingEntries::rateGroup1::WARN, PingEntries::rateGroup1::FATAL, "rateGroup1"},
-    {PingEntries::rateGroup2::WARN, PingEntries::rateGroup2::FATAL, "rateGroup2"},
-    {PingEntries::rateGroup3::WARN, PingEntries::rateGroup3::FATAL, "rateGroup3"},
+    {PingEntries::HelloWorldDeployment_blockDrv::WARN, PingEntries::HelloWorldDeployment_blockDrv::FATAL, "blockDrv"},
+    {PingEntries::HelloWorldDeployment_tlmSend::WARN, PingEntries::HelloWorldDeployment_tlmSend::FATAL, "chanTlm"},
+    {PingEntries::HelloWorldDeployment_cmdDisp::WARN, PingEntries::HelloWorldDeployment_cmdDisp::FATAL, "cmdDisp"},
+    {PingEntries::HelloWorldDeployment_cmdSeq::WARN, PingEntries::HelloWorldDeployment_cmdSeq::FATAL, "cmdSeq"},
+    {PingEntries::HelloWorldDeployment_eventLogger::WARN, PingEntries::HelloWorldDeployment_eventLogger::FATAL, "eventLogger"},
+    {PingEntries::HelloWorldDeployment_fileDownlink::WARN, PingEntries::HelloWorldDeployment_fileDownlink::FATAL, "fileDownlink"},
+    {PingEntries::HelloWorldDeployment_fileManager::WARN, PingEntries::HelloWorldDeployment_fileManager::FATAL, "fileManager"},
+    {PingEntries::HelloWorldDeployment_fileUplink::WARN, PingEntries::HelloWorldDeployment_fileUplink::FATAL, "fileUplink"},
+    {PingEntries::HelloWorldDeployment_prmDb::WARN, PingEntries::HelloWorldDeployment_prmDb::FATAL, "prmDb"},
+    {PingEntries::HelloWorldDeployment_rateGroup1::WARN, PingEntries::HelloWorldDeployment_rateGroup1::FATAL, "rateGroup1"},
+    {PingEntries::HelloWorldDeployment_rateGroup2::WARN, PingEntries::HelloWorldDeployment_rateGroup2::FATAL, "rateGroup2"},
+    {PingEntries::HelloWorldDeployment_rateGroup3::WARN, PingEntries::HelloWorldDeployment_rateGroup3::FATAL, "rateGroup3"},
 };
 
 /**
@@ -136,7 +133,7 @@ void setupTopology(const TopologyState& state) {
         Os::TaskString name("ReceiveTask");
         // Uplink is configured for receive so a socket task is started
         comm.configure(state.hostname, state.port);
-        comm.startSocketTask(name, true, COMM_PRIORITY, Default::STACK_SIZE);
+        comm.start(name, true, COMM_PRIORITY, Default::STACK_SIZE);
     }
 }
 
@@ -152,7 +149,7 @@ void startSimulatedCycle(U32 milliseconds) {
     // Main loop
     while (cycling) {
         HelloWorldDeployment::blockDrv.callIsr();
-        Os::Task::delay(milliseconds);
+        Os::Task::delay(Fw::TimeInterval(milliseconds/1000, milliseconds % 1000));
 
         cycleLock.lock();
         cycling = cycleFlag;
@@ -172,8 +169,8 @@ void teardownTopology(const TopologyState& state) {
     freeThreads(state);
 
     // Other task clean-up.
-    comm.stopSocketTask();
-    (void)comm.joinSocketTask(nullptr);
+    comm.stop();
+    (void)comm.join();
 
     // Resource deallocation
     cmdSeq.deallocateBuffer(mallocator);
