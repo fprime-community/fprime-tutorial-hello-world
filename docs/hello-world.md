@@ -13,7 +13,7 @@ This tutorial walks through the following steps:
 3. [Integration and Testing With F´ Deployments](#3-integration-and-testing-with-f-deployments)
 
 Once finished, users should have a good understanding of the basic development mechanics for working with F´ and then
-could dive deeper into concepts through the [Math Component Tutorial](https://github.jpl.nasa.gov/pages/ashleysa/fprime-website-mkdocs-dev/latest/tutorials-math-component/docs/math-component/). 
+could dive deeper into concepts through the [Math Component Tutorial](https://fprime.jpl.nasa.gov/latest/tutorials-math-component/docs/math-component/). 
 
 
 ## F´ Terminology
@@ -85,7 +85,7 @@ This tutorial will use a standard command and data handling topology. A single `
 
 ## 1. Creating an F´ Project 
 
-This tutorial will walk new users through creating a new F´ project. First, ensure you meet the [F´ System Requirements](https://github.jpl.nasa.gov/pages/ashleysa/fprime-website-mkdocs-dev/latest/getting-started/installing-fprime#system-requirements).
+This tutorial will walk new users through creating a new F´ project. First, ensure you meet the [F´ System Requirements](https://fprime.jpl.nasa.gov/latest/getting-started/installing-fprime#system-requirements).
 
 ### Tutorial Steps:
 
@@ -95,7 +95,7 @@ This tutorial will walk new users through creating a new F´ project. First, ens
 
 ### Bootstrapping F´
 
-An F´ [project](https://github.jpl.nasa.gov/pages/ashleysa/fprime-website-mkdocs-dev/latest/getting-started/projects) ties to a specific version of tools to work with F´. In order to create
+An F´ [project](https://fprime.jpl.nasa.gov/latest/getting-started/projects) ties to a specific version of tools to work with F´. In order to create
 this project and install the correct version of tools, you should perform a bootstrap of F´.
 
 #### 1. Install the F´ Bootstrap tool
@@ -189,7 +189,7 @@ tutorial and have the tools sourced as shown in the [conclusion](#hello-world-st
 F´ components encapsulate the various parts of system behavior. These components can interact with the ground system
 through [commands](#command), [events](#event), and
 [telemetry channels](#telemetry-channel). Components communicate with other components through
-[ports](#port), which are covered in-depth in [another tutorial](https://github.jpl.nasa.gov/pages/ashleysa/fprime-website-mkdocs-dev/latest/tutorials-math-component/docs/math-component#constructing-ports). 
+[ports](#port), which are covered in-depth in [another tutorial](https://fprime.jpl.nasa.gov/latest/tutorials-math-component/docs/math-component#constructing-ports). 
 
 ### Prerequisites:
 
@@ -545,6 +545,6 @@ been able to perform the following actions:
 3. Create a new F´ deployments and add components it
 
 To explore components more in-depth and see how components communicate with one another, see the
-[Math Component Tutorial](https://github.jpl.nasa.gov/pages/ashleysa/fprime-website-mkdocs-dev/latest/tutorials-math-component/docs/math-component/).
+[Math Component Tutorial](https://fprime.jpl.nasa.gov/latest/tutorials-math-component/docs/math-component/).
 
-[Next Step: Math Component Tutorial](https://github.jpl.nasa.gov/pages/ashleysa/fprime-website-mkdocs-dev/latest/tutorials-math-component/docs/math-component/){ .md-button .md-button--primary }
+[Next Step: Math Component Tutorial](https://fprime.jpl.nasa.gov/latest/tutorials-math-component/docs/math-component/){ .md-button .md-button--primary }
