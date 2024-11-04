@@ -1,3 +1,7 @@
+---
+permalink: /
+---
+
 # Hello World
 Reference: [Hello World Tutorial Github Repository](https://github.com/fprime-community/fprime-tutorial-hello-world)
 
