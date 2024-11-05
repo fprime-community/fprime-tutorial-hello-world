@@ -2,8 +2,7 @@
 permalink: /
 ---
 
-# Hello World
-Reference: [Hello World Tutorial Github Repository](https://github.com/fprime-community/fprime-tutorial-hello-world)
+# Hello World Tutorial
 
 ## Introduction and F´ Terminology
 
@@ -20,7 +19,7 @@ Once finished, users should have a good understanding of the basic development m
 could dive deeper into concepts through the [Math Component Tutorial](https://fprime.jpl.nasa.gov/latest/tutorials-math-component/docs/math-component/). 
 
 
-## F´ Terminology
+### F´ Terminology
 
 F´ uses specific terminology to refer to specific parts of the system. This section dives into the basic F´ terminology
 used in this tutorial and an explanation of how the terminology is used.
@@ -89,13 +88,7 @@ This tutorial will use a standard command and data handling topology. A single `
 
 ## 1. Creating an F´ Project 
 
-This tutorial will walk new users through creating a new F´ project. First, ensure you meet the [F´ System Requirements](https://fprime.jpl.nasa.gov/latest/getting-started/installing-fprime#system-requirements).
-
-### Tutorial Steps:
-
-- [Bootstrapping F´](#bootstrapping-f)
-- [Building the New F´ Project](#building-the-new-f-project)
-- [Conclusion](#hello-world-step-1-conclusion)
+This section will walk you through creating a new F´ project. First, ensure you meet the [F´ System Requirements](https://fprime.jpl.nasa.gov/latest/getting-started/installing-fprime#system-requirements).
 
 ### Bootstrapping F´
 
@@ -166,7 +159,7 @@ fprime-util build
 !!! note
     `fprime-util build` can be sped up by building in parrallel on multiple cores, using the `-j <N>` option. For example, `fprime-util build -j16`
 
-### Hello World Step 1 Conclusion
+### Project creation recap
 
 A new project has been created with the name `MyProject` and has been placed in a new folder called `MyProject` in
 the current directory. It includes the initial build system setup, and F´ version. It is still empty in that the user
@@ -187,25 +180,13 @@ within this new project's folder:
 
 ## 2. Creating an F´ Hello World Component
 
-This tutorial will walk new users through creating a basic F´ component. Users should have completed the new project
-tutorial and have the tools sourced as shown in the [conclusion](#hello-world-step-1-conclusion) portion of that tutorial.
+This section will walk new users through creating a basic F´ component. Rember that you need a shell that has activated the virtual environment above.
 
 F´ components encapsulate the various parts of system behavior. These components can interact with the ground system
 through [commands](#command), [events](#event), and
 [telemetry channels](#telemetry-channel). Components communicate with other components through
-[ports](#port), which are covered in-depth in [another tutorial](https://fprime.jpl.nasa.gov/latest/tutorials-math-component/docs/math-component#constructing-ports). 
+[ports](#port), which are covered in-depth in the MathComponent tutorial.
 
-### Prerequisites:
-
-- [Hello World: Creating an F´ Project](#1-creating-an-f-project)
-
-### Tutorial Steps:
-
-- [Hello World Component](#hello-world-component-requirements)
-- [Creating the Hello World Component](#creating-the-hello-world-component)
-- [Editing the Component Model](#editing-the-component-model)
-- [Implementing Component Behavior](#implementing-component-behavior)
-- [Conclusion](#hello-world-step-2-conclusion)
 
 ### Hello World Component Requirements
 
@@ -356,6 +337,7 @@ void HelloWorld:: SAY_HELLO_cmdHandler(FwOpcodeType opCode, U32 cmdSeq, const Fw
     this->cmdResponse_out(opCode, cmdSeq, Fw::CmdResponse::OK);
 }
 ```
+
 !!! note
     We must also add the m_greetingCount member variable to the class defined in `HelloWorld.hpp` and the constructor defined in `HelloWorld.cpp`. This looks like:
     
@@ -380,10 +362,6 @@ void HelloWorld:: SAY_HELLO_cmdHandler(FwOpcodeType opCode, U32 cmdSeq, const Fw
 The component should build without errors by running `fprime-util build`.  Resolve any errors that occur before
 proceeding to the next section. Remember to always save before you build, unsaved changes will not be included in the build.
 
-### Hello World Step 2 Conclusion
-
-This tutorial has walked through the creation of component that implements a "Hello World" style greeting behavior for
-our F´ system. In the next tutorial, this component will be hooked-up to an F´ deployment and tested!
 
 ---
 
@@ -392,19 +370,8 @@ our F´ system. In the next tutorial, this component will be hooked-up to an F´
 
 This section will walk new users through creating a new F´ [deployment](#deployment). This deployment will
 build a [topology](#topology) containing the standard F´ stack of components and a single `HelloWorld`
-component instance. The `HelloWorld` was created in the [last section](#2-creating-an-f-hello-world-component). The tutorial will close by
+component instance. The `HelloWorld` was created in the [above section](#2-creating-an-f-hello-world-component). The tutorial will close by
 testing the deployment and `HelloWorld` component through the `fprime-gds`.
-
-### Prerequisites:
-
-- [Hello World: F´ Hello World Component](#2-creating-an-f-hello-world-component)
-
-### Tutorial Steps:
-
-- [Creating A New Deployment](#creating-a-new-deployment)
-- [Adding The Hello World Component](#adding-the-hello-world-component)
-- [Running With `fprime-gds`](#running-with-fprime-gds)
-- [Conclusion](#hello-world-step-3-conclusion)
 
 ### Creating A New Deployment
 
@@ -452,7 +419,7 @@ Edit `HelloWorldDeployment/Top/topology.fpp`:
         instance helloWorld
 ```
 !!! warning
-    Be careful to not remove any other instances from the list.
+    `...` are placeholders for other component names - do not remove or modify any other instances from the list.
 
 `helloWorld` is the name of the component instance. Like variable names, component instance names should be descriptive
 and are typically named in camel or snake case.
@@ -463,17 +430,11 @@ define a priority and queue depth options.  This is shown below.
 
 Add to `MyDeploymment/Top/instances.fpp`:
 ```
-...
+
   # ----------------------------------------------------------------------
   # Active component instances
   # ----------------------------------------------------------------------
-  instance ...
-    ...
-    ...
-    ...
-    
-  instance ...
-  
+
   instance helloWorld: Components.HelloWorld base id 0x0F00 \
     queue size Default.QUEUE_SIZE \
     stack size Default.STACK_SIZE \
@@ -485,17 +446,6 @@ Add to `MyDeploymment/Top/instances.fpp`:
 !!! note
     Make sure to use the same instance name (i.e. helloWorld) as defined in the instance definition just added to `topology.fpp`.
 
-Finally, our new telemetry channel should be added to our telemetry packet specification. For this tutorial the
-channel can be ignored as the deployment will not use the telemetry packetizer. Add the following to the `ignore`
-section of `HelloWorldDeployment/Top/HelloWorldDeploymentPackets.xml`.
-
-Update `HelloWorldDeployment/Top/HelloWorldDeploymentPackets.xml`:
-```
-    <ignore>
-        ...
-        <channel name="helloWorld.GreetingCount"/>
-    </ignore>
-```
 
 Since this component has no custom ports nor does it require special configuration, our addition to the topology is
 completed. The deployment can now be set up and built using the following commands:
@@ -537,18 +487,12 @@ the text entered when sending the command.
 Lastly, navigate to the "Channels" tab. Look for "helloWorld.GreetingCount" in the channel list. Ensure it has recorded
 the number of times a `helloWorld.SAY_HELLO` was sent.
 
-Congratulations, you have now set up a project, component, and deployment in F´.
 
-### Hello World Step 3 Conclusion
+### Conclusion
 
-This concludes both the adding deployment section of the Hello World tutorial and the tutorial itself. The user has
-been able to perform the following actions:
+Congratulations, you have now set up a project, component, and deployment in F´, and ran the Flight Software application as well as control it through the F´ GDS!
 
-1. Create a new blank F´ projects
-2. Create a new F´ components
-3. Create a new F´ deployments and add components it
+This concludes the HelloWorld tutorial.
 
-To explore components more in-depth and see how components communicate with one another, see the
-[Math Component Tutorial](https://fprime.jpl.nasa.gov/latest/tutorials-math-component/docs/math-component/).
-
-[Next Step: Math Component Tutorial](https://fprime.jpl.nasa.gov/latest/tutorials-math-component/docs/math-component/){ .md-button .md-button--primary }
+> The source for this tutorial is located here: https://github.com/fprime-community/fprime-tutorial-hello-world.
+> We welcome contributions!
