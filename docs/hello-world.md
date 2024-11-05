@@ -12,8 +12,8 @@ command that help in F´ development, and act as the canonical "Hello World" exa
 This tutorial walks through the following steps:
 
 1. [Creating an F´ Project](#1-creating-an-f-project)
-2. [Creating an F´ Hello World Component](#2-creating-an-f-hello-world-component)
-3. [Integration and Testing With F´ Deployments](#3-integration-and-testing-with-f-deployments)
+2. [Creating a Hello World Component](#2-creating-an-f-hello-world-component)
+3. [Integration and Testing with the HelloWorld Deployment](#3-integration-and-testing-with-the-helloworld-deployment)
 
 Once finished, users should have a good understanding of the basic development mechanics for working with F´ and then
 could dive deeper into concepts through the [Math Component Tutorial](https://fprime.jpl.nasa.gov/latest/tutorials-math-component/docs/math-component/). 
