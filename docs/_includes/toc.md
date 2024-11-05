@@ -6,7 +6,7 @@
 <h4><a href="/fprime-tutorial-hello-world">HelloWorld Tutorial</a></h4>
   <ol>
     <li><a href="/fprime-tutorial-hello-world/">Terminology</a></li>
-    <li><a href="/fprime-tutorial-hello-world/docs/NewProject.html">Creating an F´ Project</a></li>
-    <li><a href="/fprime-tutorial-hello-world/docs/HelloWorld.html">HelloWorld Component</a></li>
-    <li><a href="/fprime-tutorial-hello-world/docs/Deployments.html">Integration and Testing with an F´ Deployment</a></li>
+    <li><a href="/fprime-tutorial-hello-world/#1-creating-an-f-project">Creating an F´ Project</a></li>
+    <li><a href="/fprime-tutorial-hello-world/#2-creating-an-f-hello-world-component">HelloWorld Component</a></li>
+    <li><a href="/fprime-tutorial-hello-world/#3-integration-and-testing-with-f-deployments">HelloWorld Deployment</a></li>
   </ol>

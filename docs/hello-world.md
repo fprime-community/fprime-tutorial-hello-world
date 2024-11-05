@@ -366,7 +366,7 @@ proceeding to the next section. Remember to always save before you build, unsave
 ---
 
 
-## 3. Integration and Testing With F´ Deployments
+## 3. Integration and Testing with the HelloWorld Deployment
 
 This section will walk new users through creating a new F´ [deployment](#deployment). This deployment will
 build a [topology](#topology) containing the standard F´ stack of components and a single `HelloWorld`
