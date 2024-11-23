@@ -3,76 +3,76 @@
     <import_topology>HelloWorldDeployment/Top/HelloWorldDeploymentTopologyAppAi.xml</import_topology>
 
     <packet name="CDH" id="1" level="1">
-        <channel_name="HelloWorldDeployment.cmdDisp.CommandsDispatched"/>
-        <channel_name="HelloWorldDeployment.rateGroup1.RgMaxTime"/>
-        <channel_name="HelloWorldDeployment.rateGroup2.RgMaxTime"/>
-        <channel_name="HelloWorldDeployment.rateGroup3.RgMaxTime"/>
-        <channel_name="HelloWorldDeployment.cmdSeq.CS_LoadCommands"/>
-        <channel_name="HelloWorldDeployment.cmdSeq.CS_CancelCommands"/>
-        <channel_name="HelloWorldDeployment.cmdSeq.CS_CommandsExecuted"/>
-        <channel_name="HelloWorldDeployment.cmdSeq.CS_SequencesCompleted"/>
-        <channel_name="HelloWorldDeployment.fileUplink.FilesReceived"/>
-        <channel_name="HelloWorldDeployment.fileUplink.PacketsReceived"/>
-        <channel_name="HelloWorldDeployment.fileUplinkBufferManager.TotalBuffs"/>
-        <channel_name="HelloWorldDeployment.fileUplinkBufferManager.CurrBuffs"/>
-        <channel_name="HelloWorldDeployment.fileUplinkBufferManager.HiBuffs"/>
-        <channel_name="HelloWorldDeployment.fileDownlink.FilesSent"/>
-        <channel_name="HelloWorldDeployment.fileDownlink.PacketsSent"/>
-        <channel_name="HelloWorldDeployment.fileManager.CommandsExecuted"/>
+        <channel name="HelloWorldDeployment.cmdDisp.CommandsDispatched"/>
+        <channel name="HelloWorldDeployment.rateGroup1.RgMaxTime"/>
+        <channel name="HelloWorldDeployment.rateGroup2.RgMaxTime"/>
+        <channel name="HelloWorldDeployment.rateGroup3.RgMaxTime"/>
+        <channel name="HelloWorldDeployment.cmdSeq.CS_LoadCommands"/>
+        <channel name="HelloWorldDeployment.cmdSeq.CS_CancelCommands"/>
+        <channel name="HelloWorldDeployment.cmdSeq.CS_CommandsExecuted"/>
+        <channel name="HelloWorldDeployment.cmdSeq.CS_SequencesCompleted"/>
+        <channel name="HelloWorldDeployment.fileUplink.FilesReceived"/>
+        <channel name="HelloWorldDeployment.fileUplink.PacketsReceived"/>
+        <channel name="HelloWorldDeployment.fileUplinkBufferManager.TotalBuffs"/>
+        <channel name="HelloWorldDeployment.fileUplinkBufferManager.CurrBuffs"/>
+        <channel name="HelloWorldDeployment.fileUplinkBufferManager.HiBuffs"/>
+        <channel name="HelloWorldDeployment.fileDownlink.FilesSent"/>
+        <channel name="HelloWorldDeployment.fileDownlink.PacketsSent"/>
+        <channel name="HelloWorldDeployment.fileManager.CommandsExecuted"/>
         <!-- Uncomment to use Svc::TlmPacketizer -->
-        <!--channel_name="HelloWorldDeployment.tlmSend.SendLevel"/-->
+        <!--channel name="HelloWorldDeployment.tlmSend.SendLevel"/-->
     </packet>
 
     <packet name="CDHErrors" id="2" level="1">
-        <channel_name="HelloWorldDeployment.rateGroup1.RgCycleSlips"/>
-        <channel_name="HelloWorldDeployment.rateGroup2.RgCycleSlips"/>
-        <channel_name="HelloWorldDeployment.rateGroup3.RgCycleSlips"/>
-        <channel_name="HelloWorldDeployment.cmdSeq.CS_Errors"/>
-        <channel_name="HelloWorldDeployment.fileUplink.Warnings"/>
-        <channel_name="HelloWorldDeployment.fileDownlink.Warnings"/>
-        <channel_name="HelloWorldDeployment.health.PingLateWarnings"/>
-        <channel_name="HelloWorldDeployment.fileManager.Errors"/>
-        <channel_name="HelloWorldDeployment.fileUplinkBufferManager.NoBuffs"/>
-        <channel_name="HelloWorldDeployment.fileUplinkBufferManager.EmptyBuffs"/>
-        <channel_name="HelloWorldDeployment.fileManager.Errors"/>
+        <channel name="HelloWorldDeployment.rateGroup1.RgCycleSlips"/>
+        <channel name="HelloWorldDeployment.rateGroup2.RgCycleSlips"/>
+        <channel name="HelloWorldDeployment.rateGroup3.RgCycleSlips"/>
+        <channel name="HelloWorldDeployment.cmdSeq.CS_Errors"/>
+        <channel name="HelloWorldDeployment.fileUplink.Warnings"/>
+        <channel name="HelloWorldDeployment.fileDownlink.Warnings"/>
+        <channel name="HelloWorldDeployment.health.PingLateWarnings"/>
+        <channel name="HelloWorldDeployment.fileManager.Errors"/>
+        <channel name="HelloWorldDeployment.fileUplinkBufferManager.NoBuffs"/>
+        <channel name="HelloWorldDeployment.fileUplinkBufferManager.EmptyBuffs"/>
+        <channel name="HelloWorldDeployment.fileManager.Errors"/>
     </packet>
 
     <packet name="DriveTlm" id="3" level="1">
-        <channel_name="HelloWorldDeployment.blockDrv.BD_Cycles"/>
+        <channel name="HelloWorldDeployment.blockDrv.BD_Cycles"/>
     </packet>
 
     <packet name="SystemRes1" id="5" level="2">
-        <channel_name="HelloWorldDeployment.systemResources.MEMORY_TOTAL"/>
-        <channel_name="HelloWorldDeployment.systemResources.MEMORY_USED"/>
-        <channel_name="HelloWorldDeployment.systemResources.NON_VOLATILE_TOTAL"/>
-        <channel_name="HelloWorldDeployment.systemResources.NON_VOLATILE_FREE"/>
+        <channel name="HelloWorldDeployment.systemResources.MEMORY_TOTAL"/>
+        <channel name="HelloWorldDeployment.systemResources.MEMORY_USED"/>
+        <channel name="HelloWorldDeployment.systemResources.NON_VOLATILE_TOTAL"/>
+        <channel name="HelloWorldDeployment.systemResources.NON_VOLATILE_FREE"/>
     </packet>
 
     <packet name="SystemRes3" id="7" level="2">
-        <channel_name="HelloWorldDeployment.systemResources.CPU"/>
-        <channel_name="HelloWorldDeployment.systemResources.CPU_00"/>
-        <channel_name="HelloWorldDeployment.systemResources.CPU_01"/>
-        <channel_name="HelloWorldDeployment.systemResources.CPU_02"/>
-        <channel_name="HelloWorldDeployment.systemResources.CPU_03"/>
-        <channel_name="HelloWorldDeployment.systemResources.CPU_04"/>
-        <channel_name="HelloWorldDeployment.systemResources.CPU_05"/>
-        <channel_name="HelloWorldDeployment.systemResources.CPU_06"/>
-        <channel_name="HelloWorldDeployment.systemResources.CPU_07"/>
-        <channel_name="HelloWorldDeployment.systemResources.CPU_08"/>
-        <channel_name="HelloWorldDeployment.systemResources.CPU_09"/>
-        <channel_name="HelloWorldDeployment.systemResources.CPU_10"/>
-        <channel_name="HelloWorldDeployment.systemResources.CPU_11"/>
-        <channel_name="HelloWorldDeployment.systemResources.CPU_12"/>
-        <channel_name="HelloWorldDeployment.systemResources.CPU_13"/>
-        <channel_name="HelloWorldDeployment.systemResources.CPU_14"/>
-        <channel_name="HelloWorldDeployment.systemResources.CPU_15"/>
+        <channel name="HelloWorldDeployment.systemResources.CPU"/>
+        <channel name="HelloWorldDeployment.systemResources.CPU_00"/>
+        <channel name="HelloWorldDeployment.systemResources.CPU_01"/>
+        <channel name="HelloWorldDeployment.systemResources.CPU_02"/>
+        <channel name="HelloWorldDeployment.systemResources.CPU_03"/>
+        <channel name="HelloWorldDeployment.systemResources.CPU_04"/>
+        <channel name="HelloWorldDeployment.systemResources.CPU_05"/>
+        <channel name="HelloWorldDeployment.systemResources.CPU_06"/>
+        <channel name="HelloWorldDeployment.systemResources.CPU_07"/>
+        <channel name="HelloWorldDeployment.systemResources.CPU_08"/>
+        <channel name="HelloWorldDeployment.systemResources.CPU_09"/>
+        <channel name="HelloWorldDeployment.systemResources.CPU_10"/>
+        <channel name="HelloWorldDeployment.systemResources.CPU_11"/>
+        <channel name="HelloWorldDeployment.systemResources.CPU_12"/>
+        <channel name="HelloWorldDeployment.systemResources.CPU_13"/>
+        <channel name="HelloWorldDeployment.systemResources.CPU_14"/>
+        <channel name="HelloWorldDeployment.systemResources.CPU_15"/>
     </packet>
 
     <!-- Ignored packets -->
 
     <ignore>
-        <channel_name="HelloWorldDeployment.cmdDisp.CommandErrors"/>
+        <channel name="HelloWorldDeployment.cmdDisp.CommandErrors"/>
         
-        <channel_name="HelloWorldDeployment.helloWorld.GreetingCount"/>
+        <channel name="HelloWorldDeployment.helloWorld.GreetingCount"/>
     </ignore>
 </packets>
