@@ -7,7 +7,7 @@ permalink: /
 ## Introduction and F´ Terminology
 
 The Hello World tutorial is designed to teach new users the basics of F´ usage, instruct existing users on new
-command that help in F´ development, and act as the canonical "Hello World" example for F´.
+commands that help in F´ development, and act as the canonical "Hello World" example for F´.
 
 
 > [!TIP]
@@ -152,7 +152,7 @@ fprime-util build
 > `fprime-util generate` sets up the build environment for a project/deployment. It only needs to be done once.
 
 > [!NOTE]
-> `fprime-util build` can be sped up by building in parrallel on multiple cores, using the `-j <N>` option. For example, `fprime-util build -j16`
+> `fprime-util build` can be sped up by building in parallel on multiple cores, using the `-j <N>` option. For example, `fprime-util build -j16`
 
 ### Project creation recap
 
@@ -176,7 +176,7 @@ within this new project's folder:
 
 ## 2. Creating an F´ Hello World Component
 
-This section will walk new users through creating a basic F´ component. Rember that you need a shell that has activated the virtual environment above.
+This section will walk new users through creating a basic F´ component. Remember that you need a shell that has activated the virtual environment above.
 
 F´ components encapsulate the various parts of system behavior. These components can interact with the ground system
 through [commands](#command), [events](#event), and
