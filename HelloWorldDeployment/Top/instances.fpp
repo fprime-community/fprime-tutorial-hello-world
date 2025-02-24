@@ -101,13 +101,13 @@ module HelloWorldDeployment {
   @ Communications driver. May be swapped with other comm drivers like UART
   instance comm: Drv.TcpClient base id 0x4000
 
-  instance downlink: Svc.Framer base id 0x4100
+  instance framer: Svc.Framer base id 0x4100
 
   instance fatalAdapter: Svc.AssertFatalAdapter base id 0x4200
 
   instance fatalHandler: Svc.FatalHandler base id 0x4300
 
-  instance fileUplinkBufferManager: Svc.BufferManager base id 0x4400
+  instance uplinkBufferManager: Svc.BufferManager base id 0x4400
 
   instance posixTime: Svc.PosixTime base id 0x4500
 
@@ -117,8 +117,11 @@ module HelloWorldDeployment {
 
   instance textLogger: Svc.PassiveTextLogger base id 0x4800
 
-  instance uplink: Svc.Deframer base id 0x4900
+  instance deframer: Svc.FprimeDeframer base id 0x4900
 
   instance systemResources: Svc.SystemResources base id 0x4A00
 
+  instance frameAccumulator: Svc.FrameAccumulator base id 0x4C00
+
+  instance uplinkRouter: Svc.Router base id 0x4E00
 }

@@ -11,8 +11,7 @@ module HelloWorldDeployment {
     }
 
     enum Ports_StaticMemory {
-      downlink
-      uplink
+      framer
     }
 
   topology HelloWorldDeployment {
@@ -27,14 +26,14 @@ module HelloWorldDeployment {
     instance cmdDisp
     instance cmdSeq
     instance comm
-    instance downlink
+    instance framer
     instance eventLogger
     instance fatalAdapter
     instance fatalHandler
     instance fileDownlink
     instance fileManager
     instance fileUplink
-    instance fileUplinkBufferManager
+    instance uplinkBufferManager
     instance posixTime
     instance prmDb
     instance rateGroup1
@@ -43,8 +42,10 @@ module HelloWorldDeployment {
     instance rateGroupDriver
     instance staticMemory
     instance textLogger
-    instance uplink
+    instance deframer
     instance systemResources
+    instance frameAccumulator
+    instance uplinkRouter
 
     instance helloWorld
 
@@ -72,15 +73,15 @@ module HelloWorldDeployment {
 
     connections Downlink {
 
-      tlmSend.PktSend -> downlink.comIn
-      eventLogger.PktSend -> downlink.comIn
-      fileDownlink.bufferSendOut -> downlink.bufferIn
+      tlmSend.PktSend -> framer.comIn
+      eventLogger.PktSend -> framer.comIn
+      fileDownlink.bufferSendOut -> framer.bufferIn
 
-      downlink.framedAllocate -> staticMemory.bufferAllocate[Ports_StaticMemory.downlink]
-      downlink.framedOut -> comm.$send
-      downlink.bufferDeallocate -> fileDownlink.bufferReturn
+      framer.framedAllocate -> staticMemory.bufferAllocate[Ports_StaticMemory.framer]
+      framer.framedOut -> comm.$send
+      framer.bufferDeallocate -> fileDownlink.bufferReturn
 
-      comm.deallocate -> staticMemory.bufferDeallocate[Ports_StaticMemory.downlink]
+      comm.deallocate -> staticMemory.bufferDeallocate[Ports_StaticMemory.framer]
 
     }
 
@@ -106,7 +107,7 @@ module HelloWorldDeployment {
       rateGroupDriver.CycleOut[Ports_RateGroups.rateGroup3] -> rateGroup3.CycleIn
       rateGroup3.RateGroupMemberOut[0] -> $health.Run
       rateGroup3.RateGroupMemberOut[1] -> blockDrv.Sched
-      rateGroup3.RateGroupMemberOut[2] -> fileUplinkBufferManager.schedIn
+      rateGroup3.RateGroupMemberOut[2] -> uplinkBufferManager.schedIn
     }
 
     connections Sequencer {
@@ -116,17 +117,21 @@ module HelloWorldDeployment {
 
     connections Uplink {
 
-      comm.allocate -> staticMemory.bufferAllocate[Ports_StaticMemory.uplink]
-      comm.$recv -> uplink.framedIn
-      uplink.framedDeallocate -> staticMemory.bufferDeallocate[Ports_StaticMemory.uplink]
+      comm.allocate -> uplinkBufferManager.bufferGetCallee
+      comm.$recv -> frameAccumulator.dataIn
 
-      uplink.comOut -> cmdDisp.seqCmdBuff
-      cmdDisp.seqCmdStatus -> uplink.cmdResponseIn
+      frameAccumulator.frameOut -> deframer.framedIn
+      frameAccumulator.bufferDeallocate -> uplinkBufferManager.bufferSendIn
+      frameAccumulator.bufferAllocate -> uplinkBufferManager.bufferGetCallee
+      deframer.deframedOut -> uplinkRouter.dataIn
 
-      uplink.bufferAllocate -> fileUplinkBufferManager.bufferGetCallee
-      uplink.bufferOut -> fileUplink.bufferSendIn
-      uplink.bufferDeallocate -> fileUplinkBufferManager.bufferSendIn
-      fileUplink.bufferSendOut -> fileUplinkBufferManager.bufferSendIn
+      uplinkRouter.commandOut -> cmdDisp.seqCmdBuff
+      uplinkRouter.fileOut -> fileUplink.bufferSendIn
+      uplinkRouter.bufferDeallocate -> uplinkBufferManager.bufferSendIn
+
+      cmdDisp.seqCmdStatus -> uplinkRouter.cmdResponseIn
+
+      fileUplink.bufferSendOut -> uplinkBufferManager.bufferSendIn
     }
 
     connections HelloWorldDeployment {

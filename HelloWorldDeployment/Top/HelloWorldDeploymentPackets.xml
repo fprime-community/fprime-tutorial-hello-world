@@ -13,9 +13,9 @@
         <channel name="HelloWorldDeployment.cmdSeq.CS_SequencesCompleted"/>
         <channel name="HelloWorldDeployment.fileUplink.FilesReceived"/>
         <channel name="HelloWorldDeployment.fileUplink.PacketsReceived"/>
-        <channel name="HelloWorldDeployment.fileUplinkBufferManager.TotalBuffs"/>
-        <channel name="HelloWorldDeployment.fileUplinkBufferManager.CurrBuffs"/>
-        <channel name="HelloWorldDeployment.fileUplinkBufferManager.HiBuffs"/>
+        <channel name="HelloWorldDeployment.uplinkBufferManager.TotalBuffs"/>
+        <channel name="HelloWorldDeployment.uplinkBufferManager.CurrBuffs"/>
+        <channel name="HelloWorldDeployment.uplinkBufferManager.HiBuffs"/>
         <channel name="HelloWorldDeployment.fileDownlink.FilesSent"/>
         <channel name="HelloWorldDeployment.fileDownlink.PacketsSent"/>
         <channel name="HelloWorldDeployment.fileManager.CommandsExecuted"/>
@@ -32,8 +32,8 @@
         <channel name="HelloWorldDeployment.fileDownlink.Warnings"/>
         <channel name="HelloWorldDeployment.health.PingLateWarnings"/>
         <channel name="HelloWorldDeployment.fileManager.Errors"/>
-        <channel name="HelloWorldDeployment.fileUplinkBufferManager.NoBuffs"/>
-        <channel name="HelloWorldDeployment.fileUplinkBufferManager.EmptyBuffs"/>
+        <channel name="HelloWorldDeployment.uplinkBufferManager.NoBuffs"/>
+        <channel name="HelloWorldDeployment.uplinkBufferManager.EmptyBuffs"/>
         <channel name="HelloWorldDeployment.fileManager.Errors"/>
     </packet>
 

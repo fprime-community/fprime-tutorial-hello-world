@@ -10,6 +10,7 @@
 // Necessary project-specified types
 #include <Fw/Types/MallocAllocator.hpp>
 #include <Svc/FramingProtocol/FprimeProtocol.hpp>
+#include <Svc/FrameAccumulator/FrameDetector/FprimeFrameDetector.hpp>
 
 // Used for 1Hz synthetic cycling
 #include <Os/Mutex.hpp>
@@ -25,7 +26,7 @@ Fw::MallocAllocator mallocator;
 // The reference topology uses the F´ packet protocol when communicating with the ground and therefore uses the F´
 // framing and deframing implementations.
 Svc::FprimeFraming framing;
-Svc::FprimeDeframing deframing;
+Svc::FrameDetectors::FprimeFrameDetector frameDetector;
 
 // The reference topology divides the incoming clock signal (1Hz) into sub-signals: 1Hz, 1/2Hz, and 1/4Hz
 Svc::RateGroupDriver::DividerSet rateGroupDivisors = {{{1, 0}, {2, 0}, {4, 0}}};
@@ -101,11 +102,11 @@ void configureTopology() {
     memset(&upBuffMgrBins, 0, sizeof(upBuffMgrBins));
     upBuffMgrBins.bins[0].bufferSize = UPLINK_BUFFER_MANAGER_STORE_SIZE;
     upBuffMgrBins.bins[0].numBuffers = UPLINK_BUFFER_MANAGER_QUEUE_SIZE;
-    fileUplinkBufferManager.setup(UPLINK_BUFFER_MANAGER_ID, 0, mallocator, upBuffMgrBins);
+    uplinkBufferManager.setup(UPLINK_BUFFER_MANAGER_ID, 0, mallocator, upBuffMgrBins);
 
     // Framer and Deframer components need to be passed a protocol handler
-    downlink.setup(framing);
-    uplink.setup(deframing);
+    framer.setup(framing);
+    frameAccumulator.configure(frameDetector, 1, mallocator, 2048);
 
     // Note: Uncomment when using Svc:TlmPacketizer
     //tlmSend.setPacketList(HelloWorldDeploymentPacketsPkts, HelloWorldDeploymentPacketsIgnore, 1);
@@ -176,6 +177,6 @@ void teardownTopology(const TopologyState& state) {
 
     // Resource deallocation
     cmdSeq.deallocateBuffer(mallocator);
-    fileUplinkBufferManager.cleanup();
+    uplinkBufferManager.cleanup();
 }
 };  // namespace HelloWorldDeployment
