@@ -121,7 +121,7 @@ module HelloWorldDeployment {
 
   instance systemResources: Svc.SystemResources base id 0x4A00
 
-  instance frameAccumulator: Svc.FrameAccumulator base id 0x4C00
+  instance frameAccumulator: Svc.FrameAccumulator base id 0x4B00
 
-  instance uplinkRouter: Svc.Router base id 0x4E00
+  instance uplinkRouter: Svc.Router base id 0x4C00
 }
