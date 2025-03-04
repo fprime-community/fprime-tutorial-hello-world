@@ -123,5 +123,5 @@ module HelloWorldDeployment {
 
   instance frameAccumulator: Svc.FrameAccumulator base id 0x4B00
 
-  instance uplinkRouter: Svc.Router base id 0x4C00
+  instance fprimeRouter: Svc.FprimeRouter base id 0x4C00
 }

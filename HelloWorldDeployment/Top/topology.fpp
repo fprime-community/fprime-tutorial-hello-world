@@ -45,7 +45,7 @@ module HelloWorldDeployment {
     instance deframer
     instance systemResources
     instance frameAccumulator
-    instance uplinkRouter
+    instance fprimeRouter
 
     instance helloWorld
 
@@ -123,13 +123,13 @@ module HelloWorldDeployment {
       frameAccumulator.frameOut -> deframer.framedIn
       frameAccumulator.bufferDeallocate -> uplinkBufferManager.bufferSendIn
       frameAccumulator.bufferAllocate -> uplinkBufferManager.bufferGetCallee
-      deframer.deframedOut -> uplinkRouter.dataIn
+      deframer.deframedOut -> fprimeRouter.dataIn
 
-      uplinkRouter.commandOut -> cmdDisp.seqCmdBuff
-      uplinkRouter.fileOut -> fileUplink.bufferSendIn
-      uplinkRouter.bufferDeallocate -> uplinkBufferManager.bufferSendIn
+      fprimeRouter.commandOut -> cmdDisp.seqCmdBuff
+      fprimeRouter.fileOut -> fileUplink.bufferSendIn
+      fprimeRouter.bufferDeallocate -> uplinkBufferManager.bufferSendIn
 
-      cmdDisp.seqCmdStatus -> uplinkRouter.cmdResponseIn
+      cmdDisp.seqCmdStatus -> fprimeRouter.cmdResponseIn
 
       fileUplink.bufferSendOut -> uplinkBufferManager.bufferSendIn
     }
