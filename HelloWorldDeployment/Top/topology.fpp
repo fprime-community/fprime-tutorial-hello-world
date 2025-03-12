@@ -123,6 +123,7 @@ module HelloWorldDeployment {
       frameAccumulator.frameOut -> deframer.framedIn
       frameAccumulator.bufferDeallocate -> uplinkBufferManager.bufferSendIn
       frameAccumulator.bufferAllocate -> uplinkBufferManager.bufferGetCallee
+      deframer.bufferDeallocate -> uplinkBufferManager.bufferSendIn
       deframer.deframedOut -> fprimeRouter.dataIn
 
       fprimeRouter.commandOut -> cmdDisp.seqCmdBuff
