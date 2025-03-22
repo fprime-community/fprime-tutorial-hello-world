@@ -412,11 +412,11 @@ Edit `HelloWorldDeployment/Top/topology.fpp`:
 `helloWorld` is the name of the component instance. Like variable names, component instance names should be descriptive
 and are typically named in camel or snake case.
 
-Next, an instance initializer must be added to topology instances defined in `MyDeploymment/Top/instances.fpp` file.
+Next, an instance initializer must be added to topology instances defined in `HelloWorldDeployment/Top/instances.fpp` file.
 Since the `HelloWorld` component is an `active` component it should be added to the active components section and should
 define a priority and queue depth options.  This is shown below.
 
-Add to `MyDeploymment/Top/instances.fpp`:
+Add to `HelloWorldDeployment/Top/instances.fpp`:
 ```
 
   # ----------------------------------------------------------------------
