@@ -29,11 +29,11 @@ This tutorial will create a new `MyProject` project used to contain the other th
 
 #### Component
 
-An F´ component encapsulates a unit of system behavior. Components use ports to communicate with other components and
-define commands, events, telemetry channels, and parameters.
+An F´ component encapsulates a unit of system behavior. Components define commands, events, telemetry channels, and
+parameters, and use ports to communicate with other components.
 
 This tutorial will create a new `HelloWorld` component that defines a `SAY_HELLO` command, `Hello` event, and
-`GreetingCount` telemetry channel. The component only used built-in ports. It does not use custom ports nor parameters.
+`GreetingCount` telemetry channel. The component only uses built-in ports. It does not use custom ports nor parameters.
 
 #### Port
 
