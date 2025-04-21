@@ -23,9 +23,7 @@ using namespace HelloWorldDeployment;
 // initialization phase.
 Fw::MallocAllocator mallocator;
 
-// The reference topology uses the F´ packet protocol when communicating with the ground and therefore uses the F´
-// framing and deframing implementations.
-Svc::FprimeFraming framing;
+// FprimeFrameDetector is used to configure the FrameAccumulator to detect F Prime frames
 Svc::FrameDetectors::FprimeFrameDetector frameDetector;
 
 // The reference topology divides the incoming clock signal (1Hz) into sub-signals: 1Hz, 1/2Hz, and 1/4Hz
@@ -46,9 +44,13 @@ enum TopologyConstants {
     FILE_DOWNLINK_FILE_QUEUE_DEPTH = 10,
     HEALTH_WATCHDOG_CODE = 0x123,
     COMM_PRIORITY = 100,
-    UPLINK_BUFFER_MANAGER_STORE_SIZE = 3000,
-    UPLINK_BUFFER_MANAGER_QUEUE_SIZE = 30,
-    UPLINK_BUFFER_MANAGER_ID = 200
+    FRAMER_BUFFER_SIZE = FW_MAX(FW_COM_BUFFER_MAX_SIZE, FW_FILE_BUFFER_MAX_SIZE + sizeof(U32)) + HASH_DIGEST_LENGTH + Svc::FpFrameHeader::SIZE,
+    FRAMER_BUFFER_COUNT = 30,
+    DEFRAMER_BUFFER_SIZE = FW_MAX(FW_COM_BUFFER_MAX_SIZE, FW_FILE_BUFFER_MAX_SIZE + sizeof(U32)),
+    DEFRAMER_BUFFER_COUNT = 30,
+    COM_DRIVER_BUFFER_SIZE = 3000,
+    COM_DRIVER_BUFFER_COUNT = 30,
+    BUFFER_MANAGER_ID = 200
 };
 
 // Ping entries are autocoded, however; this code is not properly exported. Thus, it is copied here.
@@ -98,14 +100,17 @@ void configureTopology() {
     health.setPingEntries(pingEntries, FW_NUM_ARRAY_ELEMENTS(pingEntries), HEALTH_WATCHDOG_CODE);
 
     // Buffer managers need a configured set of buckets and an allocator used to allocate memory for those buckets.
-    Svc::BufferManager::BufferBins upBuffMgrBins;
-    memset(&upBuffMgrBins, 0, sizeof(upBuffMgrBins));
-    upBuffMgrBins.bins[0].bufferSize = UPLINK_BUFFER_MANAGER_STORE_SIZE;
-    upBuffMgrBins.bins[0].numBuffers = UPLINK_BUFFER_MANAGER_QUEUE_SIZE;
-    uplinkBufferManager.setup(UPLINK_BUFFER_MANAGER_ID, 0, mallocator, upBuffMgrBins);
+    Svc::BufferManager::BufferBins bufferMgrBins;
+    memset(&bufferMgrBins, 0, sizeof(bufferMgrBins));
+    bufferMgrBins.bins[0].bufferSize = FRAMER_BUFFER_SIZE;
+    bufferMgrBins.bins[0].numBuffers = FRAMER_BUFFER_COUNT;
+    bufferMgrBins.bins[1].bufferSize = DEFRAMER_BUFFER_SIZE;
+    bufferMgrBins.bins[1].numBuffers = DEFRAMER_BUFFER_COUNT;
+    bufferMgrBins.bins[2].bufferSize = COM_DRIVER_BUFFER_SIZE;
+    bufferMgrBins.bins[2].numBuffers = COM_DRIVER_BUFFER_COUNT;
+    bufferManager.setup(BUFFER_MANAGER_ID, 0, mallocator, bufferMgrBins);
 
-    // Framer and Deframer components need to be passed a protocol handler
-    framer.setup(framing);
+    // FprimeFrameDetector is used to configure the FrameAccumulator to detect F Prime frames
     frameAccumulator.configure(frameDetector, 1, mallocator, 2048);
 
     // Note: Uncomment when using Svc:TlmPacketizer
@@ -177,6 +182,6 @@ void teardownTopology(const TopologyState& state) {
 
     // Resource deallocation
     cmdSeq.deallocateBuffer(mallocator);
-    uplinkBufferManager.cleanup();
+    bufferManager.cleanup();
 }
 };  // namespace HelloWorldDeployment
