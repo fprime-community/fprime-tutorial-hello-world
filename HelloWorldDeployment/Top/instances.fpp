@@ -104,7 +104,7 @@ module HelloWorldDeployment {
   # ----------------------------------------------------------------------
 
   @ Communications driver. May be swapped with other comm drivers like UART
-  instance comm: Drv.TcpClient base id 0x4000
+  instance comDriver: Drv.TcpClient base id 0x4000
 
   instance framer: Svc.FprimeFramer base id 0x4100
 
@@ -127,4 +127,7 @@ module HelloWorldDeployment {
   instance frameAccumulator: Svc.FrameAccumulator base id 0x4B00
 
   instance fprimeRouter: Svc.FprimeRouter base id 0x4C00
+
+  instance comStub: Svc.ComStub base id 0x4D00
+
 }

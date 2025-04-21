@@ -5,7 +5,6 @@
 // ======================================================================
 // Provides access to autocoded functions
 #include <HelloWorldDeployment/Top/HelloWorldDeploymentTopologyAc.hpp>
-#include <HelloWorldDeployment/Top/HelloWorldDeploymentPacketsAc.hpp>
 
 // Necessary project-specified types
 #include <Fw/Types/MallocAllocator.hpp>
@@ -25,6 +24,8 @@ Fw::MallocAllocator mallocator;
 
 // FprimeFrameDetector is used to configure the FrameAccumulator to detect F Prime frames
 Svc::FrameDetectors::FprimeFrameDetector frameDetector;
+
+Svc::ComQueue::QueueConfigurationTable configurationTable;
 
 // The reference topology divides the incoming clock signal (1Hz) into sub-signals: 1Hz, 1/2Hz, and 1/4Hz
 Svc::RateGroupDriver::DividerSet rateGroupDivisors = {{{1, 0}, {2, 0}, {4, 0}}};
@@ -115,6 +116,19 @@ void configureTopology() {
 
     // Note: Uncomment when using Svc:TlmPacketizer
     //tlmSend.setPacketList(HelloWorldDeploymentPacketsPkts, HelloWorldDeploymentPacketsIgnore, 1);
+
+    // ComQueue configuration
+    // Events (highest-priority)
+    configurationTable.entries[0].depth = 100;
+    configurationTable.entries[0].priority = 0;
+    // Telemetry
+    configurationTable.entries[1].depth = 500;
+    configurationTable.entries[1].priority = 2;
+    // File Downlink
+    configurationTable.entries[2].depth = 100;
+    configurationTable.entries[2].priority = 1;
+    // Allocation identifier is 0 as the MallocAllocator discards it
+    comQueue.configure(configurationTable, 0, mallocator);
 }
 
 // Public functions for use in main program are namespaced with deployment name HelloWorldDeployment
@@ -131,7 +145,7 @@ void setupTopology(const TopologyState& state) {
     // Project-specific component configuration. Function provided above. May be inlined, if desired.
     configureTopology();
     if (state.hostname != nullptr && state.port != 0) {
-        comm.configure(state.hostname, state.port);
+        comDriver.configure(state.hostname, state.port);
     }
     // Autocoded parameter loading. Function provided by autocoder.
     // loadParameters();
@@ -141,7 +155,7 @@ void setupTopology(const TopologyState& state) {
     if (state.hostname != nullptr && state.port != 0) {
         Os::TaskString name("ReceiveTask");
         // Uplink is configured for receive so a socket task is started
-        comm.start(name, COMM_PRIORITY, Default::STACK_SIZE);
+        comDriver.start(name, COMM_PRIORITY, Default::STACK_SIZE);
     }
 }
 
@@ -177,8 +191,8 @@ void teardownTopology(const TopologyState& state) {
     freeThreads(state);
 
     // Other task clean-up.
-    comm.stop();
-    (void)comm.join();
+    comDriver.stop();
+    (void)comDriver.join();
 
     // Resource deallocation
     cmdSeq.deallocateBuffer(mallocator);

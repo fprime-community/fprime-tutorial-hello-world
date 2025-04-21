@@ -21,7 +21,9 @@ module HelloWorldDeployment {
     instance tlmSend
     instance cmdDisp
     instance cmdSeq
-    instance comm
+    instance comDriver
+    instance comQueue
+    instance comStub
     instance framer
     instance eventLogger
     instance fatalAdapter
@@ -81,7 +83,10 @@ module HelloWorldDeployment {
 
       comDriver.deallocate -> bufferManager.bufferSendIn
       comDriver.ready -> comStub.drvConnected
+      comStub.drvDataOut -> comDriver.$send
 
+      comStub.comStatus -> framer.comStatusIn
+      framer.comStatusOut -> comQueue.comStatusIn
     }
 
     connections FaultProtection {
@@ -116,8 +121,8 @@ module HelloWorldDeployment {
 
     connections Uplink {
 
-      comm.allocate -> bufferManager.bufferGetCallee
-      comm.$recv -> frameAccumulator.dataIn
+      comDriver.allocate -> bufferManager.bufferGetCallee
+      comDriver.$recv -> frameAccumulator.dataIn
 
       frameAccumulator.frameOut -> deframer.framedIn
       frameAccumulator.bufferDeallocate -> bufferManager.bufferSendIn
