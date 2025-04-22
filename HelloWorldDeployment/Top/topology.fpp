@@ -70,8 +70,8 @@ module HelloWorldDeployment {
 
     connections Downlink {
 
-      eventLogger.PktSend -> comQueue.comPktQueueIn[0]
-      tlmSend.PktSend -> comQueue.comPktQueueIn[1]
+      eventLogger.PktSend -> comQueue.comPacketQueueIn[0]
+      tlmSend.PktSend -> comQueue.comPacketQueueIn[1]
       fileDownlink.bufferSendOut -> comQueue.buffQueueIn[0]
 
       comQueue.queueSend -> framer.dataIn
