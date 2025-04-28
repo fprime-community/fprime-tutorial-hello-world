@@ -70,23 +70,25 @@ module HelloWorldDeployment {
 
     connections Downlink {
 
-      eventLogger.PktSend -> comQueue.comPacketQueueIn[0]
-      tlmSend.PktSend -> comQueue.comPacketQueueIn[1]
-      fileDownlink.bufferSendOut -> comQueue.buffQueueIn[0]
-
-      comQueue.queueSend -> framer.dataIn
-      framer.dataReturn -> comQueue.bufferReturnIn
+      eventLogger.PktSend         -> comQueue.comPacketQueueIn[0]
+      tlmSend.PktSend             -> comQueue.comPacketQueueIn[1]
+      fileDownlink.bufferSendOut  -> comQueue.buffQueueIn[0]
       comQueue.bufferReturnOut[0] -> fileDownlink.bufferReturn
 
-      framer.bufferAllocate -> bufferManager.bufferGetCallee
-      framer.framedDataOut -> comStub.comDataIn
+      comQueue.queueSend   -> framer.dataIn
+      framer.dataReturnOut -> comQueue.bufferReturnIn
+      framer.comStatusOut  -> comQueue.comStatusIn
 
-      comDriver.deallocate -> bufferManager.bufferSendIn
-      comDriver.ready -> comStub.drvConnected
-      comStub.drvDataOut -> comDriver.$send
+      framer.bufferAllocate   -> bufferManager.bufferGetCallee
+      framer.bufferDeallocate -> bufferManager.bufferSendIn
 
-      comStub.comStatus -> framer.comStatusIn
-      framer.comStatusOut -> comQueue.comStatusIn
+      framer.dataOut        -> comStub.comDataIn
+      comStub.dataReturnOut -> framer.dataReturnIn
+      comStub.comStatusOut  -> framer.comStatusIn
+
+      comStub.drvDataOut      -> comDriver.$send
+      comDriver.dataReturnOut -> comStub.dataReturnIn
+      comDriver.ready         -> comStub.drvConnected
     }
 
     connections FaultProtection {
