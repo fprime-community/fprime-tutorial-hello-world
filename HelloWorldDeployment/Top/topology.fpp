@@ -124,7 +124,8 @@ module HelloWorldDeployment {
     connections Uplink {
 
       comDriver.allocate -> bufferManager.bufferGetCallee
-      comDriver.$recv -> frameAccumulator.dataIn
+      comDriver.$recv -> comStub.drvDataIn
+      comStub.comDataOut -> frameAccumulator.dataIn
 
       frameAccumulator.frameOut -> deframer.framedIn
       frameAccumulator.bufferDeallocate -> bufferManager.bufferSendIn
@@ -137,7 +138,6 @@ module HelloWorldDeployment {
       fprimeRouter.bufferDeallocate -> bufferManager.bufferSendIn
 
       cmdDisp.seqCmdStatus -> fprimeRouter.cmdResponseIn
-
       fileUplink.bufferSendOut -> bufferManager.bufferSendIn
     }
 
