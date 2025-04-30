@@ -82,6 +82,11 @@ module HelloWorldDeployment {
     stack size Default.STACK_SIZE \
     priority 96
 
+  instance comQueue: Svc.ComQueue base id 0x0E00 \
+    queue size 50 \
+    stack size Default.STACK_SIZE \
+    priority 100
+
   instance helloWorld: Components.HelloWorld base id 0x0F00 \
     queue size Default.QUEUE_SIZE \
     stack size Default.STACK_SIZE \
@@ -99,21 +104,19 @@ module HelloWorldDeployment {
   # ----------------------------------------------------------------------
 
   @ Communications driver. May be swapped with other comm drivers like UART
-  instance comm: Drv.TcpClient base id 0x4000
+  instance comDriver: Drv.TcpClient base id 0x4000
 
-  instance framer: Svc.Framer base id 0x4100
+  instance framer: Svc.FprimeFramer base id 0x4100
 
   instance fatalAdapter: Svc.AssertFatalAdapter base id 0x4200
 
   instance fatalHandler: Svc.FatalHandler base id 0x4300
 
-  instance uplinkBufferManager: Svc.BufferManager base id 0x4400
+  instance bufferManager: Svc.BufferManager base id 0x4400
 
   instance posixTime: Svc.PosixTime base id 0x4500
 
   instance rateGroupDriver: Svc.RateGroupDriver base id 0x4600
-
-  instance staticMemory: Svc.StaticMemory base id 0x4700
 
   instance textLogger: Svc.PassiveTextLogger base id 0x4800
 
@@ -124,4 +127,7 @@ module HelloWorldDeployment {
   instance frameAccumulator: Svc.FrameAccumulator base id 0x4B00
 
   instance fprimeRouter: Svc.FprimeRouter base id 0x4C00
+
+  instance comStub: Svc.ComStub base id 0x4D00
+
 }
