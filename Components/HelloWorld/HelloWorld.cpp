@@ -6,7 +6,7 @@
 
 
 #include <Components/HelloWorld/HelloWorld.hpp>
-#include <FpConfig.hpp>
+#include <config/FpConfig.hpp>
 
 namespace Components {
 
