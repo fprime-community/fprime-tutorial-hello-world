@@ -6,7 +6,6 @@
 #ifndef HelloWorldDeployment_HelloWorldDeploymentTOPOLOGYDEFS_HPP
 #define HelloWorldDeployment_HelloWorldDeploymentTOPOLOGYDEFS_HPP
 
-#include "Drv/BlockDriver/BlockDriver.hpp"
 #include "Fw/Types/MallocAllocator.hpp"
 #include "HelloWorldDeployment/Top/FppConstantsAc.hpp"
 #include "Svc/FramingProtocol/FprimeProtocol.hpp"
