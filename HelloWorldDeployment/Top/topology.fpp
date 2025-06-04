@@ -17,7 +17,6 @@ module HelloWorldDeployment {
     # ----------------------------------------------------------------------
 
     instance $health
-    instance blockDrv
     instance tlmSend
     instance cmdDisp
     instance cmdSeq
@@ -45,6 +44,8 @@ module HelloWorldDeployment {
     instance fprimeRouter
 
     instance helloWorld
+
+    instance linuxTimer
 
     # ----------------------------------------------------------------------
     # Pattern graph specifiers
@@ -96,8 +97,8 @@ module HelloWorldDeployment {
     }
 
     connections RateGroups {
-      # Block driver
-      blockDrv.CycleOut -> rateGroupDriver.CycleIn
+      # Linux timer to drive rate group
+      linuxTimer.CycleOut -> rateGroupDriver.CycleIn
 
       # Rate group 1
       rateGroupDriver.CycleOut[Ports_RateGroups.rateGroup1] -> rateGroup1.CycleIn
@@ -112,8 +113,7 @@ module HelloWorldDeployment {
       # Rate group 3
       rateGroupDriver.CycleOut[Ports_RateGroups.rateGroup3] -> rateGroup3.CycleIn
       rateGroup3.RateGroupMemberOut[0] -> $health.Run
-      rateGroup3.RateGroupMemberOut[1] -> blockDrv.Sched
-      rateGroup3.RateGroupMemberOut[2] -> bufferManager.schedIn
+      rateGroup3.RateGroupMemberOut[1] -> bufferManager.schedIn
     }
 
     connections Sequencer {
