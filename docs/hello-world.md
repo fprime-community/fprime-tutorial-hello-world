@@ -81,7 +81,7 @@ This tutorial will use a standard command and data handling topology. A single `
 ---
 
 
-## 1. Creating an F´ Project 
+## 1. Creating an F´ Project
 
 This section will walk you through creating a new F´ project. First, ensure you meet the [F´ System Requirements](https://github.com/nasa/fprime?tab=readme-ov-file#system-requirements).
 
@@ -169,7 +169,7 @@ within this new project's folder:
 ```
 
 > [!NOTE]
-> Use this command if your virtual environment is not already running. 
+> Use this command if your virtual environment is not already running.
 
 ---
 
@@ -198,7 +198,7 @@ These are a simple set of requirements for this component.
 
 ### Creating the Hello World Component
 
-The next step is to create the new component. The project contains a `Components/` directory to create components in. 
+The next step is to create the new component. The project contains a `Components/` directory to create components in.
 
 ```bash
 # In: MyProject
@@ -327,9 +327,9 @@ void HelloWorld:: SAY_HELLO_cmdHandler(FwOpcodeType opCode, U32 cmdSeq, const Fw
     Fw::LogStringArg eventGreeting(greeting.toChar());
     // Emit the Hello event with the copied string
     this->log_ACTIVITY_HI_Hello(eventGreeting);
-    
+
     this->tlmWrite_GreetingCount(++this->m_greetingCount);
-    
+
     // Tell the fprime command system that we have completed the processing of the supplied command with OK status
     this->cmdResponse_out(opCode, cmdSeq, Fw::CmdResponse::OK);
 }
@@ -340,7 +340,7 @@ We must also add the m_greetingCount member variable to the class defined in `He
 
 **HelloWorld.hpp: Adding New Member Variable**
 ```c++
-PRIVATE:
+private:
     U32 m_greetingCount = 0;
 ```
 
@@ -384,9 +384,9 @@ At this point, the `HelloWorldDeployment` has been created, but our `HelloWorld`
 
 ### Adding The Hello World Component
 
-In this section the `HelloWorld` component will be added to the `HelloWorldDeployment` deployment. This can be done by adding the component to the topology defined in `HelloWorldDeployment/Top`. 
+In this section the `HelloWorld` component will be added to the `HelloWorldDeployment` deployment. This can be done by adding the component to the topology defined in `HelloWorldDeployment/Top`.
 
-Topologies instantiate all the components in a running system and link them together. For some port types, like the commanding, event, and telemetry ports used by `HelloWorld`, the connections are made automatically. 
+Topologies instantiate all the components in a running system and link them together. For some port types, like the commanding, event, and telemetry ports used by `HelloWorld`, the connections are made automatically.
 In addition, the topology specifies how to construct the component instance. This is also done automatically unless the component has specific configuration.
 
 In order to add a component to the topology, it must be added to the topology model. An instance definition and an instance initializer must both be added.
@@ -400,7 +400,7 @@ Edit `HelloWorldDeployment/Top/topology.fpp`:
         # ----------------------------------------------------------------------
         # Instances used in the topology
         # ----------------------------------------------------------------------
-        
+
         instance ...
         instance ...
         instance helloWorld

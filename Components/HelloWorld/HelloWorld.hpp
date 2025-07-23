@@ -31,7 +31,7 @@ namespace Components {
       //!
       ~HelloWorld();
 
-    PRIVATE:
+    private:
 
       // ----------------------------------------------------------------------
       // Command handler implementations
@@ -42,11 +42,11 @@ namespace Components {
       void SAY_HELLO_cmdHandler(
           const FwOpcodeType opCode, /*!< The opcode*/
           const U32 cmdSeq, /*!< The command sequence number*/
-          const Fw::CmdStringArg& greeting /*!< 
+          const Fw::CmdStringArg& greeting /*!<
           Greeting to repeat in the Hello event
           */
       );
-    
+
     private:
       U32 m_greetingCount;
 
