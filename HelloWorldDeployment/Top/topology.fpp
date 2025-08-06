@@ -50,7 +50,7 @@ module HelloWorldDeployment {
   # Telemetry packets (only used when TlmPacketizer is used)
   # ----------------------------------------------------------------------
 
-    include "HelloWorldDeploymentPackets.fppi"
+  #  include "HelloWorldDeploymentPackets.fppi"
 
   # ----------------------------------------------------------------------
   # Direct graph specifiers
@@ -64,7 +64,6 @@ module HelloWorldDeployment {
       # Router to Command Dispatcher
       ComCcsds.fprimeRouter.commandOut -> CdhCore.cmdDisp.seqCmdBuff
       CdhCore.cmdDisp.seqCmdStatus -> ComCcsds.fprimeRouter.cmdResponseIn
-      
     }
 
     connections ComCcsds_FileHandling {
