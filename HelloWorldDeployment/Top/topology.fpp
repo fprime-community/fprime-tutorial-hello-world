@@ -87,7 +87,6 @@ module HelloWorldDeployment {
       
       # ComStub <-> ComDriver (Downlink)
       ComCcsds.comStub.drvSendOut      -> comDriver.$send
-      comDriver.sendReturnOut -> ComCcsds.comStub.drvSendReturnIn
       comDriver.ready         -> ComCcsds.comStub.drvConnected
     }
 
