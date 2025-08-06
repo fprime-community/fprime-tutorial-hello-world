@@ -1,6 +1,6 @@
 # Components::HelloWorld
 
-Example Component for F Prime FSW framework.
+Hello World Tutorial Component
 
 ## Usage Examples
 Add usage examples here

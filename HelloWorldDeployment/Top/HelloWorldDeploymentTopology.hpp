@@ -3,8 +3,8 @@
 // \brief header file containing the topology instantiation definitions
 //
 // ======================================================================
-#ifndef HelloWorldDeployment_HelloWorldDeploymentTOPOLOGY_HPP
-#define HelloWorldDeployment_HelloWorldDeploymentTOPOLOGY_HPP
+#ifndef HELLOWORLDDEPLOYMENT_HELLOWORLDDEPLOYMENTTOPOLOGY_HPP
+#define HELLOWORLDDEPLOYMENT_HELLOWORLDDEPLOYMENTTOPOLOGY_HPP
 // Included for access to HelloWorldDeployment::TopologyState and HelloWorldDeployment::ConfigObjects::pingEntries. These definitions are required by the
 // autocoder, but are also used in this hand-coded topology.
 #include <HelloWorldDeployment/Top/HelloWorldDeploymentTopologyDefs.hpp>
@@ -34,7 +34,7 @@ namespace HelloWorldDeployment {
  * The state argument carries command line inputs used to setup the topology. For an explanation of the required type
  * HelloWorldDeployment::TopologyState see: HelloWorldDeploymentTopologyDefs.hpp.
  *
- * \param state: object shuttling CLI arguments (hostname, port) needed to construct the topology
+ * \param state: object shuttling CLI arguments (e.g. hostname/port, or UART baudrate) needed to construct the topology
  */
 void setupTopology(const TopologyState& state);
 
@@ -67,20 +67,18 @@ void teardownTopology(const TopologyState& state);
  * achieved. This function mimics the cycling via a Task::delay(milliseconds) loop that manually invokes the ISR call
  * to the example block driver.
  *
- * This loop is stopped via a startSimulatedCycle call.
  *
- * Note: projects should replace this with a component that produces an output port call at the appropriate frequency.
+ * This loop is stopped via a stopRateGroups call.
  *
- * \param milliseconds: milliseconds to delay for each cycle. Default: 1000 or 1Hz.
  */
-void startSimulatedCycle(Fw::TimeInterval interval);
+void startRateGroups(Fw::TimeInterval interval = Fw::TimeInterval(1,0));
 
 /**
- * \brief stop the simulated cycle started by startSimulatedCycle
+ * \brief stop the rate groups 
  *
- * This stops the cycle started by startSimulatedCycle.
+ * This stops the cycle started by startRateGroups.
  */
-void stopSimulatedCycle();
+void stopRateGroups();
 
 } // namespace HelloWorldDeployment
 #endif
