@@ -434,13 +434,13 @@ Add to `HelloWorldDeployment/Top/instances.fpp`:
   # Active component instances
   # ----------------------------------------------------------------------
 
-  instance helloWorld: Components.HelloWorld base id 0x0F00 \
+  instance helloWorld: Components.HelloWorld base id 0x10005000 \
     queue size Default.QUEUE_SIZE \
     stack size Default.STACK_SIZE \
     priority 50
 ```
 > [!NOTE]
-> The user must ensure that the base id (0x0F00) does not conflict with any other base ids in the topology. 0x0F00 should be safe for deployments created with `fprime-util new --deployment`.
+> The user must ensure that the base id (0x10005000) does not conflict with any other base ids in the topology. 0x10005000 should be safe for deployments created with `fprime-util new --deployment`.
 
 > [!NOTE]
 > Make sure to use the same instance name (i.e. helloWorld) as defined in the instance definition just added to `topology.fpp`.
