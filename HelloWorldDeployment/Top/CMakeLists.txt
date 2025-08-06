@@ -1,21 +1,21 @@
 ####
-# F prime CMakeLists.txt:
+# F Prime CMakeLists.txt:
 #
-# SOURCE_FILES: combined list of source and autocoding files
-# MOD_DEPS: (optional) module dependencies
+# SOURCES: list of source files (to be compiled)
+# AUTOCODER_INPUTS: list of files to be passed to the autocoders
+# DEPENDS: list of libraries that this module depends on
+#
+# More information in the F´ CMake API documentation:
+# https://fprime.jpl.nasa.gov/latest/docs/reference/api/cmake/API/
+#
 ####
 
-set(SOURCE_FILES
-  "${CMAKE_CURRENT_LIST_DIR}/instances.fpp"
-  "${CMAKE_CURRENT_LIST_DIR}/topology.fpp"
-  "${CMAKE_CURRENT_LIST_DIR}/HelloWorldDeploymentTopology.cpp"
+register_fprime_module(
+    AUTOCODER_INPUTS
+        "${CMAKE_CURRENT_LIST_DIR}/instances.fpp"
+        "${CMAKE_CURRENT_LIST_DIR}/topology.fpp"
+    SOURCES
+        "${CMAKE_CURRENT_LIST_DIR}/HelloWorldDeploymentTopology.cpp"
+    DEPENDS
+        Fw_Logger
 )
-set(MOD_DEPS
-  Fw/Logger
-  Svc/PosixTime
-  # Communication Implementations
-  Drv/Udp
-  Drv/TcpClient
-)
-
-register_fprime_module()

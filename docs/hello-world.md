@@ -78,7 +78,16 @@ to the topology.
 This tutorial will use a standard command and data handling topology. A single `HelloWorld` component instance called
 `helloWorld` will be added to the standard topology.
 
+>[!NOTE] For more information on F Prime Terminology, we recommend looking through our [Documentation](https://fprime.jpl.nasa.gov/latest/docs/user-manual/overview/port-comp-top/) 
+
 ---
+## Troubleshooting 
+If at any point during this tutorial you encounter issues:
+1. **Check your current directory**: Ensure you are in the correct directory as specified in each step of the tutorial
+2. **Activate your virtual environment**: Always make sure your F´ project's virtual environment is activated with `. fprime-venv/bin/activate`
+3. **Refer to the F´ troubleshooting guide**: Visit [F´ Installation and Troubleshooting](https://fprime.jpl.nasa.gov/latest/docs/getting-started/installing-fprime/#troubleshooting) for common installation and setup issues
+4. **Verify your F´ installation**: Run `fprime-util --help` to ensure F´ tools are properly installed
+5. **Check build errors**: If you encounter build errors, ensure all previous steps were completed successfully
 
 
 ## 1. Creating an F´ Project
@@ -121,11 +130,12 @@ cd MyProject
 ls
 ```
 This will show the following files:
-1. `fprime/`: F´ repository, this is a git submodule that points to https://github.com/nasa/fprime. Contains core F´ components, the API for the build system, among others
+1. `lib/`: Library folder, inside resides libraries the project will use. This is also where 'fprime/' lives, this is a git submodule that points to https://github.com/nasa/fprime. Contains core F´ components, the API for the build system, among others
 2. `settings.ini`: allows users to set various settings to control the build
-3. `CMakeList.txt` and `project.cmake`: CMake files defining the build system
+3. `CMakeList.txt`, `CMakePresets.json` and `project.cmake`: CMake files defining the build system
 4. `Components/`: directory to place user components in
-4. `fprime-venv/`: this directory is the virtual environment containing the Python tools to work with F´
+5. `fprime-venv/`: this directory is the virtual environment containing the Python tools to work with F´
+6. `README.md` where you can document work on this project. 
 
 #### 4. Activate the virtual environment
 Activate the virtual environment to use the F´ tool suite.
@@ -151,8 +161,6 @@ fprime-util build
 > [!NOTE]
 > `fprime-util generate` sets up the build environment for a project/deployment. It only needs to be done once.
 
-> [!NOTE]
-> `fprime-util build` can be sped up by building in parallel on multiple cores, using the `-j <N>` option. For example, `fprime-util build -j16`
 
 ### Project creation recap
 
@@ -168,7 +176,7 @@ within this new project's folder:
 . fprime-venv/bin/activate
 ```
 
-> [!NOTE]
+> [!TIP]
 > Use this command if your virtual environment is not already running.
 
 ---
@@ -259,7 +267,7 @@ ls
 This will show the following files:
 
 1. `HelloWorld.fpp`: design model for the component
-2. `HelloWorld.hpp` and `HelloWorld.cpp`: C++ implementation files for the component, currently empty.
+2. `HelloWorld.hpp` and `HelloWorld.cpp`: C++ implementation files for the component.
 3. `CMakeList.txt`: build definitions for the component.
 4. `docs` folder to place component documentation
 
@@ -397,6 +405,7 @@ Edit `HelloWorldDeployment/Top/topology.fpp`:
 ```
 ...
     topology HelloWorldDeployment {
+        ... 
         # ----------------------------------------------------------------------
         # Instances used in the topology
         # ----------------------------------------------------------------------
@@ -411,6 +420,8 @@ Edit `HelloWorldDeployment/Top/topology.fpp`:
 
 `helloWorld` is the name of the component instance. Like variable names, component instance names should be descriptive
 and are typically named in camel or snake case.
+> [!TIP]
+> Reference the [F Prime Style Guidelines](https://github.com/nasa/fprime/wiki/F%C2%B4-Style-Guidelines) for more 
 
 Next, an instance initializer must be added to topology instances defined in `HelloWorldDeployment/Top/instances.fpp` file.
 Since the `HelloWorld` component is an `active` component it should be added to the active components section and should
@@ -440,7 +451,7 @@ completed. The deployment can now be set up and built using the following comman
 
 ```
 # In: MyProject/HelloWorldDeployment
-fprime-util build -j4
+fprime-util build 
 ```
 > [!WARNING]
 > Resolve any errors that occur before continuing to the running section.

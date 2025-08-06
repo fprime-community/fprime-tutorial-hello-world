@@ -1,9 +1,9 @@
 module Components {
-    @ Example Component for F Prime FSW framework.
+    @ Hello World Tutorial Component
     active component HelloWorld {
 
         # One async command/port is required for active components
-        # This should be overridden by the developers with a useful command/port
+        
         @ Command to issue greeting with maximum length of 20 characters
         async command SAY_HELLO(
             greeting: string size 20 @< Greeting to repeat in the Hello event
@@ -17,24 +17,7 @@ module Components {
         @ A count of the number of greetings issued
         telemetry GreetingCount: U32
 
-        ##############################################################################
-        #### Uncomment the following examples to start customizing your component ####
-        ##############################################################################
 
-        # @ Example async command
-        # async command COMMAND_NAME(param_name: U32)
-
-        # @ Example telemetry counter
-        # telemetry ExampleCounter: U64
-
-        # @ Example event
-        # event ExampleStateEvent(example_state: Fw.On) severity activity high id 0 format "State set to {}"
-
-        # @ Example port: receiving calls from the rate group
-        # sync input port run: Svc.Sched
-
-        # @ Example parameter
-        # param PARAMETER_NAME: U32
 
         ###############################################################################
         # Standard AC Ports: Required for Channels, Events, Commands, and Parameters  #

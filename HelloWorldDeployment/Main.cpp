@@ -5,14 +5,15 @@
 // ======================================================================
 // Used to access topology functions
 #include <HelloWorldDeployment/Top/HelloWorldDeploymentTopology.hpp>
+// OSAL initialization
+#include <Os/Os.hpp>
 // Used for signal handling shutdown
 #include <signal.h>
 // Used for command line argument processing
 #include <getopt.h>
 // Used for printf functions
 #include <cstdlib>
-// Console logger setup
-#include <Os/Console.hpp>
+
 /**
  * \brief print command line help message
  *
@@ -33,7 +34,7 @@ void print_usage(const char* app) {
  * @param signum
  */
 static void signalHandler(int signum) {
-    HelloWorldDeployment::stopSimulatedCycle();
+    HelloWorldDeployment::stopRateGroups();
 }
 
 /**
@@ -47,10 +48,12 @@ static void signalHandler(int signum) {
  * @return: 0 on success, something else on failure
  */
 int main(int argc, char* argv[]) {
-    U32 port_number = 0;
     I32 option = 0;
-    char* hostname = nullptr;
-    Os::Console::init();
+    CHAR* hostname = nullptr;
+    U16 port_number = 0;
+
+    Os::init();
+
     // Loop while reading the getopt supplied options
     while ((option = getopt(argc, argv, "hp:a:")) != -1) {
         switch (option) {
@@ -60,7 +63,7 @@ int main(int argc, char* argv[]) {
                 break;
             // Handle the -p port number argument
             case 'p':
-                port_number = static_cast<U32>(atoi(optarg));
+                port_number = static_cast<U16>(atoi(optarg));
                 break;
             // Cascade intended: help output
             case 'h':
@@ -72,7 +75,7 @@ int main(int argc, char* argv[]) {
                 return (option == 'h') ? 0 : 1;
         }
     }
-    // Object for communicating state to the reference topology
+    // Object for communicating state to the topology
     HelloWorldDeployment::TopologyState inputs;
     inputs.hostname = hostname;
     inputs.port = port_number;
@@ -84,7 +87,7 @@ int main(int argc, char* argv[]) {
 
     // Setup, cycle, and teardown topology
     HelloWorldDeployment::setupTopology(inputs);
-    HelloWorldDeployment::startSimulatedCycle(Fw::TimeInterval(1, 0));  // Program loop cycling rate groups at 1Hz
+    HelloWorldDeployment::startRateGroups(Fw::TimeInterval(1,0));  // Program loop cycling rate groups at 1Hz
     HelloWorldDeployment::teardownTopology(inputs);
     (void)printf("Exiting...\n");
     return 0;

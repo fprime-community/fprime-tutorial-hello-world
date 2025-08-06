@@ -4,107 +4,110 @@ module HelloWorldDeployment {
   # Symbolic constants for port numbers
   # ----------------------------------------------------------------------
 
-    enum Ports_RateGroups {
-      rateGroup1
-      rateGroup2
-      rateGroup3
-    }
+  enum Ports_RateGroups {
+    rateGroup1
+    rateGroup2
+    rateGroup3
+  }
 
   topology HelloWorldDeployment {
 
-    # ----------------------------------------------------------------------
-    # Instances used in the topology
-    # ----------------------------------------------------------------------
-
-    instance $health
-    instance tlmSend
-    instance cmdDisp
-    instance cmdSeq
-    instance comDriver
-    instance comQueue
-    instance comStub
-    instance framer
-    instance eventLogger
-    instance fatalAdapter
-    instance fatalHandler
-    instance fileDownlink
-    instance fileManager
-    instance fileUplink
-    instance bufferManager
-    instance posixTime
-    instance prmDb
+  # ----------------------------------------------------------------------
+  # Subtopology imports
+  # ----------------------------------------------------------------------
+    import CdhCore.Subtopology
+    import ComCcsds.Subtopology
+    import DataProducts.Subtopology
+    import FileHandling.Subtopology
+    
+  # ----------------------------------------------------------------------
+  # Instances used in the topology
+  # ----------------------------------------------------------------------
+    instance chronoTime
     instance rateGroup1
     instance rateGroup2
     instance rateGroup3
     instance rateGroupDriver
-    instance textLogger
-    instance deframer
     instance systemResources
-    instance frameAccumulator
-    instance fprimeRouter
-
-    instance helloWorld
-
     instance linuxTimer
+    instance comDriver
+    instance cmdSeq
+    instance helloWorld
+    
+  # ----------------------------------------------------------------------
+  # Pattern graph specifiers
+  # ----------------------------------------------------------------------
 
-    # ----------------------------------------------------------------------
-    # Pattern graph specifiers
-    # ----------------------------------------------------------------------
+    command connections instance CdhCore.cmdDisp
+    event connections instance CdhCore.events
+    telemetry connections instance CdhCore.tlmSend
+    text event connections instance CdhCore.textLogger
+    health connections instance CdhCore.$health
+    param connections instance FileHandling.prmDb
+    time connections instance chronoTime
 
-    command connections instance cmdDisp
+  # ----------------------------------------------------------------------
+  # Telemetry packets (only used when TlmPacketizer is used)
+  # ----------------------------------------------------------------------
 
-    event connections instance eventLogger
+    include "HelloWorldDeploymentPackets.fppi"
 
-    param connections instance prmDb
+  # ----------------------------------------------------------------------
+  # Direct graph specifiers
+  # ----------------------------------------------------------------------
 
-    telemetry connections instance tlmSend
+    connections ComCcsds_CdhCore {
+      # Core events and telemetry to communication queue
+      CdhCore.events.PktSend -> ComCcsds.comQueue.comPacketQueueIn[ComCcsds.Ports_ComPacketQueue.EVENTS]
+      CdhCore.tlmSend.PktSend -> ComCcsds.comQueue.comPacketQueueIn[ComCcsds.Ports_ComPacketQueue.TELEMETRY]
 
-    text event connections instance textLogger
-
-    time connections instance posixTime
-
-    health connections instance $health
-
-    # ----------------------------------------------------------------------
-    # Direct graph specifiers
-    # ----------------------------------------------------------------------
-
-    connections Downlink {
-      # Inputs to ComQueue (events, telemetry, file)
-      eventLogger.PktSend         -> comQueue.comPacketQueueIn[0]
-      tlmSend.PktSend             -> comQueue.comPacketQueueIn[1]
-      fileDownlink.bufferSendOut  -> comQueue.bufferQueueIn[0]
-      comQueue.bufferReturnOut[0] -> fileDownlink.bufferReturn
-      # ComQueue <-> Framer
-      comQueue.dataOut   -> framer.dataIn
-      framer.dataReturnOut -> comQueue.dataReturnIn
-      framer.comStatusOut  -> comQueue.comStatusIn
-      # Buffer Management for Framer
-      framer.bufferAllocate   -> bufferManager.bufferGetCallee
-      framer.bufferDeallocate -> bufferManager.bufferSendIn
-      # Framer <-> ComStub
-      framer.dataOut        -> comStub.dataIn
-      comStub.dataReturnOut -> framer.dataReturnIn
-      comStub.comStatusOut  -> framer.comStatusIn
-      # ComStub <-> ComDriver
-      comStub.drvSendOut      -> comDriver.$send
-      comDriver.sendReturnOut -> comStub.drvSendReturnIn
-      comDriver.ready         -> comStub.drvConnected
+      # Router to Command Dispatcher
+      ComCcsds.fprimeRouter.commandOut -> CdhCore.cmdDisp.seqCmdBuff
+      CdhCore.cmdDisp.seqCmdStatus -> ComCcsds.fprimeRouter.cmdResponseIn
+      
     }
 
-    connections FaultProtection {
-      eventLogger.FatalAnnounce -> fatalHandler.FatalReceive
+    connections ComCcsds_FileHandling {
+      # File Downlink to Communication Queue
+      FileHandling.fileDownlink.bufferSendOut -> ComCcsds.comQueue.bufferQueueIn[ComCcsds.Ports_ComBufferQueue.FILE]
+      ComCcsds.comQueue.bufferReturnOut[ComCcsds.Ports_ComBufferQueue.FILE] -> FileHandling.fileDownlink.bufferReturn
+
+      # Router to File Uplink
+      ComCcsds.fprimeRouter.fileOut -> FileHandling.fileUplink.bufferSendIn
+      FileHandling.fileUplink.bufferSendOut -> ComCcsds.fprimeRouter.fileBufferReturnIn
+    }
+
+    connections Communications {
+      # ComDriver buffer allocations
+      comDriver.allocate      -> ComCcsds.commsBufferManager.bufferGetCallee
+      comDriver.deallocate    -> ComCcsds.commsBufferManager.bufferSendIn
+      
+      # ComDriver <-> ComStub (Uplink)
+      comDriver.$recv                     -> ComCcsds.comStub.drvReceiveIn
+      ComCcsds.comStub.drvReceiveReturnOut -> comDriver.recvReturnIn
+      
+      # ComStub <-> ComDriver (Downlink)
+      ComCcsds.comStub.drvSendOut      -> comDriver.$send
+      comDriver.sendReturnOut -> ComCcsds.comStub.drvSendReturnIn
+      comDriver.ready         -> ComCcsds.comStub.drvConnected
+    }
+
+    connections FileHandling_DataProducts {
+      # Data Products to File Downlink
+      DataProducts.dpCat.fileOut -> FileHandling.fileDownlink.SendFile
+      FileHandling.fileDownlink.FileComplete -> DataProducts.dpCat.fileDone
     }
 
     connections RateGroups {
-      # Linux timer to drive rate group
+      # LinuxTimer to drive rate group
       linuxTimer.CycleOut -> rateGroupDriver.CycleIn
 
       # Rate group 1
       rateGroupDriver.CycleOut[Ports_RateGroups.rateGroup1] -> rateGroup1.CycleIn
-      rateGroup1.RateGroupMemberOut[0] -> tlmSend.Run
-      rateGroup1.RateGroupMemberOut[1] -> fileDownlink.Run
+      rateGroup1.RateGroupMemberOut[0] -> CdhCore.tlmSend.Run
+      rateGroup1.RateGroupMemberOut[1] -> FileHandling.fileDownlink.Run
       rateGroup1.RateGroupMemberOut[2] -> systemResources.run
+      rateGroup1.RateGroupMemberOut[3] -> ComCcsds.comQueue.run
 
       # Rate group 2
       rateGroupDriver.CycleOut[Ports_RateGroups.rateGroup2] -> rateGroup2.CycleIn
@@ -112,46 +115,21 @@ module HelloWorldDeployment {
 
       # Rate group 3
       rateGroupDriver.CycleOut[Ports_RateGroups.rateGroup3] -> rateGroup3.CycleIn
-      rateGroup3.RateGroupMemberOut[0] -> $health.Run
-      rateGroup3.RateGroupMemberOut[1] -> bufferManager.schedIn
+      rateGroup3.RateGroupMemberOut[0] -> CdhCore.$health.Run
+      rateGroup3.RateGroupMemberOut[1] -> ComCcsds.commsBufferManager.schedIn
+      rateGroup3.RateGroupMemberOut[2] -> DataProducts.dpBufferManager.schedIn
+      rateGroup3.RateGroupMemberOut[3] -> DataProducts.dpWriter.schedIn
+      rateGroup3.RateGroupMemberOut[4] -> DataProducts.dpMgr.schedIn
     }
 
-    connections Sequencer {
-      cmdSeq.comCmdOut -> cmdDisp.seqCmdBuff
-      cmdDisp.seqCmdStatus -> cmdSeq.cmdResponseIn
-    }
-
-    connections Uplink {
-      # ComDriver buffer allocations
-      comDriver.allocate      -> bufferManager.bufferGetCallee
-      comDriver.deallocate    -> bufferManager.bufferSendIn
-      # ComDriver <-> ComStub
-      comDriver.$recv             -> comStub.drvReceiveIn
-      comStub.drvReceiveReturnOut -> comDriver.recvReturnIn
-      # ComStub <-> FrameAccumulator
-      comStub.dataOut                -> frameAccumulator.dataIn
-      frameAccumulator.dataReturnOut -> comStub.dataReturnIn
-      # FrameAccumulator buffer allocations
-      frameAccumulator.bufferDeallocate -> bufferManager.bufferSendIn
-      frameAccumulator.bufferAllocate   -> bufferManager.bufferGetCallee
-      # FrameAccumulator <-> Deframer
-      frameAccumulator.dataOut  -> deframer.dataIn
-      deframer.dataReturnOut    -> frameAccumulator.dataReturnIn
-      # Deframer <-> Router
-      deframer.dataOut           -> fprimeRouter.dataIn
-      fprimeRouter.dataReturnOut -> deframer.dataReturnIn
-      # Router buffer allocations
-      fprimeRouter.bufferAllocate   -> bufferManager.bufferGetCallee
-      fprimeRouter.bufferDeallocate -> bufferManager.bufferSendIn
-      # Router <-> CmdDispatcher/FileUplink
-      fprimeRouter.commandOut  -> cmdDisp.seqCmdBuff
-      cmdDisp.seqCmdStatus     -> fprimeRouter.cmdResponseIn
-      fprimeRouter.fileOut     -> fileUplink.bufferSendIn
-      fileUplink.bufferSendOut -> fprimeRouter.fileBufferReturnIn
+    connections CdhCore_cmdSeq {
+      # Command Sequencer
+      cmdSeq.comCmdOut -> CdhCore.cmdDisp.seqCmdBuff
+      CdhCore.cmdDisp.seqCmdStatus -> cmdSeq.cmdResponseIn
     }
 
     connections HelloWorldDeployment {
-      # Add here connections to user-defined components
+
     }
 
   }
