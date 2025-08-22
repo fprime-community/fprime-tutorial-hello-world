@@ -78,7 +78,7 @@ to the topology.
 This tutorial will use a standard command and data handling topology. A single `HelloWorld` component instance called
 `helloWorld` will be added to the standard topology.
 
->[!NOTE] For more information on F Prime Terminology, we recommend looking through our [Documentation](https://fprime.jpl.nasa.gov/latest/docs/user-manual/overview/port-comp-top/) 
+>[!NOTE] For more information on F Prime Terminology, we recommend looking through our [Documentation](https://fprime.jpl.nasa.gov/latest/docs/user-manual/overview/03-port-comp-top/) 
 
 ---
 ## Troubleshooting 
