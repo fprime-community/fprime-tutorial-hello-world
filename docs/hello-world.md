@@ -25,7 +25,7 @@ An F´ project is a collection of files and folders used to work with F´. At it
 can be used to hold F´ code. Projects should specifically exclude the core F´ library to avoid the "clone and own"
 problem. Rather projects should link-to a version of F´.
 
-This tutorial will create a new `MyProject` project used to contain the other things created by the tutorial.
+This tutorial will create a new `hello-world` project used to contain the other things created by the tutorial.
 
 #### Component
 
@@ -114,26 +114,27 @@ The entrypoint to developing with F´ is creating a new project. This will clone
 fprime-bootstrap project
 ```
 
-This command will ask for a project name. We will use the default: `MyProject`
+This command will ask for project information. We will use the following:
 ```
-  [1/1] Project name (MyProject): MyProject
+  [1/2] Project repository name [my-fprime-project]: hello-world
+  [2/2] Project top-level namespace [HelloWorld]: Hello
 ```
 
 #### 3. Understanding the project structure
 
-Bootstrapping your F´ project created a folder called `MyProject` (or any name you chose) containing the standard F´ project structure as well as the [virtual environment](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/) containing the tools to work with F´.
+Bootstrapping your F´ project created a folder called `hello-world` (or any name you chose) containing the standard F´ project structure as well as the [virtual environment](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/) containing the tools to work with F´.
 
 We should navigate to the project's directory and look around:
 
 ```bash
-cd MyProject
+cd hello-world
 ls
 ```
 This will show the following files:
-1. `lib/`: Library folder, inside resides libraries the project will use. This is also where 'fprime/' lives, this is a git submodule that points to https://github.com/nasa/fprime. Contains core F´ components, the API for the build system, among others
-2. `settings.ini`: allows users to set various settings to control the build
-3. `CMakeList.txt`, `CMakePresets.json` and `project.cmake`: CMake files defining the build system
-4. `Components/`: directory to place user components in
+1. `Hello/`: top-level source folder for the project. This is where you will create components, deployments, and other project-specific code.
+2. `lib/`: Library folder, inside resides libraries the project will use. This is also where the `fprime` code lives, this is a git submodule that points to https://github.com/nasa/fprime. Contains core F´ components, the API for the build system, among others
+3. `settings.ini`: allows users to set various settings to control the build
+4. `CMakeList.txt` and `CMakePresets.json`: CMake files defining the build system
 5. `fprime-venv/`: this directory is the virtual environment containing the Python tools to work with F´
 6. `README.md` where you can document work on this project. 
 
@@ -141,7 +142,7 @@ This will show the following files:
 Activate the virtual environment to use the F´ tool suite.
 
 ```bash
-# in MyProject/
+# in hello-world/
 . fprime-venv/bin/activate
 ```
 > [!TIP]
@@ -153,7 +154,7 @@ The next step is to set up and build the newly created project. This will serve 
 created components, and will build the F´ framework supplied components.
 
 ```bash
-cd MyProject
+cd hello-world
 fprime-util generate
 fprime-util build
 ```
@@ -164,15 +165,15 @@ fprime-util build
 
 ### Project creation recap
 
-A new project has been created with the name `MyProject` and has been placed in a new folder called `MyProject` in
-the current directory. It includes the initial build system setup, and F´ version. It is still empty in that the user
+A new project has been created with the namespace `Hello` and has been placed in a new folder called `hello-world` in
+the current directory. It includes the initial build system setup, and F´ source code. It is still empty in that the user
 will still need to create components and deployments.
 
 For the remainder of this Hello World tutorial we should use the tools installed for our project and issue commands
 within this new project's folder:
 
 ```bash
-# In: MyProject
+# In: hello-world
 . fprime-venv/bin/activate
 ```
 
@@ -209,14 +210,14 @@ These are a simple set of requirements for this component.
 The next step is to create the new component. The project contains a `Components/` directory to create components in.
 
 ```bash
-# In: MyProject
-cd Components
+# In: hello-world
+cd Hello/Components
 ```
 
 Creating a new component is accomplished with the following command:
 
 ```bash
-# In: MyProject/Components
+# In: Hello/Components
 fprime-util new --component
 ```
 This command will ask for some input. You should respond with the following answers:
@@ -260,7 +261,7 @@ This will create a new component called "HelloWorld" in the "Components" namespa
 We should navigate to the component's directory and look around:
 
 ```bash
-# In: MyProject/Components
+# In: Hello/Components
 cd HelloWorld
 ls
 ```
@@ -310,7 +311,7 @@ telemetry GreetingCount: U32
 With this step completed you can generate a basic implementation with the following command:
 
 ```bash
-# In: MyProject/Components/HelloWorld
+# In: Hello/Components/HelloWorld
 fprime-util impl
 ```
 
@@ -376,7 +377,7 @@ ground control and data collection of the deployment.
 
 To create a deployment, run the following commands:
 ```bash
-# In: MyProject
+# In: hello-world
 fprime-util new --deployment
 ```
 This command will ask for some input. Respond with the following answers:
@@ -450,7 +451,7 @@ Since this component has no custom ports nor does it require special configurati
 completed. The deployment can now be set up and built using the following commands:
 
 ```
-# In: MyProject/HelloWorldDeployment
+# In: hello-world/HelloWorldDeployment
 fprime-util build 
 ```
 > [!WARNING]
@@ -464,6 +465,7 @@ command and verifying that the `Hello` event and `GreetingCount` channel appears
 
 To start the deployment with default settings, run:
 ```bash
+# In: Hello/HelloWorldDeployment
 fprime-gds
 ```
 
