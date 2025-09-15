@@ -83,6 +83,7 @@ This tutorial will use a standard command and data handling topology. A single `
 ---
 ## Troubleshooting 
 If at any point during this tutorial you encounter issues:
+
 1. **Check your current directory**: Ensure you are in the correct directory as specified in each step of the tutorial
 2. **Activate your virtual environment**: Always make sure your F´ project's virtual environment is activated with `. fprime-venv/bin/activate`
 3. **Refer to the F´ troubleshooting guide**: Visit [F´ Installation and Troubleshooting](https://fprime.jpl.nasa.gov/latest/docs/getting-started/installing-fprime/#troubleshooting) for common installation and setup issues
@@ -131,6 +132,7 @@ cd hello-world
 ls
 ```
 This will show the following files:
+
 1. `Hello/`: top-level source folder for the project. This is where you will create components, deployments, and other project-specific code.
 2. `lib/`: Library folder, inside resides libraries the project will use. This is also where the `fprime` code lives, this is a git submodule that points to https://github.com/nasa/fprime. Contains core F´ components, the API for the build system, among others
 3. `settings.ini`: allows users to set various settings to control the build
