@@ -4,7 +4,7 @@
 //
 // ======================================================================
 // Used to access topology functions
-#include <HelloWorldDeployment/Top/HelloWorldDeploymentTopology.hpp>
+#include <Hello/HelloWorldDeployment/Top/HelloWorldDeploymentTopology.hpp>
 // OSAL initialization
 #include <Os/Os.hpp>
 // Used for signal handling shutdown
@@ -87,7 +87,7 @@ int main(int argc, char* argv[]) {
 
     // Setup, cycle, and teardown topology
     HelloWorldDeployment::setupTopology(inputs);
-    HelloWorldDeployment::startRateGroups(Fw::TimeInterval(1,0));  // Program loop cycling rate groups at 1Hz
+    HelloWorldDeployment::startRateGroups(Fw::TimeInterval(1, 0));  // Program loop cycling rate groups at 1Hz
     HelloWorldDeployment::teardownTopology(inputs);
     (void)printf("Exiting...\n");
     return 0;

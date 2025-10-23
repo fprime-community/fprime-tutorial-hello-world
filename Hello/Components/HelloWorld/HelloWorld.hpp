@@ -7,9 +7,9 @@
 #ifndef Components_HelloWorld_HPP
 #define Components_HelloWorld_HPP
 
-#include "Components/HelloWorld/HelloWorldComponentAc.hpp"
+#include "Hello/Components/HelloWorld/HelloWorldComponentAc.hpp"
 
-namespace Components {
+namespace Hello {
 
 class HelloWorld final : public HelloWorldComponentBase {
   public:

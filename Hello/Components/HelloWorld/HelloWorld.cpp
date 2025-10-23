@@ -4,7 +4,7 @@
 // \brief  cpp file for HelloWorld component implementation class
 // ======================================================================
 
-#include "Components/HelloWorld/HelloWorld.hpp"
+#include "Hello/Components/HelloWorld/HelloWorld.hpp"
 
 namespace Components {
 

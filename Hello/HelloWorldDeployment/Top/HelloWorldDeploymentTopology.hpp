@@ -5,12 +5,11 @@
 // ======================================================================
 #ifndef HELLOWORLDDEPLOYMENT_HELLOWORLDDEPLOYMENTTOPOLOGY_HPP
 #define HELLOWORLDDEPLOYMENT_HELLOWORLDDEPLOYMENTTOPOLOGY_HPP
-// Included for access to HelloWorldDeployment::TopologyState and HelloWorldDeployment::ConfigObjects::pingEntries. These definitions are required by the
-// autocoder, but are also used in this hand-coded topology.
-#include <HelloWorldDeployment/Top/HelloWorldDeploymentTopologyDefs.hpp>
+// Included for access to HelloWorldDeployment::TopologyState and HelloWorldDeployment::ConfigObjects::pingEntries.
+// These definitions are required by the autocoder, but are also used in this hand-coded topology.
+#include <Hello/HelloWorldDeployment/Top/HelloWorldDeploymentTopologyDefs.hpp>
 
 // Remove unnecessary HelloWorldDeployment:: qualifications
-using namespace HelloWorldDeployment;
 namespace HelloWorldDeployment {
 /**
  * \brief initialize and run the F´ topology
@@ -53,7 +52,8 @@ void setupTopology(const TopologyState& state);
  * Step 1, 2, 3, and 4 must occur in-order as the tasks must be stopped before being joined. These tasks must be stopped
  * and joined before any active resources may be deallocated.
  *
- * For an explanation of the required type HelloWorldDeployment::TopologyState see: HelloWorldDeploymentTopologyDefs.hpp.
+ * For an explanation of the required type HelloWorldDeployment::TopologyState see:
+ * HelloWorldDeploymentTopologyDefs.hpp.
  *
  * \param state: state object provided to setupTopology
  */
@@ -71,14 +71,17 @@ void teardownTopology(const TopologyState& state);
  * This loop is stopped via a stopRateGroups call.
  *
  */
-void startRateGroups(const Fw::TimeInterval& interval = Fw::TimeInterval(1,0));
+void startRateGroups(const Fw::TimeInterval& interval = Fw::TimeInterval(1, 0));
 
 /**
- * \brief stop the rate groups 
+ * \brief stop the rate groups
  *
  * This stops the cycle started by startRateGroups.
  */
 void stopRateGroups();
 
-} // namespace HelloWorldDeployment
+}  // namespace HelloWorldDeployment
+
+using namespace HelloWorldDeployment;
+
 #endif

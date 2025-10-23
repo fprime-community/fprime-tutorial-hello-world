@@ -4,7 +4,7 @@
 //
 // ======================================================================
 // Provides access to autocoded functions
-#include <HelloWorldDeployment/Top/HelloWorldDeploymentTopologyAc.hpp>
+#include <Hello/HelloWorldDeployment/Top/HelloWorldDeploymentTopologyAc.hpp>
 // Note: Uncomment when using Svc:TlmPacketizer
 //#include <HelloWorldDeployment/Top/HelloWorldDeploymentPacketsAc.hpp>
 
