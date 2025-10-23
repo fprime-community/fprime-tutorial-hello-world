@@ -46,7 +46,7 @@ module Hello {
     stack size Default.STACK_SIZE \
     priority 117
 
-  instance helloWorld: Components.HelloWorld base id 0x10005000 \
+  instance helloWorld: Hello.HelloWorld base id 0x10005000 \
     queue size Default.QUEUE_SIZE \
     stack size Default.STACK_SIZE \
     priority 50
