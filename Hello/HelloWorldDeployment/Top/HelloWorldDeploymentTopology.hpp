@@ -9,7 +9,6 @@
 // These definitions are required by the autocoder, but are also used in this hand-coded topology.
 #include <Hello/HelloWorldDeployment/Top/HelloWorldDeploymentTopologyDefs.hpp>
 
-// Remove unnecessary HelloWorldDeployment:: qualifications
 namespace HelloWorldDeployment {
 /**
  * \brief initialize and run the F´ topology
@@ -81,7 +80,5 @@ void startRateGroups(const Fw::TimeInterval& interval = Fw::TimeInterval(1, 0));
 void stopRateGroups();
 
 }  // namespace HelloWorldDeployment
-
-using namespace HelloWorldDeployment;
 
 #endif

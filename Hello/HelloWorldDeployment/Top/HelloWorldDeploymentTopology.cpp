@@ -12,7 +12,7 @@
 #include <Fw/Types/MallocAllocator.hpp>
 
 // Allows easy reference to objects in FPP/autocoder required namespaces
-using namespace HelloWorldDeployment;
+using namespace Hello;
 
 // Instantiate a malloc allocator for cmdSeq buffer allocation
 Fw::MallocAllocator mallocator;

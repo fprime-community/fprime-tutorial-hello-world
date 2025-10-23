@@ -23,7 +23,7 @@
 #include "Svc/Subtopologies/ComCcsds/Ports_ComBufferQueueEnumAc.hpp"
 
 // Include autocoded FPP constants
-#include "HelloWorldDeployment/Top/FppConstantsAc.hpp"
+#include "Hello/HelloWorldDeployment/Top/FppConstantsAc.hpp"
 
 /**
  * \brief required ping constants
@@ -45,10 +45,10 @@
  * ```
  */
 namespace PingEntries {
-    namespace HelloWorldDeployment_rateGroup1 {enum { WARN = 3, FATAL = 5 };}
-    namespace HelloWorldDeployment_rateGroup2 {enum { WARN = 3, FATAL = 5 };}
-    namespace HelloWorldDeployment_rateGroup3 {enum { WARN = 3, FATAL = 5 };}
-    namespace HelloWorldDeployment_cmdSeq {enum { WARN = 3, FATAL = 5 };}
+    namespace Hello_rateGroup1 {enum { WARN = 3, FATAL = 5 };}
+    namespace Hello_rateGroup2 {enum { WARN = 3, FATAL = 5 };}
+    namespace Hello_rateGroup3 {enum { WARN = 3, FATAL = 5 };}
+    namespace Hello_cmdSeq {enum { WARN = 3, FATAL = 5 };}
 }  // namespace PingEntries
 
 // Definitions are placed within a namespace named after the deployment
@@ -72,4 +72,7 @@ struct TopologyState {
 
 namespace PingEntries = ::PingEntries;
 }  // namespace HelloWorldDeployment
+
+using namespace HelloWorldDeployment;
+
 #endif
