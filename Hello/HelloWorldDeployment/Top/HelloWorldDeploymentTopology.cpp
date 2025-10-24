@@ -6,7 +6,7 @@
 // Provides access to autocoded functions
 #include <Hello/HelloWorldDeployment/Top/HelloWorldDeploymentTopologyAc.hpp>
 // Note: Uncomment when using Svc:TlmPacketizer
-//#include <HelloWorldDeployment/Top/HelloWorldDeploymentPacketsAc.hpp>
+// #include <HelloWorldDeployment/Top/HelloWorldDeploymentPacketsAc.hpp>
 
 // Necessary project-specified types
 #include <Fw/Types/MallocAllocator.hpp>
@@ -50,8 +50,8 @@ void configureTopology() {
     cmdSeq.allocateBuffer(0, mallocator, 5 * 1024);
 }
 
-// Public functions for use in main program are namespaced with deployment name HelloWorldDeployment
-namespace HelloWorldDeployment {
+// Public functions for use in main program are namespaced with deployment name Hello
+namespace Hello {
 void setupTopology(const TopologyState& state) {
     // Autocoded initialization. Function provided by autocoder.
     initComponents(state);
@@ -106,4 +106,4 @@ void teardownTopology(const TopologyState& state) {
 
     tearDownComponents(state);
 }
-};  // namespace HelloWorldDeployment
+};  // namespace Hello

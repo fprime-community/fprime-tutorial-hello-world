@@ -9,7 +9,7 @@
 // These definitions are required by the autocoder, but are also used in this hand-coded topology.
 #include <Hello/HelloWorldDeployment/Top/HelloWorldDeploymentTopologyDefs.hpp>
 
-namespace HelloWorldDeployment {
+namespace Hello {
 /**
  * \brief initialize and run the F´ topology
  *
@@ -30,7 +30,7 @@ namespace HelloWorldDeployment {
  * custom tasks often start radio communication it is convenient to start them last.
  *
  * The state argument carries command line inputs used to setup the topology. For an explanation of the required type
- * HelloWorldDeployment::TopologyState see: HelloWorldDeploymentTopologyDefs.hpp.
+ * Hello::TopologyState see: HelloWorldDeploymentTopologyDefs.hpp.
  *
  * \param state: object shuttling CLI arguments (e.g. hostname/port, or UART baudrate) needed to construct the topology
  */
@@ -51,7 +51,7 @@ void setupTopology(const TopologyState& state);
  * Step 1, 2, 3, and 4 must occur in-order as the tasks must be stopped before being joined. These tasks must be stopped
  * and joined before any active resources may be deallocated.
  *
- * For an explanation of the required type HelloWorldDeployment::TopologyState see:
+ * For an explanation of the required type Hello::TopologyState see:
  * HelloWorldDeploymentTopologyDefs.hpp.
  *
  * \param state: state object provided to setupTopology
@@ -79,6 +79,6 @@ void startRateGroups(const Fw::TimeInterval& interval = Fw::TimeInterval(1, 0));
  */
 void stopRateGroups();
 
-}  // namespace HelloWorldDeployment
+}  // namespace Hello
 
 #endif
