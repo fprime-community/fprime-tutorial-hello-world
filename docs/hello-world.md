@@ -453,7 +453,7 @@ Since this component has no custom ports nor does it require special configurati
 completed. The deployment can now be set up and built using the following commands:
 
 ```
-# In: hello-world/HelloWorldDeployment
+# In: Hello/HelloWorldDeployment
 fprime-util build 
 ```
 > [!WARNING]
