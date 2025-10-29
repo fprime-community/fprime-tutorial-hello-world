@@ -4,9 +4,9 @@
 // \brief  cpp file for HelloWorld component implementation class
 // ======================================================================
 
-#include "Components/HelloWorld/HelloWorld.hpp"
+#include "Hello/Components/HelloWorld/HelloWorld.hpp"
 
-namespace Components {
+namespace Hello {
 
 // ----------------------------------------------------------------------
 // Component construction and destruction
@@ -32,4 +32,4 @@ void HelloWorld:: SAY_HELLO_cmdHandler(FwOpcodeType opCode, U32 cmdSeq, const Fw
     this->cmdResponse_out(opCode, cmdSeq, Fw::CmdResponse::OK);
 }
 
-}  // namespace Components
+}  // namespace Hello

@@ -5,13 +5,11 @@
 // ======================================================================
 #ifndef HELLOWORLDDEPLOYMENT_HELLOWORLDDEPLOYMENTTOPOLOGY_HPP
 #define HELLOWORLDDEPLOYMENT_HELLOWORLDDEPLOYMENTTOPOLOGY_HPP
-// Included for access to HelloWorldDeployment::TopologyState and HelloWorldDeployment::ConfigObjects::pingEntries. These definitions are required by the
-// autocoder, but are also used in this hand-coded topology.
-#include <HelloWorldDeployment/Top/HelloWorldDeploymentTopologyDefs.hpp>
+// Included for access to HelloWorldDeployment::TopologyState and HelloWorldDeployment::ConfigObjects::pingEntries.
+// These definitions are required by the autocoder, but are also used in this hand-coded topology.
+#include <Hello/HelloWorldDeployment/Top/HelloWorldDeploymentTopologyDefs.hpp>
 
-// Remove unnecessary HelloWorldDeployment:: qualifications
-using namespace HelloWorldDeployment;
-namespace HelloWorldDeployment {
+namespace Hello {
 /**
  * \brief initialize and run the F´ topology
  *
@@ -32,7 +30,7 @@ namespace HelloWorldDeployment {
  * custom tasks often start radio communication it is convenient to start them last.
  *
  * The state argument carries command line inputs used to setup the topology. For an explanation of the required type
- * HelloWorldDeployment::TopologyState see: HelloWorldDeploymentTopologyDefs.hpp.
+ * Hello::TopologyState see: HelloWorldDeploymentTopologyDefs.hpp.
  *
  * \param state: object shuttling CLI arguments (e.g. hostname/port, or UART baudrate) needed to construct the topology
  */
@@ -53,7 +51,8 @@ void setupTopology(const TopologyState& state);
  * Step 1, 2, 3, and 4 must occur in-order as the tasks must be stopped before being joined. These tasks must be stopped
  * and joined before any active resources may be deallocated.
  *
- * For an explanation of the required type HelloWorldDeployment::TopologyState see: HelloWorldDeploymentTopologyDefs.hpp.
+ * For an explanation of the required type Hello::TopologyState see:
+ * HelloWorldDeploymentTopologyDefs.hpp.
  *
  * \param state: state object provided to setupTopology
  */
@@ -71,14 +70,15 @@ void teardownTopology(const TopologyState& state);
  * This loop is stopped via a stopRateGroups call.
  *
  */
-void startRateGroups(const Fw::TimeInterval& interval = Fw::TimeInterval(1,0));
+void startRateGroups(const Fw::TimeInterval& interval = Fw::TimeInterval(1, 0));
 
 /**
- * \brief stop the rate groups 
+ * \brief stop the rate groups
  *
  * This stops the cycle started by startRateGroups.
  */
 void stopRateGroups();
 
-} // namespace HelloWorldDeployment
+}  // namespace Hello
+
 #endif

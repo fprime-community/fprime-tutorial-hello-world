@@ -1,4 +1,4 @@
-module HelloWorldDeployment {
+module Hello {
 
   # ----------------------------------------------------------------------
   # Symbolic constants for port numbers

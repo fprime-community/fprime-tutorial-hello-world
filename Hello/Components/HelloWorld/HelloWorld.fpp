@@ -1,4 +1,4 @@
-module Components {
+module Hello {
     @ Hello World Tutorial Component
     active component HelloWorld {
 

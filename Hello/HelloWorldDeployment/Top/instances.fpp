@@ -1,4 +1,4 @@
-module HelloWorldDeployment {
+module Hello {
 
   # ----------------------------------------------------------------------
   # Base ID Convention
@@ -46,7 +46,7 @@ module HelloWorldDeployment {
     stack size Default.STACK_SIZE \
     priority 117
 
-  instance helloWorld: Components.HelloWorld base id 0x10005000 \
+  instance helloWorld: Hello.HelloWorld base id 0x10005000 \
     queue size Default.QUEUE_SIZE \
     stack size Default.STACK_SIZE \
     priority 50
@@ -68,6 +68,7 @@ module HelloWorldDeployment {
   instance systemResources: Svc.SystemResources base id 0x10012000
 
   instance linuxTimer: Svc.LinuxTimer base id 0x10013000
+
   instance comDriver: Drv.TcpClient base id 0x10014000
 
 }

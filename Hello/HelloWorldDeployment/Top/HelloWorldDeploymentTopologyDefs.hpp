@@ -23,7 +23,7 @@
 #include "Svc/Subtopologies/ComCcsds/Ports_ComBufferQueueEnumAc.hpp"
 
 // Include autocoded FPP constants
-#include "HelloWorldDeployment/Top/FppConstantsAc.hpp"
+#include "Hello/HelloWorldDeployment/Top/FppConstantsAc.hpp"
 
 /**
  * \brief required ping constants
@@ -45,19 +45,19 @@
  * ```
  */
 namespace PingEntries {
-    namespace HelloWorldDeployment_rateGroup1 {enum { WARN = 3, FATAL = 5 };}
-    namespace HelloWorldDeployment_rateGroup2 {enum { WARN = 3, FATAL = 5 };}
-    namespace HelloWorldDeployment_rateGroup3 {enum { WARN = 3, FATAL = 5 };}
-    namespace HelloWorldDeployment_cmdSeq {enum { WARN = 3, FATAL = 5 };}
+    namespace Hello_rateGroup1 {enum { WARN = 3, FATAL = 5 };}
+    namespace Hello_rateGroup2 {enum { WARN = 3, FATAL = 5 };}
+    namespace Hello_rateGroup3 {enum { WARN = 3, FATAL = 5 };}
+    namespace Hello_cmdSeq {enum { WARN = 3, FATAL = 5 };}
 }  // namespace PingEntries
 
 // Definitions are placed within a namespace named after the deployment
-namespace HelloWorldDeployment {
+namespace Hello {
 
 /**
  * \brief required type definition to carry state
  *
- * The topology autocoder requires an object that carries state with the name `HelloWorldDeployment::TopologyState`. Only the type
+ * The topology autocoder requires an object that carries state with the name `Hello::TopologyState`. Only the type
  * definition is required by the autocoder and the contents of this object are otherwise opaque to the autocoder. The
  * contents are entirely up to the definition of the project. This deployment uses subtopologies.
  */
@@ -71,5 +71,6 @@ struct TopologyState {
 };
 
 namespace PingEntries = ::PingEntries;
-}  // namespace HelloWorldDeployment
+}  // namespace Hello
+
 #endif
