@@ -379,7 +379,7 @@ ground control and data collection of the deployment.
 
 To create a deployment, run the following commands:
 ```bash
-# In: hello-world
+# In: hello-world/Hello
 fprime-util new --deployment
 ```
 This command will ask for some input. Respond with the following answers:
