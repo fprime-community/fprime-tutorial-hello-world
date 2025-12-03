@@ -377,9 +377,10 @@ F´ deployments represent one flight software executable. All the components we 
 The deployment created here will contain the standard command and data handling stack. This stack enables
 ground control and data collection of the deployment.
 
-To create a deployment, run the following commands:
+To create a deployment, `cd` into the `Hello` directory (this is the top-level namespace where project code should reside) and run the following:
 ```bash
 # In: hello-world
+cd Hello/
 fprime-util new --deployment
 ```
 This command will ask for some input. Respond with the following answers:
