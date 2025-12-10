@@ -78,10 +78,10 @@ to the topology.
 This tutorial will use a standard command and data handling topology. A single `HelloWorld` component instance called
 `helloWorld` will be added to the standard topology.
 
->[!NOTE] For more information on F Prime Terminology, we recommend looking through our [Documentation](https://fprime.jpl.nasa.gov/latest/docs/user-manual/overview/03-port-comp-top/) 
+>[!NOTE] For more information on F Prime Terminology, we recommend looking through our [Documentation](https://fprime.jpl.nasa.gov/latest/docs/user-manual/overview/03-port-comp-top/)
 
 ---
-## Troubleshooting 
+## Troubleshooting
 If at any point during this tutorial you encounter issues:
 
 1. **Check your current directory**: Ensure you are in the correct directory as specified in each step of the tutorial
@@ -134,11 +134,11 @@ ls
 This will show the following files:
 
 1. `Hello/`: top-level source folder for the project. This is where you will create components, deployments, and other project-specific code.
-2. `lib/`: Library folder, inside resides libraries the project will use. This is also where the `fprime` code lives, this is a git submodule that points to https://github.com/nasa/fprime. Contains core F´ components, the API for the build system, among others
-3. `settings.ini`: allows users to set various settings to control the build
+2. `lib/`: Library folder, holding libraries the project will use. This is also where the `fprime` code lives, as a git submodule that points to https://github.com/nasa/fprime. Contains core F´ components, the API for the build system, among others
+3. `settings.ini`: allows users to modify various settings that control the build
 4. `CMakeList.txt` and `CMakePresets.json`: CMake files defining the build system
-5. `fprime-venv/`: this directory is the virtual environment containing the Python tools to work with F´
-6. `README.md` where you can document work on this project. 
+5. `fprime-venv/`: this folder is the virtual environment containing the Python tools to work with F´
+6. `README.md` where you can document work on this project.
 
 #### 4. Activate the virtual environment
 Activate the virtual environment to use the F´ tool suite.
@@ -156,7 +156,7 @@ The next step is to set up and build the newly created project. This will serve 
 created components, and will build the F´ framework supplied components.
 
 ```bash
-cd hello-world
+# in hello-world/
 fprime-util generate
 fprime-util build
 ```
@@ -171,16 +171,11 @@ A new project has been created with the namespace `Hello` and has been placed in
 the current directory. It includes the initial build system setup, and F´ source code. It is still empty in that the user
 will still need to create components and deployments.
 
-For the remainder of this Hello World tutorial we should use the tools installed for our project and issue commands
-within this new project's folder:
-
-```bash
-# In: hello-world
-. fprime-venv/bin/activate
-```
+For the remainder of this tutorial we will use the tools installed for our project and issue commands
+within this new project's folder, per the `. fprime-venv/bin/activate` command given above
 
 > [!TIP]
-> Use this command if your virtual environment is not already running.
+> Use `. fprime-venv/bin/activate` any time your virtual environment is not already running.
 
 ---
 
@@ -219,40 +214,42 @@ cd Hello/Components
 Creating a new component is accomplished with the following command:
 
 ```bash
-# In: Hello/Components
+# In: hello-world/Hello/Components
 fprime-util new --component
 ```
 This command will ask for some input. You should respond with the following answers:
 
 ```
 [INFO] Cookiecutter source: using builtin
-Component name [MyComponent]: HelloWorld
-Component short description [Component for F Prime FSW framework.]: Hello World Tutorial Component
-Component namespace [Components]: Components
-Select component kind:
-1 - active
-2 - passive
-3 - queued
-Choose from 1, 2, 3 [1]: 1
-Enable Commands?:
-1 - yes
-2 - no
-Choose from 1, 2 [1]: 1
-Enable telemetry?:
-1 - yes
-2 - no
-Choose from 1, 2 [1]: 1
-Enable Events:
-1 - yes
-2 - no
-Choose from 1, 2 [1]: 1
-Enable Parameters:
-1 - yes
-2 - no
-Choose from 1, 2 [1]: 1
-[INFO] Found CMake file at 'Components/CMakeLists.txt'
-Add component Components/HelloWorld to Components/CMakeLists.txt at end of file (yes/no)? yes
-Generate implementation files (yes/no)? yes
+[1/8] Component name [MyComponent]: HelloWorld
+[2/8] Component short description [Component for F Prime FSW framework.]: Hello World Tutorial Component
+[3/8] Component namespace [Hello]: Components
+[4/8] Select component kind
+  1 - active
+  2 - passive
+  3 - queued
+  Choose from [1/2/3] (1): 1
+[5/8] Enable Commands?
+  1 - yes
+  2 - no
+  Choose from [1/2] (1): 1
+[6/8] Enable Telemetry?
+  1 - yes
+  2 - no
+  Choose from [1/2] (1): 1
+[7/8] Enable Events?
+  1 - yes
+  2 - no
+  Choose from [1/2] (1): 1
+[8/8] Enable Parameters?
+  1 - yes
+  2 - no
+  Choose from [1/2] (1): 1
+[INFO] Found CMake file at 'hello-eddie/HelloEddie/Components/CMakeLists.txt'
+Add CompEddie to hello-eddie/HelloEddie/Components/CMakeLists.txt at end of file? (yes/no) [yes]: yes
+Generate implementation files? (yes/no) [yes]: yes
+Refreshing cache and generating implementation files...
+...
 ```
 
 > [!NOTE]
@@ -263,7 +260,7 @@ This will create a new component called "HelloWorld" in the "Components" namespa
 We should navigate to the component's directory and look around:
 
 ```bash
-# In: Hello/Components
+# In: hello-world/Hello/Components
 cd HelloWorld
 ls
 ```
@@ -274,10 +271,14 @@ This will show the following files:
 3. `CMakeList.txt`: build definitions for the component.
 4. `docs` folder to place component documentation
 
-To build this component run `fprime-util build` in the current folder.
+To build this component run
+```bash
+# In: hello-world/Hello/Components/HelloWorld
+fprime-util build
+```
 
 > [!NOTE]
-> Any component in F´ can be built by navigating to the component's folder and running `fprime-util build`.
+> Any component in F´ can be built by navigating to the component's folder and running `fprime-util build`.  Build products such as libraries go under the project build directory `hello-world/build-fprime-automatic-native/`
 
 ### Editing the Component Model
 
@@ -313,7 +314,7 @@ telemetry GreetingCount: U32
 With this step completed you can generate a basic implementation with the following command:
 
 ```bash
-# In: Hello/Components/HelloWorld
+# In: hello-world/Hello/Components/HelloWorld
 fprime-util impl
 ```
 
@@ -409,7 +410,7 @@ Edit `HelloWorldDeployment/Top/topology.fpp`:
 ```
 ...
     topology HelloWorldDeployment {
-        ... 
+        ...
         # ----------------------------------------------------------------------
         # Instances used in the topology
         # ----------------------------------------------------------------------
@@ -425,7 +426,7 @@ Edit `HelloWorldDeployment/Top/topology.fpp`:
 `helloWorld` is the name of the component instance. Like variable names, component instance names should be descriptive
 and are typically named in camel or snake case.
 > [!TIP]
-> Reference the [F Prime Style Guidelines](https://github.com/nasa/fprime/wiki/F%C2%B4-Style-Guidelines) for more 
+> Reference the [F Prime Style Guidelines](https://github.com/nasa/fprime/wiki/F%C2%B4-Style-Guidelines) for more
 
 Next, an instance initializer must be added to topology instances defined in `HelloWorldDeployment/Top/instances.fpp` file.
 Since the `HelloWorld` component is an `active` component it should be added to the active components section and should
@@ -454,8 +455,8 @@ Since this component has no custom ports nor does it require special configurati
 completed. The deployment can now be set up and built using the following commands:
 
 ```
-# In: Hello/HelloWorldDeployment
-fprime-util build 
+# In: hello-world/Hello/HelloWorldDeployment
+fprime-util build
 ```
 > [!WARNING]
 > Resolve any errors that occur before continuing to the running section.
@@ -468,7 +469,7 @@ command and verifying that the `Hello` event and `GreetingCount` channel appears
 
 To start the deployment with default settings, run:
 ```bash
-# In: Hello/HelloWorldDeployment
+# In: hello-world/Hello/HelloWorldDeployment
 fprime-gds
 ```
 
