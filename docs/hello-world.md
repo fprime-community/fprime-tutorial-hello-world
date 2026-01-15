@@ -301,6 +301,7 @@ directory and issue the following command:
 ```bash
 # In: hello-proj
 cd MyNamespace/Components
+ls
 fprime-util new --component
 ```
 
@@ -312,7 +313,7 @@ defaults:
 [INFO] Cookiecutter source: using builtin
   [1/8] Component name (MyComponent): MyComponent
   [2/8] Component short description (Component for F Prime FSW framework.): Hello World Tutorial Component
-  [3/8] Component namespace (MyNamespace): Components
+  [3/8] Component namespace (MyNamespace):
   [4/8] Select component kind
     1 - active
     2 - passive
@@ -335,8 +336,8 @@ defaults:
     2 - no
     Choose from [1/2] (1):
 [INFO] Found CMake file at 'hello-proj/MyNamespace/Components/CMakeLists.txt'
-Add MyComponent to hello-proj/MyNamespace/Components/CMakeLists.txt at end of file? (yes/no) [yes]:
-Generate implementation files? (yes/no) [yes]:
+Add MyComponent to hello-proj/MyNamespace/Components/CMakeLists.txt at end of file? (yes/no) [yes]: 
+Generate implementation files? (yes/no) [yes]: 
 Refreshing cache and generating implementation files...
 [0/1] Re-running CMake...
 ...
@@ -456,10 +457,12 @@ F´ behavior is implemented with two kinds of handlers:
 **`MyComponent.cpp`: Define Command Handler**
 
 The generated template `MyComponent.cpp` file has a mostly-empty
-`SAY_HI_cmdHandler` function. Ensure its contents look like:
+private `SAY_HI_cmdHandler` function. Ensure its contents look like:
 
 ```c++
-void MyComponent ::SAY_HI_cmdHandler(FwOpcodeType opCode, U32 cmdSeq, const Fw::CmdStringArg& greeting) {
+void MyComponent ::SAY_HI_cmdHandler(FwOpcodeType opCode,
+                                     U32 cmdSeq,
+                                     const Fw::CmdStringArg& greeting) {
     // Copy the command string input into an event string for the MyEventSayHi event
     Fw::LogStringArg eventGreeting(greeting.toChar());
     // Emit the MyEventSayHi event with the copied string
@@ -477,7 +480,7 @@ void MyComponent ::SAY_HI_cmdHandler(FwOpcodeType opCode, U32 cmdSeq, const Fw::
 
 Add the m_greetingCount member variable to the class defined in
 `MyComponent.hpp` and the constructor defined in `MyComponent.cpp`.
-This is done by adding the following code inside
+This is done by adding the following two lines inside
 the `class` definition in `MyComponent.hpp`:
 
 ```c++
@@ -529,17 +532,22 @@ answers shown. For all further questions, select the default response
 by hitting `<ENTER>`
 
 ```bash
+cd ../..
 # In: hello-proj/MyNamespace/
 fprime-util new --deployment
   [1/3] Deployment name (MyDeployment): FirstDeployment
   [2/3] Deployment namespace (MyNamespace):
 ...
 [INFO] New deployment successfully created: hello-proj/MyNamespace/FirstDeployment
-
 ```
 
 At this point, the `FirstDeployment` has been created, but our
 `MyComponent` component has not been added to the deployment.
+
+```
+cd FirstDeployment
+ls
+```
 
 
 ### 3b. Add an Instance of MyComponent to FirstDeployment
@@ -606,7 +614,7 @@ the FPP file.
   # Active component instances
   # ----------------------------------------------------------------------
 
-  instance myCmpntInstance: Components.MyComponent base id 0x10005000 \
+  instance myCmpntInstance: MyComponent base id 0x10005000 \
     queue size Default.QUEUE_SIZE \
     stack size Default.STACK_SIZE \
     priority 50
@@ -615,7 +623,7 @@ the FPP file.
 > [!NOTE]
 > The user must ensure that the base id (0x10005000) does not conflict
 > with any other base ids in the topology. 0x10005000 should be safe
-> for deployments created with `fprime-util new --deployment`.
+> for deployments created with "fprime-util new --deployment".
 
 > [!NOTE]
 > Make sure to use the same instance name (i.e. myCmpntInstance) in
@@ -629,7 +637,6 @@ configuration, our addition to the topology is completed. The
 deployment can now be set up and built using the following commands:
 
 ```
-cd ..
 # In: hello-proj/MyNamespace/FirstDeployment
 fprime-util build
 ...
@@ -656,7 +663,7 @@ fprime-gds
 ```
 
 The F´ GDS control page should open up in your web browser. If it does
-not open up, navigate to `[http://127.0.0.1:5000](http://127.0.0.1:5000)`.
+not open up, navigate to [http://127.0.0.1:5000](http://127.0.0.1:5000).
 
 Once the F´ GDS page is visible, look for a green circle icon in the
 upper right corner. This shows that the flight software deployment has
@@ -678,8 +685,8 @@ Resolve all errors and ensure the command has sent.
 > for each component instance.
 
 Now that the command has sent, navigate to the "Events" tab. Ensure
-that the event list contains the MyEventSayHi event with the text
-entered when sending the command.
+that the event list contains the MyNamespace.myCmpntInstance.MyEventSayHi
+event with the text entered when sending the command.
 
 Lastly, navigate to the "Channels" tab. Look for
 "MyNamespace.myCmpntInstance.GreetingCount" in the channel
@@ -717,10 +724,12 @@ controlled it through the F´ GDS!
 
 ## 6. More to explore
 
-If you feel inclinded, consider defining and implementing additional requirements, and exploring how multiple deployments can mix and match components.
+If you feel inclinded, consider defining and implementing additional
+requirements, and exploring how multiple deployments can mix and match
+components.
 
 For example,
-- Add a new instance of `MyComponent` to `FirstDeployment`, named `myOtherCmpntInstance`
+- Add an additional instance of `MyComponent` to `FirstDeployment`, named `myOtherCmpntInstance`
   - Test with `fprime-gds` by repeatedly issuing both SAY_HI commands
   - Look for their separate `GreetingCount` telemetry channels incrementing only with their respective instances
 
