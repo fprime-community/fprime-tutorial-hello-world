@@ -150,8 +150,8 @@ F´ project and installing the Python dependencies within the project's
 virtual environment.
 
 Install the fprime-bootstrap tool with:
-```
-pip install fprime-bootstrap
+```bash
+% pip install fprime-bootstrap
 ```
 
 > [!NOTE]
@@ -165,8 +165,8 @@ will clone the F´ repository and install the full tool suite of the
 specified version for working with the selected version of F´. To
 create this new project, run:
 
-```
-fprime-bootstrap project
+```bash
+% fprime-bootstrap project
 ```
 
 This command will ask for project information and suggest defaults.
@@ -189,8 +189,8 @@ containing the tools to work with F´.
 We should navigate to the project's directory and look around:
 
 ```bash
-cd hello-proj
-ls
+% cd hello-proj
+% ls
 ```
 
 This will show the following files:
@@ -208,7 +208,7 @@ Activate the virtual environment to use the F´ tool suite.
 
 ```bash
 # in hello-proj/
-source fprime-venv/bin/activate
+% source fprime-venv/bin/activate
 ```
 
 > [!TIP]
@@ -223,8 +223,8 @@ libraries, and linked executables.
 
 ```bash
 # in hello-proj/
-fprime-util generate
-ls
+% fprime-util generate
+% ls
 ```
 
 You should see one new directory, `build-fprime-automatic-native`
@@ -240,7 +240,7 @@ Now, build the newly created project. This will build the F´ framework supplied
 
 ```bash
 # in hello-proj/
-fprime-util build
+% fprime-util build
 ```
 
 
@@ -296,20 +296,20 @@ These are a simple set of requirements for this component.
 
 The next step is to create the new component. The project contains a
 `Components/` directory to create components in. Change to that
-directory and issue the following command:
+directory and issue the following commands:
 
 ```bash
-# In: hello-proj
-cd MyNamespace/Components
-ls
-fprime-util new --component
+# From: hello-proj
+% cd MyNamespace/Components
+% ls
+% fprime-util new --component
 ```
 
 This command will ask for some input. You should respond with the
 following answers (you can just hit `<ENTER>` to accept the offered
 defaults:
 
-```
+```bash
 [INFO] Cookiecutter source: using builtin
   [1/8] Component name (MyComponent): MyComponent
   [2/8] Component short description (Component for F Prime FSW framework.): Hello World Tutorial Component
@@ -336,8 +336,8 @@ defaults:
     2 - no
     Choose from [1/2] (1):
 [INFO] Found CMake file at 'hello-proj/MyNamespace/Components/CMakeLists.txt'
-Add MyComponent to hello-proj/MyNamespace/Components/CMakeLists.txt at end of file? (yes/no) [yes]: 
-Generate implementation files? (yes/no) [yes]: 
+Add MyComponent to hello-proj/MyNamespace/Components/CMakeLists.txt at end of file? (yes/no) [yes]:
+Generate implementation files? (yes/no) [yes]:
 Refreshing cache and generating implementation files...
 [0/1] Re-running CMake...
 ...
@@ -349,9 +349,9 @@ channels, and parameters.
 We should navigate to the component's directory and look around:
 
 ```bash
-# In: hello-proj/MyNamespace/Components
-cd MyComponent
-ls
+# From: hello-proj/MyNamespace/Components
+% cd MyComponent
+% ls
 ```
 
 This will show the following files, which you will edit shortly:
@@ -362,9 +362,10 @@ This will show the following files, which you will edit shortly:
 
 
 ### 2c. Build this component
+This shows that the empty code compiles and links
 ```bash
-# In: hello-proj/MyNamespace/Components/MyComponent
-fprime-util build
+# From: hello-proj/MyNamespace/Components/MyComponent
+% fprime-util build
 ...
 Linking CXX static library lib/Darwin/libMyNamespace_Components_MyComponent.a
 ```
@@ -423,8 +424,8 @@ telemetry GreetingCount: U32
 Generate a template implementation with the following command:
 
 ```bash
-# In: hello-proj/MyNamespace/Components/MyComponent
-fprime-util impl
+# From: hello-proj/MyNamespace/Components/MyComponent
+% fprime-util impl
 [0/1] Re-running CMake...
 ...
 Formatting [1/2] hello-proj/MyNamespace/Components/MyComponent/MyComponent.template.cpp
@@ -442,8 +443,8 @@ we will instead overwrite the existing implementations as we have not
 edited them yet. To do this:
 
 ```bash
-mv MyComponent.template.cpp MyComponent.cpp
-mv MyComponent.template.hpp MyComponent.hpp
+% mv MyComponent.template.cpp MyComponent.cpp
+% mv MyComponent.template.hpp MyComponent.hpp
 ```
 
 
@@ -496,8 +497,8 @@ before your edits. Remember to always save before you build; unsaved
 changes will not be included in the build.
 
 ```bash
-# In: hello-proj/MyNamespace/Components/MyComponent
-fprime-util build
+# From: hello-proj/MyNamespace/Components/MyComponent
+% fprime-util build
 ...
 Linking CXX static library lib/Darwin/libMyNamespace_Components_MyComponent.a
 ```
@@ -532,9 +533,9 @@ answers shown. For all further questions, select the default response
 by hitting `<ENTER>`
 
 ```bash
-cd ../..
-# In: hello-proj/MyNamespace/
-fprime-util new --deployment
+% cd ../..
+# From: hello-proj/MyNamespace/
+% fprime-util new --deployment
   [1/3] Deployment name (MyDeployment): FirstDeployment
   [2/3] Deployment namespace (MyNamespace):
 ...
@@ -544,9 +545,23 @@ fprime-util new --deployment
 At this point, the `FirstDeployment` has been created, but our
 `MyComponent` component has not been added to the deployment.
 
-```
-cd FirstDeployment
-ls
+```bash
+% cd FirstDeployment
+% ls -R1
+CMakeLists.txt
+fprime-gds.yml
+Main.cpp
+README.md
+Top/
+
+./Top:
+CMakeLists.txt
+FirstDeploymentPackets.fppi
+FirstDeploymentTopology.cpp
+FirstDeploymentTopology.hpp
+FirstDeploymentTopologyDefs.hpp
+instances.fpp
+topology.fpp
 ```
 
 
@@ -569,8 +584,7 @@ be updated by adding both:
 **Add instance definition to the model**
 
 Edit `hello-proj/MyNamespace/FirstDeployment/Top/topology.fpp` to add
-`instance myCmpntInstance` as shown. This is a one-line addition to
-the FPP file.
+`instance myCmpntInstance` as shown.
 
 ```
 ...
@@ -586,6 +600,7 @@ the FPP file.
 ```
 
 > [!WARNING]
+> This is only a one-line addition to the FPP file.<br>
 > `...` are placeholders for other component names - do not remove or
 >  modify any other instances from the list.
 
@@ -606,8 +621,7 @@ be added to the active components section and should define a priority
 and queue depth options.
 
 Edit `hello-proj/MyNamespace/FirstDeployment/Top/instances.fpp` to add
-`instance myCmpntInstance` as shown. This is a four-line addition to
-the FPP file.
+`instance myCmpntInstance` as shown.
 
 ```
   # ----------------------------------------------------------------------
@@ -621,6 +635,7 @@ the FPP file.
 ```
 
 > [!NOTE]
+> This is a four-line addition to the FPP file.<br>
 > The user must ensure that the base id (0x10005000) does not conflict
 > with any other base ids in the topology. 0x10005000 should be safe
 > for deployments created with "fprime-util new --deployment".
@@ -637,8 +652,8 @@ configuration, our addition to the topology is completed. The
 deployment can now be set up and built using the following commands:
 
 ```
-# In: hello-proj/MyNamespace/FirstDeployment
-fprime-util build
+# From: hello-proj/MyNamespace/FirstDeployment
+% fprime-util build
 ...
 Linking CXX static library lib...n/libMyNamespace_FirstDeployment_Top.a
 ```
@@ -658,8 +673,8 @@ SAY_HI command and verifying that the `MyEventSayHi` event and
 
 To start the deployment with default settings, run:
 ```bash
-# In: hello-proj/MyNamespace/FirstDeployment
-fprime-gds
+# From: hello-proj/MyNamespace/FirstDeployment
+% fprime-gds
 ```
 
 The F´ GDS control page should open up in your web browser. If it does
@@ -701,7 +716,7 @@ application and deactivate the virtual environment:
 
 ```bash
 CTRL-C
-deactivate
+% deactivate
 ```
 
 
@@ -716,6 +731,26 @@ Congratulations, you have now set up a project, component, and
 deployment in F´, and run the Flight Software application as well as
 controlled it through the F´ GDS!
 
+In order for your code to conform to the FPrime coding practices
+(whitespace, etc), run the utility to format them.
+```bash
+# From: hello-proj/
+% source fprime-venv/bin/activate
+% fprime-util format  -f MyNamespace/Components/MyComponent/*pp
+% fprime-util format  -f MyNamespace/FirstDeployment/Top/*fpp
+```
+
+And to be sure no errors crept in, purge the build directory (accept offered defaults) and build the whole project again from scratch, and test it again.
+```bash
+# From: hello-proj/
+% fprime-util  purge
+% fprime-util  generate
+% fprime-util  build
+
+% fprime-gds
+CTRL-C
+% deactivate
+```
 
 
 ---
@@ -724,16 +759,18 @@ controlled it through the F´ GDS!
 
 ## 6. More to explore
 
-If you feel inclinded, consider defining and implementing additional
+If you feel inclined, consider defining and implementing additional
 requirements, and exploring how multiple deployments can mix and match
 components.
 
 For example,
-- Add an additional instance of `MyComponent` to `FirstDeployment`, named `myOtherCmpntInstance`
+- Add an additional instance of `MyComponent` to `FirstDeployment`
+  - Named `myOtherCmpntInstance`
   - Test with `fprime-gds` by repeatedly issuing both SAY_HI commands
   - Look for their separate `GreetingCount` telemetry channels incrementing only with their respective instances
 
-- Add a new command `INTRODUCE_ME` within `MyComponent`, that creates a new event `MyEventIntro` with string "Nice to meet you, %s.\n" but does not increment m_greetingCount.
+- Add a new command `INTRODUCE_ME` within `MyComponent`
+  - To create a new event `MyEventIntro` with string "Nice to meet you, %s.\n" but does not increment m_greetingCount.
   - Remember to rebuild both `MyComponent` and `FirstDeployment`
   - Test with `fprime-gds` by repeatedly issuing both SAY_HI and INTRODUCE_ME
   - Look for their events each time
