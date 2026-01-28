@@ -757,29 +757,42 @@ CTRL-C
 
 
 
-## 6. More to explore
+## 6. More to Explore
 
 If you feel inclined, consider defining and implementing additional
 requirements, and exploring how multiple deployments can mix and match
 components.
 
-For example,
-- Add an additional instance of `MyComponent` to `FirstDeployment`
-  - Named `myOtherCmpntInstance`
-  - Test with `fprime-gds` by repeatedly issuing both SAY_HI commands
-  - Look for their separate `GreetingCount` telemetry channels incrementing only with their respective instances
+For example, you could:
 
-- Add a new command `INTRODUCE_ME` within `MyComponent`
-  - To create a new event `MyEventIntro` with string "Nice to meet you, %s.\n" but does not increment m_greetingCount.
-  - Remember to rebuild both `MyComponent` and `FirstDeployment`
-  - Test with `fprime-gds` by repeatedly issuing both SAY_HI and INTRODUCE_ME
-  - Look for their events each time
-  - See that the `GreetingCount` telemetry channel only increments on SAY_HI and not INTRODUCE_ME.
+### 6a. Add an additional instance of `MyComponent` to `FirstDeployment`
+- Named `myOtherCmpntInstance`
+- Test with `fprime-gds` by repeatedly issuing both SAY_HI commands
+- Look for separate Events from each instance
+- Look for separate `GreetingCount` telemetry channels incrementing only with their respective commands
+- **HINTS**
+  - Edit `instances.fpp` and `topology.fpp`<br>
+  - Re-build just FirstDeployment
 
-- Add a new component `YourComponent` to `FirstDeployment`
-  - With command SAY_HOLA that creates a new event `HolaEvent`
-  - Test with `fprime-gds` by repeatedly each of SAY_HI, INTRODUCE_ME, and SAY_HOLA
 
-- Add a new deployment `SecondDeployment` with `YourComponent` but not `MyComponent`
-  - Test with `fprime-gds` noticing that SAY_HOLA still works, but
+### 6b. Add a new command `INTRODUCE_ME` within `MyComponent`
+- To create a new event `MyEventIntro` with string "Nice to meet you, {}." but does not increment m_greetingCount.
+- Remember to rebuild both `MyComponent` and `FirstDeployment`
+- Test with `fprime-gds` by repeatedly issuing both SAY_HI and INTRODUCE_ME
+- Look for their events each time
+- See that the `GreetingCount` telemetry channel only increments on SAY_HI and not INTRODUCE_ME.
+- **HINTS**
+  - Edit `MyComponent.fpp` and run `fprime-impl`
+  - Then copy code from the template implementation files to your existing `MyComponent.hpp` and `MyComponent.cpp` and flesh out the cpp code.<br>
+  - Re-build the entire project from hello-proj/
+
+
+### 6c. Add a new component `YourComponent` to `FirstDeployment`
+- With command SAY_HOLA that creates a new event `HolaEvent`
+- Test with `fprime-gds` by repeatedly each of SAY_HI, INTRODUCE_ME, and SAY_HOLA
+
+
+### 6d. Add a new deployment `SecondDeployment`
+- Include `YourComponent` but not `MyComponent`
+- Test with `fprime-gds` noticing that SAY_HOLA still works, but
   neither SAY_HI nor INTRODUCE_ME is listed as a command

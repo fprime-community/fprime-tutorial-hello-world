@@ -11,5 +11,5 @@
     <li><a href="/fprime-tutorial-hello-world/#3-integrating-into-a-deployment">Integrating Into a Deployment</a></li>
     <li><a href="/fprime-tutorial-hello-world/#4-testing-with-fprime-gds"></a>Testing With fprime-gds</li>
     <li><a href="/fprime-tutorial-hello-world/#5-conclusion"></a>Conclusion</li>
-    <li><a href="/fprime-tutorial-hello-world/#6-more-to-explore"></a>More to explore</li>
+    <li><a href="/fprime-tutorial-hello-world/#6-more-to-explore"></a>More to Explore</li>
   </ol>
