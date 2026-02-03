@@ -41,8 +41,8 @@ An F´ component encapsulates a unit of system behavior. Components
 define commands, events, telemetry channels, and parameters, and use
 ports to communicate with other components.
 
-This tutorial will create a new `MyComponent` component that defines a
-`SAY_HI` command, `MyEventSayHi` event, and `GreetingCount` telemetry
+This tutorial will create a new `HiComponent` component that defines a
+`SAY_HI` command, `SayHiEvent` event, and `GreetingCount` telemetry
 channel. The component only uses built-in ports. It does not use
 custom ports nor parameters.
 
@@ -60,7 +60,7 @@ implementation.
 
 This tutorial defines one command `SAY_HI` with a single argument
 `greeting`. This command will be sent via the ground system and will
-echo the greeting back via the `MyEventSayHi` event.
+echo the greeting back via the `SayHiEvent` event.
 
 #### Event
 
@@ -68,7 +68,7 @@ Events represent actions that a component has performed. Events are
 akin to software log messages. Events are received and displayed by
 the ground system.
 
-This tutorial defines one event `MyEventSayHi` emitted in response to
+This tutorial defines one event `SayHiEvent` emitted in response to
 the `SAY_HI` command and containing the same greeting that the command
 had.
 
@@ -88,8 +88,8 @@ software. Multiple instances of a component may be added to the
 topology.
 
 This tutorial will use a standard command and data handling
-topology. A single `MyComponent` component instance called
-`myCmpntInstance` will be added to the standard topology.
+topology. A single `HiComponent` component instance called
+`hiCmpntInstance` will be added to the standard topology.
 
 >[!NOTE]
 > For more information on F Prime Terminology, we recommend
@@ -126,8 +126,10 @@ If at any point during this tutorial you encounter issues:
 - **Check build errors**: If you encounter build errors, ensure all
   previous steps were completed successfully
 
-- **Refer to the utility help text**: For example, run<br>
-  `fprime-util generate --help` or `fprime-util build --help`
+- **Refer to the utility help text**: For example, run any of
+  - `fprime-util  --help`
+  - `fprime-util  generate  --help`
+  - `fprime-util  build  --help`
 
 
 
@@ -174,7 +176,7 @@ We will override the defaults with the following:
 
 ```
 Project repository name [my-fprime-project]: hello-proj
-Project top-level namespace [HelloProj]: MyNamespace
+Project top-level namespace [HelloProj]: HiNamespace
 ```
 
 
@@ -197,7 +199,7 @@ This will show the following files:
 - `CMakeList.txt` and `CMakePresets.json`: CMake files defining the build system
 - `fprime-venv/`: this folder is the virtual environment containing the Python tools to work with F´
 - `lib/`: Library folder, holding libraries the project will use. This is also where the `fprime` code lives, as a git submodule that points to https://github.com/nasa/fprime. Contains core F´ components, the API for the build system, among others
-- `MyNamespace/`: top-level source folder for the project. This is where you will create components, deployments, and other project-specific code.
+- `HiNamespace/`: top-level source folder for the project. This is where you will create components, deployments, and other project-specific code.
 - `README.md` where you can document work on this project.
 - `requirements.txt`: List of Python packages needed for this project
 - `settings.ini`: allows users to modify various settings that control the build
@@ -286,8 +288,8 @@ behavior. The component will define three items to implement greeting
 behaviour:
 
 - A [command](#command) called `SAY_HI` that will command the component to send a greeting
-- An [event](#event) called `MyEventSayHi` that is the greeting sent in response to the `SAY_HI` command
-- A [telemetry channel](#telemetry-channel) called `GreetingCount` that will count each `MyEventSayHi` event sent
+- An [event](#event) called `SayHiEvent` that is the greeting sent in response to the `SAY_HI` command
+- A [telemetry channel](#telemetry-channel) called `GreetingCount` that will count each `SayHiEvent` event sent
 
 These are a simple set of requirements for this component.
 
@@ -300,7 +302,7 @@ directory and issue the following commands:
 
 ```bash
 # From: hello-proj
-% cd MyNamespace/Components
+% cd HiNamespace/Components
 % ls
 % fprime-util new --component
 ```
@@ -311,9 +313,9 @@ defaults:
 
 ```bash
 [INFO] Cookiecutter source: using builtin
-  [1/8] Component name (MyComponent): MyComponent
+  [1/8] Component name (MyComponent): HiComponent
   [2/8] Component short description (Component for F Prime FSW framework.): Hello World Tutorial Component
-  [3/8] Component namespace (MyNamespace):
+  [3/8] Component namespace (HiNamespace):
   [4/8] Select component kind
     1 - active
     2 - passive
@@ -335,8 +337,8 @@ defaults:
     1 - yes
     2 - no
     Choose from [1/2] (1):
-[INFO] Found CMake file at 'hello-proj/MyNamespace/Components/CMakeLists.txt'
-Add MyComponent to hello-proj/MyNamespace/Components/CMakeLists.txt at end of file? (yes/no) [yes]:
+[INFO] Found CMake file at 'hello-proj/HiNamespace/Components/CMakeLists.txt'
+Add HiComponent to hello-proj/HiNamespace/Components/CMakeLists.txt at end of file? (yes/no) [yes]:
 Generate implementation files? (yes/no) [yes]:
 Refreshing cache and generating implementation files...
 [0/1] Re-running CMake...
@@ -349,25 +351,25 @@ channels, and parameters.
 We should navigate to the component's directory and look around:
 
 ```bash
-# From: hello-proj/MyNamespace/Components
-% cd MyComponent
+# From: hello-proj/HiNamespace/Components
+% cd HiComponent
 % ls
 ```
 
 This will show the following files, which you will edit shortly:
 - `CMakeList.txt`: build definitions for the component.
 - `docs` folder to place component documentation
-- `MyComponent.fpp`: design model for the component
-- `MyComponent.cpp` and `MyComponent.hpp`: C++ implementation files for the component.
+- `HiComponent.fpp`: design model for the component
+- `HiComponent.cpp` and `HiComponent.hpp`: C++ implementation files for the component.
 
 
 ### 2c. Build this component
 This shows that the empty code compiles and links
 ```bash
-# From: hello-proj/MyNamespace/Components/MyComponent
+# From: hello-proj/HiNamespace/Components/HiComponent
 % fprime-util build
 ...
-Linking CXX static library lib/Darwin/libMyNamespace_Components_MyComponent.a
+Linking CXX static library lib/Darwin/libHiNamespace_Components_HiComponent.a
 ```
 
 > [!NOTE]
@@ -384,13 +386,13 @@ of the F´ system and with the ground system F´ communicates with.
 
 Recall that in defining the requirements above, we specified
 - Command `SAY_HI`
-- Event `MyEventSayHi`
+- Event `SayHiEvent`
 - Telemetry channel `GreetingCount`
 
 
 **Edit the Model**
 
-In the file `MyComponent.fpp` replace the line:
+In the file `HiComponent.fpp` replace the line:
 
 ```
 async command TODO opcode 0
@@ -401,11 +403,11 @@ with the following:
 ```
 @ Command to issue greeting with maximum length of 20 characters
 async command SAY_HI(
-    greeting: string size 20 @< Greeting to repeat in the MyEventSayHi event
+    greeting: string size 20 @< Greeting to repeat in the SayHiEvent event
 )
 
 @ Greeting event with maximum greeting length of 20 characters
-event MyEventSayHi(
+event SayHiEvent(
     greeting: string size 20 @< Greeting supplied from the SAY_HI command
 ) severity activity high format "I say: {}"
 
@@ -424,18 +426,18 @@ telemetry GreetingCount: U32
 Generate a template implementation with the following command:
 
 ```bash
-# From: hello-proj/MyNamespace/Components/MyComponent
+# From: hello-proj/HiNamespace/Components/HiComponent
 % fprime-util impl
 [0/1] Re-running CMake...
 ...
-Formatting [1/2] hello-proj/MyNamespace/Components/MyComponent/MyComponent.template.cpp
-Formatting [2/2] hello-proj/MyNamespace/Components/MyComponent/MyComponent.template.hpp
+Formatting [1/2] hello-proj/HiNamespace/Components/HiComponent/HiComponent.template.cpp
+Formatting [2/2] hello-proj/HiNamespace/Components/HiComponent/HiComponent.template.hpp
 ```
 
 That created the following files which contain empty functions based
 on what we have edited into the FPP file above:
-- `MyComponent.template.cpp`
-- `MyComponent.template.hpp`
+- `HiComponent.template.cpp`
+- `HiComponent.template.hpp`
 
 
 While normally one would merge new templates with the existing code,
@@ -443,8 +445,8 @@ we will instead overwrite the existing implementations as we have not
 edited them yet. To do this:
 
 ```bash
-% mv MyComponent.template.cpp MyComponent.cpp
-% mv MyComponent.template.hpp MyComponent.hpp
+% mv HiComponent.template.cpp HiComponent.cpp
+% mv HiComponent.template.hpp HiComponent.hpp
 ```
 
 
@@ -455,19 +457,19 @@ F´ behavior is implemented with two kinds of handlers:
 - Port handler functions (as described in the next tutorial,
   [`LED Blinker`](https://github.com/fprime-community/fprime-workshop-led-blinker)).
 
-**`MyComponent.cpp`: Define Command Handler**
+**`HiComponent.cpp`: Define Command Handler**
 
-The generated template `MyComponent.cpp` file has a mostly-empty
+The generated template `HiComponent.cpp` file has a mostly-empty
 private `SAY_HI_cmdHandler` function. Ensure its contents look like:
 
 ```c++
-void MyComponent ::SAY_HI_cmdHandler(FwOpcodeType opCode,
+void HiComponent ::SAY_HI_cmdHandler(FwOpcodeType opCode,
                                      U32 cmdSeq,
                                      const Fw::CmdStringArg& greeting) {
-    // Copy the command string input into an event string for the MyEventSayHi event
+    // Copy the command string input into an event string for the SayHiEvent event
     Fw::LogStringArg eventGreeting(greeting.toChar());
-    // Emit the MyEventSayHi event with the copied string
-    this->log_ACTIVITY_HI_MyEventSayHi(eventGreeting);
+    // Emit the SayHiEvent event with the copied string
+    this->log_ACTIVITY_HI_SayHiEvent(eventGreeting);
 
     this->tlmWrite_GreetingCount(++this->m_greetingCount);
 
@@ -477,12 +479,12 @@ void MyComponent ::SAY_HI_cmdHandler(FwOpcodeType opCode,
 ```
 
 
-**`MyComponent.hpp`: Declare Counting Variable**
+**`HiComponent.hpp`: Declare Counting Variable**
 
 Add the m_greetingCount member variable to the class defined in
-`MyComponent.hpp` and the constructor defined in `MyComponent.cpp`.
+`HiComponent.hpp` and the constructor defined in `HiComponent.cpp`.
 This is done by adding the following two lines inside
-the `class` definition in `MyComponent.hpp`:
+the `class` definition in `HiComponent.hpp`:
 
 ```c++
 private:
@@ -497,10 +499,10 @@ before your edits. Remember to always save before you build; unsaved
 changes will not be included in the build.
 
 ```bash
-# From: hello-proj/MyNamespace/Components/MyComponent
+# From: hello-proj/HiNamespace/Components/HiComponent
 % fprime-util build
 ...
-Linking CXX static library lib/Darwin/libMyNamespace_Components_MyComponent.a
+Linking CXX static library lib/Darwin/libHiNamespace_Components_HiComponent.a
 ```
 
 Resolve any errors that occur before proceeding to the next section.
@@ -516,7 +518,7 @@ Resolve any errors that occur before proceeding to the next section.
 This section will walk new users through creating a new F´
 [deployment](#deployment). This deployment will build a
 [topology](#topology) containing the standard F´ stack of components
-and a single `MyComponent` component instance.
+and a single `HiComponent` component instance.
 
 
 ### 3a. Create A New Deployment
@@ -526,7 +528,7 @@ components we develop for F´ run within a deployment. The deployment
 created here will contain the standard command and data handling
 stack. This stack enables ground control and data collection.
 
-To create a deployment, `cd` into the `MyNamespace` directory (this is
+To create a deployment, `cd` into the `HiNamespace` directory (this is
 the top-level namespace where project code should reside) and run the
 following command. It will ask for some input. Respond with the
 answers shown. For all further questions, select the default response
@@ -534,16 +536,16 @@ by hitting `<ENTER>`
 
 ```bash
 % cd ../..
-# From: hello-proj/MyNamespace/
+# From: hello-proj/HiNamespace/
 % fprime-util new --deployment
   [1/3] Deployment name (MyDeployment): FirstDeployment
-  [2/3] Deployment namespace (MyNamespace):
+  [2/3] Deployment namespace (HiNamespace):
 ...
-[INFO] New deployment successfully created: hello-proj/MyNamespace/FirstDeployment
+[INFO] New deployment successfully created: hello-proj/HiNamespace/FirstDeployment
 ```
 
 At this point, the `FirstDeployment` has been created, but our
-`MyComponent` component has not been added to the deployment.
+`HiComponent` component has not been added to the deployment.
 
 ```bash
 % cd FirstDeployment
@@ -565,11 +567,11 @@ topology.fpp
 ```
 
 
-### 3b. Add an Instance of MyComponent to FirstDeployment
+### 3b. Add an Instance of HiComponent to FirstDeployment
 
 Topologies instantiate all the components in a running system and link
 them together. For some port types, like the commanding, event, and
-telemetry ports used by `MyComponent`, the connections are made
+telemetry ports used by `HiComponent`, the connections are made
 automatically. In addition, the topology specifies how to construct
 the component instance. This is also done automatically unless the
 component has specific configuration.
@@ -583,8 +585,8 @@ be updated by adding both:
 
 **Add instance definition to the model**
 
-Edit `hello-proj/MyNamespace/FirstDeployment/Top/topology.fpp` to add
-`instance myCmpntInstance` as shown.
+Edit `hello-proj/HiNamespace/FirstDeployment/Top/topology.fpp` to add
+`instance hiCmpntInstance` as shown.
 
 ```
 ...
@@ -596,7 +598,7 @@ Edit `hello-proj/MyNamespace/FirstDeployment/Top/topology.fpp` to add
 
     instance ...
     instance ...
-    instance myCmpntInstance
+    instance hiCmpntInstance
 ```
 
 > [!WARNING]
@@ -604,31 +606,31 @@ Edit `hello-proj/MyNamespace/FirstDeployment/Top/topology.fpp` to add
 > `...` are placeholders for other component names - do not remove or
 >  modify any other instances from the list.
 
-`myCmpntInstance` is the name of the component instance. Like variable
+`hiCmpntInstance` is the name of the component instance. Like variable
 names, component instance names should be descriptive and are
 typically named in camel or snake case.
 
 > [!TIP]
-> Reference the [F Prime Style
-> Guidelines](https://github.com/nasa/fprime/wiki/F%C2%B4-Style-Guidelines)
+> Reference the [F Prime Style Guidelines]
+> (https://github.com/nasa/fprime/wiki/F%C2%B4-Style-Guidelines)
 > for more
 
 
 **Add instance initializer to the model**
 
-Since the `MyComponent` component is an `active` component it should
+Since the `HiComponent` component is an `active` component it should
 be added to the active components section and should define a priority
 and queue depth options.
 
-Edit `hello-proj/MyNamespace/FirstDeployment/Top/instances.fpp` to add
-`instance myCmpntInstance` as shown.
+Edit `hello-proj/HiNamespace/FirstDeployment/Top/instances.fpp` to add
+`instance hiCmpntInstance` as shown.
 
 ```
   # ----------------------------------------------------------------------
   # Active component instances
   # ----------------------------------------------------------------------
 
-  instance myCmpntInstance: MyComponent base id 0x10005000 \
+  instance hiCmpntInstance: HiComponent base id 0x10005000 \
     queue size Default.QUEUE_SIZE \
     stack size Default.STACK_SIZE \
     priority 50
@@ -641,7 +643,7 @@ Edit `hello-proj/MyNamespace/FirstDeployment/Top/instances.fpp` to add
 > for deployments created with "fprime-util new --deployment".
 
 > [!NOTE]
-> Make sure to use the same instance name (i.e. myCmpntInstance) in
+> Make sure to use the same instance name (i.e. hiCmpntInstance) in
 > both `topology.fpp` and `instances.fpp`.
 
 
@@ -652,10 +654,10 @@ configuration, our addition to the topology is completed. The
 deployment can now be set up and built using the following commands:
 
 ```
-# From: hello-proj/MyNamespace/FirstDeployment
+# From: hello-proj/HiNamespace/FirstDeployment
 % fprime-util build
 ...
-Linking CXX static library lib...n/libMyNamespace_FirstDeployment_Top.a
+Linking CXX static library lib...n/libHiNamespace_FirstDeployment_Top.a
 ```
 
 > [!WARNING]
@@ -665,15 +667,15 @@ Linking CXX static library lib...n/libMyNamespace_FirstDeployment_Top.a
 
 ## 4. Testing With `fprime-gds`
 
-It is now time to test the `MyComponent` component by running the
+It is now time to test the `HiComponent` component by running the
 deployment. This can be accomplished by running the `fprime-gds`
 command in the deployment, verifying connection, sending the new
-SAY_HI command and verifying that the `MyEventSayHi` event and
+SAY_HI command and verifying that the `SayHiEvent` event and
 `GreetingCount` channel appears.
 
 To start the deployment with default settings, run:
 ```bash
-# From: hello-proj/MyNamespace/FirstDeployment
+# From: hello-proj/HiNamespace/FirstDeployment
 % fprime-gds
 ```
 
@@ -689,24 +691,24 @@ Now that communication is verified, navigate to the "Channels" tab and
 see some values updating.
 
 Navigate to the "Commanding" tab and select
-`MyNamespace.myCmpntInstance.SAY_HI` from the dropdown list.
+`HiNamespace.hiCmpntInstance.SAY_HI` from the dropdown list.
 Type a greeting into the argument input box and click the button "Send Command".
 If the argument has validated successfully the command will send.
 Resolve all errors and ensure the command has sent.
 
 > [!NOTE]
-> Commands are instance specific. Had several MyComponent component
+> Commands are instance specific. Had several HiComponent component
 > instances been used, there would be multiple `SAY_HI` listings, one
 > for each component instance.
 
 Now that the command has sent, navigate to the "Events" tab. Ensure
-that the event list contains the MyNamespace.myCmpntInstance.MyEventSayHi
+that the event list contains the HiNamespace.hiCmpntInstance.SayHiEvent
 event with the text entered when sending the command.
 
 Lastly, navigate to the "Channels" tab. Look for
-"MyNamespace.myCmpntInstance.GreetingCount" in the channel
+"HiNamespace.hiCmpntInstance.GreetingCount" in the channel
 list. Ensure it has recorded the number of times a
-`myCmpntInstance.SAY_HI` was sent.
+`hiCmpntInstance.SAY_HI` was sent.
 
 
 **Shutdown**
@@ -736,8 +738,8 @@ In order for your code to conform to the FPrime coding practices
 ```bash
 # From: hello-proj/
 % source fprime-venv/bin/activate
-% fprime-util format  -f MyNamespace/Components/MyComponent/*pp
-% fprime-util format  -f MyNamespace/FirstDeployment/Top/*fpp
+% fprime-util format  -f HiNamespace/Components/HiComponent/*pp
+% fprime-util format  -f HiNamespace/FirstDeployment/Top/*fpp
 ```
 
 And to be sure no errors crept in, purge the build directory (accept offered defaults) and build the whole project again from scratch, and test it again.
@@ -759,14 +761,18 @@ CTRL-C
 
 ## 6. More to Explore
 
+### 6a. When you created HiComponent, the tool also created the outline of a Software Design Document.  Consider how you would expand on `HiComponent/docs/sdd.md`
+
+---
+
 If you feel inclined, consider defining and implementing additional
 requirements, and exploring how multiple deployments can mix and match
 components.
 
 For example, you could:
 
-### 6a. Add an additional instance of `MyComponent` to `FirstDeployment`
-- Named `myOtherCmpntInstance`
+### 6b. Add an additional instance of `HiComponent` to `FirstDeployment`
+- Named `duplicateCmpntInstance`
 - Test with `fprime-gds` by repeatedly issuing both SAY_HI commands
 - Look for separate Events from each instance
 - Look for separate `GreetingCount` telemetry channels incrementing only with their respective commands
@@ -775,24 +781,34 @@ For example, you could:
   - Re-build just FirstDeployment
 
 
-### 6b. Add a new command `INTRODUCE_ME` within `MyComponent`
-- To create a new event `MyEventIntro` with string "Nice to meet you, {}." but does not increment m_greetingCount.
-- Remember to rebuild both `MyComponent` and `FirstDeployment`
+### 6c. Add a new command `INTRODUCE_ME` within `HiComponent`
+- To create a new event `IntroEvent` with string "Nice to meet you, {}." but does not increment m_greetingCount.
+- Remember to rebuild both `HiComponent` and `FirstDeployment`
 - Test with `fprime-gds` by repeatedly issuing both SAY_HI and INTRODUCE_ME
 - Look for their events each time
 - See that the `GreetingCount` telemetry channel only increments on SAY_HI and not INTRODUCE_ME.
 - **HINTS**
-  - Edit `MyComponent.fpp` and run `fprime-impl`
-  - Then copy code from the template implementation files to your existing `MyComponent.hpp` and `MyComponent.cpp` and flesh out the cpp code.<br>
+  - Edit `HiComponent.fpp` and run `fprime-impl`
+  - Then copy code from the template implementation files to your existing `HiComponent.hpp` and `HiComponent.cpp` and flesh out the cpp code.<br>
   - Re-build the entire project from hello-proj/
 
 
-### 6c. Add a new component `YourComponent` to `FirstDeployment`
+### 6d. Add a new component `YourComponent` to `FirstDeployment`
 - With command SAY_HOLA that creates a new event `HolaEvent`
 - Test with `fprime-gds` by repeatedly each of SAY_HI, INTRODUCE_ME, and SAY_HOLA
 
 
-### 6d. Add a new deployment `SecondDeployment`
-- Include `YourComponent` but not `MyComponent`
+### 6e. Add a new deployment `SecondDeployment`
+- Include `YourComponent` but not `HiComponent`
 - Test with `fprime-gds` noticing that SAY_HOLA still works, but
   neither SAY_HI nor INTRODUCE_ME is listed as a command
+
+
+### 6f. Create a Unit Test for `HiComponent`
+Unit Testing is described as an [F' Development Process](https://fprime.jpl.nasa.gov/latest/docs/user-manual/overview/development-practice/).  The topic is also covered in tutorials such as
+- [math-component](https://fprime.jpl.nasa.gov/latest/tutorials-math-component/docs/math-component/#writing-unit-tests-part-1-creating-the-implementation-stub)
+- [led-blinker](https://fprime.jpl.nasa.gov/latest/tutorials-led-blinker/docs/led-blinker/#6-led-blinker-unit-testing)
+
+For examples, see
+- [LedTester.cpp](https://github.com/fprime-community/fprime-workshop-led-blinker/blob/devel/LedBlinker/Components/Led/test/ut/LedTester.cpp)
+- And the math-component tutorial's [two components](https://github.com/fprime-community/fprime-tutorial-math-component/tree/devel/MathProject/Components)
