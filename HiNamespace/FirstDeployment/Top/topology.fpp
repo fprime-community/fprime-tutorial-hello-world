@@ -1,4 +1,4 @@
-module MyNamespace {
+module HiNamespace {
 
   # ----------------------------------------------------------------------
   # Symbolic constants for port numbers
@@ -32,7 +32,7 @@ module MyNamespace {
     instance timer
     instance comDriver
     instance cmdSeq
-    instance myCmpntInstance
+    instance hiCmpntInstance
 
   # ----------------------------------------------------------------------
   # Pattern graph specifiers

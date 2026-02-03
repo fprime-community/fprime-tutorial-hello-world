@@ -10,10 +10,10 @@ telemetry packets FirstDeploymentPackets {
     FileHandling.fileDownlink.PacketsSent
     FileHandling.fileManager.CommandsExecuted
 
-    MyNamespace.cmdSeq.CS_LoadCommands
-    MyNamespace.cmdSeq.CS_CancelCommands
-    MyNamespace.cmdSeq.CS_CommandsExecuted
-    MyNamespace.cmdSeq.CS_SequencesCompleted
+    HiNamespace.cmdSeq.CS_LoadCommands
+    HiNamespace.cmdSeq.CS_CancelCommands
+    HiNamespace.cmdSeq.CS_CommandsExecuted
+    HiNamespace.cmdSeq.CS_SequencesCompleted
     ComCcsds.comQueue.comQueueDepth
     ComCcsds.comQueue.buffQueueDepth
     ComCcsds.commsBufferManager.TotalBuffs
@@ -21,9 +21,9 @@ telemetry packets FirstDeploymentPackets {
     ComCcsds.commsBufferManager.HiBuffs
     #ComCcsds.tlmSend.SendLevel
 
-    MyNamespace.rateGroup1.RgMaxTime
-    MyNamespace.rateGroup2.RgMaxTime
-    MyNamespace.rateGroup3.RgMaxTime
+    HiNamespace.rateGroup1.RgMaxTime
+    HiNamespace.rateGroup2.RgMaxTime
+    HiNamespace.rateGroup3.RgMaxTime
   }
 
   packet CDHErrors id 2 group 1 {
@@ -33,40 +33,40 @@ telemetry packets FirstDeploymentPackets {
     FileHandling.fileDownlink.Warnings
     FileHandling.fileManager.Errors
 
-    MyNamespace.cmdSeq.CS_Errors
+    HiNamespace.cmdSeq.CS_Errors
     ComCcsds.commsBufferManager.NoBuffs
     ComCcsds.commsBufferManager.EmptyBuffs
 
-    MyNamespace.rateGroup1.RgCycleSlips
-    MyNamespace.rateGroup2.RgCycleSlips
-    MyNamespace.rateGroup3.RgCycleSlips
+    HiNamespace.rateGroup1.RgCycleSlips
+    HiNamespace.rateGroup2.RgCycleSlips
+    HiNamespace.rateGroup3.RgCycleSlips
   }
 
   packet SystemRes1 id 5 group 2 {
-    MyNamespace.systemResources.MEMORY_TOTAL
-    MyNamespace.systemResources.MEMORY_USED
-    MyNamespace.systemResources.NON_VOLATILE_TOTAL
-    MyNamespace.systemResources.NON_VOLATILE_FREE
+    HiNamespace.systemResources.MEMORY_TOTAL
+    HiNamespace.systemResources.MEMORY_USED
+    HiNamespace.systemResources.NON_VOLATILE_TOTAL
+    HiNamespace.systemResources.NON_VOLATILE_FREE
   }
 
   packet SystemRes3 id 6 group 2 {
-    MyNamespace.systemResources.CPU
-    MyNamespace.systemResources.CPU_00
-    MyNamespace.systemResources.CPU_01
-    MyNamespace.systemResources.CPU_02
-    MyNamespace.systemResources.CPU_03
-    MyNamespace.systemResources.CPU_04
-    MyNamespace.systemResources.CPU_05
-    MyNamespace.systemResources.CPU_06
-    MyNamespace.systemResources.CPU_07
-    MyNamespace.systemResources.CPU_08
-    MyNamespace.systemResources.CPU_09
-    MyNamespace.systemResources.CPU_10
-    MyNamespace.systemResources.CPU_11
-    MyNamespace.systemResources.CPU_12
-    MyNamespace.systemResources.CPU_13
-    MyNamespace.systemResources.CPU_14
-    MyNamespace.systemResources.CPU_15
+    HiNamespace.systemResources.CPU
+    HiNamespace.systemResources.CPU_00
+    HiNamespace.systemResources.CPU_01
+    HiNamespace.systemResources.CPU_02
+    HiNamespace.systemResources.CPU_03
+    HiNamespace.systemResources.CPU_04
+    HiNamespace.systemResources.CPU_05
+    HiNamespace.systemResources.CPU_06
+    HiNamespace.systemResources.CPU_07
+    HiNamespace.systemResources.CPU_08
+    HiNamespace.systemResources.CPU_09
+    HiNamespace.systemResources.CPU_10
+    HiNamespace.systemResources.CPU_11
+    HiNamespace.systemResources.CPU_12
+    HiNamespace.systemResources.CPU_13
+    HiNamespace.systemResources.CPU_14
+    HiNamespace.systemResources.CPU_15
   }
 
   packet DataProducts id 21 group 3 {

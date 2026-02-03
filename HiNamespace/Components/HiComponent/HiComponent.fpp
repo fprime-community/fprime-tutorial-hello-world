@@ -1,17 +1,18 @@
-module MyNamespace {
+module HiNamespace {
     @ Hello World Tutorial Component
-    active component MyComponent {
+    active component HiComponent {
 
         # One async command/port is required for active components
         # This should be overridden by the developers with a useful command/port
         @ TODO
-        @ Command to issue greeting with maximum length of 20 characters
+
+@ Command to issue greeting with maximum length of 20 characters
 async command SAY_HI(
-    greeting: string size 20 @< Greeting to repeat in the MyEventSayHi event
+    greeting: string size 20 @< Greeting to repeat in the SayHiEvent event
 )
 
 @ Greeting event with maximum greeting length of 20 characters
-event MyEventSayHi(
+event SayHiEvent(
     greeting: string size 20 @< Greeting supplied from the SAY_HI command
 ) severity activity high format "I say: {}"
 

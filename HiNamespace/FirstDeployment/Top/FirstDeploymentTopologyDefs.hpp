@@ -23,7 +23,7 @@
 #include "Svc/Subtopologies/ComCcsds/Ports_ComBufferQueueEnumAc.hpp"
 
 // Include autocoded FPP constants
-#include "MyNamespace/FirstDeployment/Top/FppConstantsAc.hpp"
+#include "HiNamespace/FirstDeployment/Top/FppConstantsAc.hpp"
 
 /**
  * \brief required ping constants
@@ -45,19 +45,19 @@
  * ```
  */
 namespace PingEntries {
-    namespace MyNamespace_rateGroup1 {enum { WARN = 3, FATAL = 5 };}
-    namespace MyNamespace_rateGroup2 {enum { WARN = 3, FATAL = 5 };}
-    namespace MyNamespace_rateGroup3 {enum { WARN = 3, FATAL = 5 };}
-    namespace MyNamespace_cmdSeq {enum { WARN = 3, FATAL = 5 };}
+    namespace HiNamespace_rateGroup1 {enum { WARN = 3, FATAL = 5 };}
+    namespace HiNamespace_rateGroup2 {enum { WARN = 3, FATAL = 5 };}
+    namespace HiNamespace_rateGroup3 {enum { WARN = 3, FATAL = 5 };}
+    namespace HiNamespace_cmdSeq {enum { WARN = 3, FATAL = 5 };}
 }  // namespace PingEntries
 
 // Definitions are placed within the same namespace as the FPP module that contains the topology.
-namespace MyNamespace {
+namespace HiNamespace {
 
 /**
  * \brief required type definition to carry state
  *
- * The topology autocoder requires an object that carries state with the name `MyNamespace::TopologyState`. Only the type
+ * The topology autocoder requires an object that carries state with the name `HiNamespace::TopologyState`. Only the type
  * definition is required by the autocoder and the contents of this object are otherwise opaque to the autocoder. The
  * contents are entirely up to the definition of the project. This deployment uses subtopologies.
  */
@@ -71,6 +71,6 @@ struct TopologyState {
 };
 
 namespace PingEntries = ::PingEntries;
-}  // namespace MyNamespace
+}  // namespace HiNamespace
 
 #endif

@@ -1,30 +1,30 @@
 // ======================================================================
-// \title  MyComponent.cpp
+// \title  HiComponent.cpp
 // \author djbyrne
-// \brief  cpp file for MyComponent component implementation class
+// \brief  cpp file for HiComponent component implementation class
 // ======================================================================
 
-#include "MyNamespace/Components/MyComponent/MyComponent.hpp"
+#include "HiNamespace/Components/HiComponent/HiComponent.hpp"
 
-namespace MyNamespace {
+namespace HiNamespace {
 
 // ----------------------------------------------------------------------
 // Component construction and destruction
 // ----------------------------------------------------------------------
 
-MyComponent ::MyComponent(const char* const compName) : MyComponentComponentBase(compName) {}
+HiComponent ::HiComponent(const char* const compName) : HiComponentComponentBase(compName) {}
 
-MyComponent ::~MyComponent() {}
+HiComponent ::~HiComponent() {}
 
 // ----------------------------------------------------------------------
 // Handler implementations for commands
 // ----------------------------------------------------------------------
 
-void MyComponent ::SAY_HI_cmdHandler(FwOpcodeType opCode, U32 cmdSeq, const Fw::CmdStringArg& greeting) {
-    // Copy the command string input into an event string for the MyEventSayHi event
+void HiComponent ::SAY_HI_cmdHandler(FwOpcodeType opCode, U32 cmdSeq, const Fw::CmdStringArg& greeting) {
+    // Copy the command string input into an event string for the SayHiEvent event
     Fw::LogStringArg eventGreeting(greeting.toChar());
-    // Emit the MyEventSayHi event with the copied string
-    this->log_ACTIVITY_HI_MyEventSayHi(eventGreeting);
+    // Emit the SayHiEvent event with the copied string
+    this->log_ACTIVITY_HI_SayHiEvent(eventGreeting);
 
     this->tlmWrite_GreetingCount(++this->m_greetingCount);
 
@@ -32,4 +32,4 @@ void MyComponent ::SAY_HI_cmdHandler(FwOpcodeType opCode, U32 cmdSeq, const Fw::
     this->cmdResponse_out(opCode, cmdSeq, Fw::CmdResponse::OK);
 }
 
-}  // namespace MyNamespace
+}  // namespace HiNamespace

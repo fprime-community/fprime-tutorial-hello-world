@@ -4,16 +4,16 @@
 //
 // ======================================================================
 // Provides access to autocoded functions
-#include <MyNamespace/FirstDeployment/Top/FirstDeploymentTopologyAc.hpp>
+#include <HiNamespace/FirstDeployment/Top/FirstDeploymentTopologyAc.hpp>
 // Note: Uncomment when using Svc:TlmPacketizer
-//#include <MyNamespace/FirstDeployment/Top/FirstDeploymentPacketsAc.hpp>
+//#include <HiNamespace/FirstDeployment/Top/FirstDeploymentPacketsAc.hpp>
 
 // Necessary project-specified types
 #include <Fw/Types/MallocAllocator.hpp>
 
-// Public functions for use in main program are namespaced with deployment module MyNamespace
+// Public functions for use in main program are namespaced with deployment module HiNamespace
 // This is also the namespace where the topology components are instantiated by FPP.
-namespace MyNamespace {
+namespace HiNamespace {
 
 // Instantiate a malloc allocator for cmdSeq buffer allocation
 Fw::MallocAllocator mallocator;
@@ -105,4 +105,4 @@ void teardownTopology(const TopologyState& state) {
 
     tearDownComponents(state);
 }
-};  // namespace MyNamespace
+};  // namespace HiNamespace

@@ -1,4 +1,4 @@
-# MyNamespace::MyComponent
+# HiNamespace::HiComponent
 
 Hello World Tutorial Component
 

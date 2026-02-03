@@ -1,28 +1,28 @@
 // ======================================================================
-// \title  MyComponent.hpp
+// \title  HiComponent.hpp
 // \author djbyrne
-// \brief  hpp file for MyComponent component implementation class
+// \brief  hpp file for HiComponent component implementation class
 // ======================================================================
 
-#ifndef MyNamespace_MyComponent_HPP
-#define MyNamespace_MyComponent_HPP
+#ifndef HiNamespace_HiComponent_HPP
+#define HiNamespace_HiComponent_HPP
 
-#include "MyNamespace/Components/MyComponent/MyComponentComponentAc.hpp"
+#include "HiNamespace/Components/HiComponent/HiComponentComponentAc.hpp"
 
-namespace MyNamespace {
+namespace HiNamespace {
 
-class MyComponent final : public MyComponentComponentBase {
+class HiComponent final : public HiComponentComponentBase {
   public:
     // ----------------------------------------------------------------------
     // Component construction and destruction
     // ----------------------------------------------------------------------
 
-    //! Construct MyComponent object
-    MyComponent(const char* const compName  //!< The component name
+    //! Construct HiComponent object
+    HiComponent(const char* const compName  //!< The component name
     );
 
-    //! Destroy MyComponent object
-    ~MyComponent();
+    //! Destroy HiComponent object
+    ~HiComponent();
 
   private:
     U32 m_greetingCount = 0;
@@ -38,10 +38,10 @@ class MyComponent final : public MyComponentComponentBase {
     //! Command to issue greeting with maximum length of 20 characters
     void SAY_HI_cmdHandler(FwOpcodeType opCode,              //!< The opcode
                            U32 cmdSeq,                       //!< The command sequence number
-                           const Fw::CmdStringArg& greeting  //!< Greeting to repeat in the MyEventSayHi event
+                           const Fw::CmdStringArg& greeting  //!< Greeting to repeat in the SayHiEvent event
                            ) override;
 };
 
-}  // namespace MyNamespace
+}  // namespace HiNamespace
 
 #endif

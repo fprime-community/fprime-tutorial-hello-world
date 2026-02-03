@@ -18,6 +18,10 @@ If you are stuck at some point during the tutorial, you may refer to that
 reference as the "solution".
 
 
+> [!TIP]
+> The commands shown have been tested with the Bourne shell (bash).
+
+
 ### F´ Terminology
 
 F´ uses specific terminology to refer to specific parts of the
@@ -28,12 +32,11 @@ tutorial and an explanation of how the terminology is used.
 
 An F´ project is a collection of files and folders used to work with
 F´. At its core, a project is just a folder that can be used to hold
-F´ code. Projects should specifically exclude the core F´ library to
-avoid the "clone and own" problem. Rather projects should link-to a
-version of F´.
+F´ code. In this tutorial, you will create your own project to contain
+all the elements for implementing a custom application.  The core F´
+library will be linked as a git submodule so you see how to avoid the
+"clone and own" problem; only your custom code is in your final repo.
 
-This tutorial will create a new `hello-proj` project used to contain
-the other things created by the tutorial.
 
 #### Component
 
@@ -158,6 +161,10 @@ Install the fprime-bootstrap tool with:
 
 > [!NOTE]
 > `pip` needs to be version 3.6 or higher, or you can use `pipx`
+
+> [!NOTE]
+> If you see the msg below,then in the following step you may need to give the full path to fprime-bootstrap.<br>
+> `WARNING: The script fprime-bootstrap is installed in '/home/skroese/.local/bin' which is not on PATH`
 
 
 ### 1b. Create a new project repository
@@ -289,7 +296,7 @@ behaviour:
 
 - A [command](#command) called `SAY_HI` that will command the component to send a greeting
 - An [event](#event) called `SayHiEvent` that is the greeting sent in response to the `SAY_HI` command
-- A [telemetry channel](#telemetry-channel) called `GreetingCount` that will count each `SayHiEvent` event sent
+- A [telemetry channel](#telemetry-channel) called `GreetingCount` that will count each `SAY_HI` command sent
 
 These are a simple set of requirements for this component.
 
@@ -308,8 +315,8 @@ directory and issue the following commands:
 ```
 
 This command will ask for some input. You should respond with the
-following answers (you can just hit `<ENTER>` to accept the offered
-defaults:
+following answers (you can just hit `<ENTER>` when accepting the
+offered defaults:
 
 ```bash
 [INFO] Cookiecutter source: using builtin
@@ -463,9 +470,7 @@ The generated template `HiComponent.cpp` file has a mostly-empty
 private `SAY_HI_cmdHandler` function. Ensure its contents look like:
 
 ```c++
-void HiComponent ::SAY_HI_cmdHandler(FwOpcodeType opCode,
-                                     U32 cmdSeq,
-                                     const Fw::CmdStringArg& greeting) {
+void HiComponent ::SAY_HI_cmdHandler(FwOpcodeType opCode, U32 cmdSeq, const Fw::CmdStringArg& greeting) {
     // Copy the command string input into an event string for the SayHiEvent event
     Fw::LogStringArg eventGreeting(greeting.toChar());
     // Emit the SayHiEvent event with the copied string
@@ -601,7 +606,7 @@ Edit `hello-proj/HiNamespace/FirstDeployment/Top/topology.fpp` to add
     instance hiCmpntInstance
 ```
 
-> [!WARNING]
+> [!NOTE]
 > This is only a one-line addition to the FPP file.<br>
 > `...` are placeholders for other component names - do not remove or
 >  modify any other instances from the list.
