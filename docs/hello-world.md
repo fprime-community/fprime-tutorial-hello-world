@@ -183,7 +183,7 @@ We will override the defaults with the following:
 
 ```
 Project repository name [my-fprime-project]: hello-project
-Project top-level namespace [HelloProj]: HiNamespace
+Project top-level namespace [HelloProject]: HiNamespace
 ```
 
 
@@ -431,10 +431,6 @@ Generate a template implementation with the following command:
 ```bash
 # From: hello-project/HiNamespace/Components/HiComponent
 % fprime-util impl
-[0/1] Re-running CMake...
-...
-Formatting [1/2] hello-project/HiNamespace/Components/HiComponent/HiComponent.template.cpp
-Formatting [2/2] hello-project/HiNamespace/Components/HiComponent/HiComponent.template.hpp
 ```
 
 That created the following files which contain empty functions based
@@ -442,8 +438,7 @@ on what we have edited into the FPP file above:
 - `HiComponent.template.cpp`
 - `HiComponent.template.hpp`
 
-
-While normally one would merge new templates with the existing code,
+While normally one would manually merge new templates with the existing code,
 we will instead overwrite the existing implementations as we have not
 edited them yet. To do this:
 
@@ -594,7 +589,7 @@ Edit `hello-project/HiNamespace/FirstDeployment/Top/topology.fpp` to add
 ```
 ...
   topology FirstDeployment {
-    ...
+    [ ... other code ...]
     # ----------------------------------------------------------------------
     # Instances used in the topology
     # ----------------------------------------------------------------------
@@ -735,21 +730,20 @@ Congratulations, you have now set up a project, component, and
 deployment in F´, and run the Flight Software application as well as
 controlled it through the F´ GDS!
 
-In order for your code to conform to the FPrime coding practices
+In order for your code to conform to the F´ coding practices
 (whitespace, etc), run the utility to format them.
 ```bash
 # From: hello-project/
 % source fprime-venv/bin/activate   # Or activate.csh in C-like shells
-% fprime-util format  -f HiNamespace/Components/HiComponent/*pp
-% fprime-util format  -f HiNamespace/FirstDeployment/Top/*fpp
+% fprime-util format  --dirs HiNamespace
 ```
 
 And to be sure no errors crept in, purge the build directory (accept offered defaults) and build the whole project again from scratch, and test it again.
 ```bash
 # From: hello-project/
-% fprime-util  purge
-% fprime-util  generate
-% fprime-util  build
+% fprime-util purge
+% fprime-util generate
+% fprime-util build
 
 % fprime-gds
 CTRL-C
