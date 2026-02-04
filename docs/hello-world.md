@@ -117,8 +117,8 @@ If at any point during this tutorial you encounter issues:
 
 - **Ensure your F´ project's virtual environment is activated**:
   Each terminal / shell needs to activate with<br>
-  - `source hello-proj/fprime-venv/bin/activate` for Bourne-like shells
-  - `source hello-proj/fprime-venv/bin/activate.csh` For C-shells
+  - `source hello-project/fprime-venv/bin/activate` for Bourne-like shells
+  - `source hello-project/fprime-venv/bin/activate.csh` For C-shells
 
 - **Verify your F´ installation**: Run `fprime-util --help` to
   ensure F´ tools are properly installed
@@ -182,14 +182,14 @@ This command will ask for project information and suggest defaults.
 We will override the defaults with the following:
 
 ```
-Project repository name [my-fprime-project]: hello-proj
+Project repository name [my-fprime-project]: hello-project
 Project top-level namespace [HelloProj]: HiNamespace
 ```
 
 
 ### 1c. Understand the project structure
 
-Bootstrapping your F´ project created a folder called `hello-proj`
+Bootstrapping your F´ project created a folder called `hello-project`
 (or any name you chose) containing the standard F´ project structure as
 well as the
 [virtual environment](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/)
@@ -198,7 +198,7 @@ containing the tools to work with F´.
 We should navigate to the project's directory and look around:
 
 ```bash
-% cd hello-proj
+% cd hello-project
 % ls
 ```
 
@@ -216,7 +216,7 @@ This will show the following files:
 Activate the virtual environment to use the F´ tool suite in each terminal / shell whenever you work with an F´ project.
 
 ```bash
-# in hello-proj/
+# in hello-project/
 % source fprime-venv/bin/activate       # For Bourne-like shells
 % source fprime-venv/bin/activate.csh   # For C-like shells
 ```
@@ -229,7 +229,7 @@ created project. This will serve as a build environment compiled code,
 libraries, and linked executables.
 
 ```bash
-# in hello-proj/
+# in hello-project/
 % fprime-util generate
 % ls
 ```
@@ -246,7 +246,7 @@ You should see one new directory, `build-fprime-automatic-native`
 Now, build the newly created project. This will build the F´ framework supplied components.
 
 ```bash
-# in hello-proj/
+# in hello-project/
 % fprime-util build
 ```
 
@@ -306,7 +306,7 @@ The next step is to create the new component. The project contains a
 directory and issue the following commands:
 
 ```bash
-# From: hello-proj
+# From: hello-project
 % cd HiNamespace/Components
 % ls
 % fprime-util new --component
@@ -342,8 +342,8 @@ offered defaults:
     1 - yes
     2 - no
     Choose from [1/2] (1):
-[INFO] Found CMake file at 'hello-proj/HiNamespace/Components/CMakeLists.txt'
-Add HiComponent to hello-proj/HiNamespace/Components/CMakeLists.txt at end of file? (yes/no) [yes]:
+[INFO] Found CMake file at 'hello-project/HiNamespace/Components/CMakeLists.txt'
+Add HiComponent to hello-project/HiNamespace/Components/CMakeLists.txt at end of file? (yes/no) [yes]:
 Generate implementation files? (yes/no) [yes]:
 Refreshing cache and generating implementation files...
 [0/1] Re-running CMake...
@@ -356,7 +356,7 @@ channels, and parameters.
 We should navigate to the component's directory and look around:
 
 ```bash
-# From: hello-proj/HiNamespace/Components
+# From: hello-project/HiNamespace/Components
 % cd HiComponent
 % ls
 ```
@@ -371,7 +371,7 @@ This will show the following files, which you will edit shortly:
 ### 2c. Build this component
 This shows that the empty code compiles and links
 ```bash
-# From: hello-proj/HiNamespace/Components/HiComponent
+# From: hello-project/HiNamespace/Components/HiComponent
 % fprime-util build
 ```
 
@@ -379,7 +379,7 @@ This shows that the empty code compiles and links
 > Any component in F´ can be built by navigating to the component's
 > folder and running `fprime-util build`. Build products such as
 > libraries go under the project build directory
-> `hello-proj/build-fprime-automatic-native/`
+> `hello-project/build-fprime-automatic-native/`
 
 
 ### 2d. Implement the Component Model
@@ -429,12 +429,12 @@ telemetry GreetingCount: U32
 Generate a template implementation with the following command:
 
 ```bash
-# From: hello-proj/HiNamespace/Components/HiComponent
+# From: hello-project/HiNamespace/Components/HiComponent
 % fprime-util impl
 [0/1] Re-running CMake...
 ...
-Formatting [1/2] hello-proj/HiNamespace/Components/HiComponent/HiComponent.template.cpp
-Formatting [2/2] hello-proj/HiNamespace/Components/HiComponent/HiComponent.template.hpp
+Formatting [1/2] hello-project/HiNamespace/Components/HiComponent/HiComponent.template.cpp
+Formatting [2/2] hello-project/HiNamespace/Components/HiComponent/HiComponent.template.hpp
 ```
 
 That created the following files which contain empty functions based
@@ -500,7 +500,7 @@ before your edits. Remember to always save before you build; unsaved
 changes will not be included in the build.
 
 ```bash
-# From: hello-proj/HiNamespace/Components/HiComponent
+# From: hello-project/HiNamespace/Components/HiComponent
 % fprime-util build
 ```
 
@@ -538,14 +538,14 @@ by hitting `<ENTER>`
 
 ```bash
 % cd ../..
-# From: hello-proj/HiNamespace/
+# From: hello-project/HiNamespace/
 % fprime-util new --deployment
   [1/3] Deployment name (MyDeployment): FirstDeployment
   [2/3] Deployment namespace (HiNamespace):
 ```
 
 That should complete with a line like<br>
-`New deployment successfully created: hello-proj/HiNamespace/FirstDeployment`
+`New deployment successfully created: hello-project/HiNamespace/FirstDeployment`
 
 At this point, the `FirstDeployment` has been created, but our
 `HiComponent` component has not been added to the deployment.
@@ -588,7 +588,7 @@ be updated by adding both:
 
 **Add instance definition to the model**
 
-Edit `hello-proj/HiNamespace/FirstDeployment/Top/topology.fpp` to add
+Edit `hello-project/HiNamespace/FirstDeployment/Top/topology.fpp` to add
 `instance hiCmpntInstance` as shown.
 
 ```
@@ -625,7 +625,7 @@ Since the `HiComponent` component is an `active` component it should
 be added to the active components section and should define a priority
 and queue depth options.
 
-Edit `hello-proj/HiNamespace/FirstDeployment/Top/instances.fpp` to add
+Edit `hello-project/HiNamespace/FirstDeployment/Top/instances.fpp` to add
 `instance hiCmpntInstance` as shown.
 
 ```
@@ -657,7 +657,7 @@ configuration, our addition to the topology is completed. The
 deployment can now be set up and built using the following commands:
 
 ```
-# From: hello-proj/HiNamespace/FirstDeployment
+# From: hello-project/HiNamespace/FirstDeployment
 % fprime-util build
 ```
 That should result in linking a static library named `libHiNamespace_FirstDeployment_Top.a` in the build directory.
@@ -677,7 +677,7 @@ SAY_HI command and verifying that the `SayHiEvent` event and
 
 To start the deployment with default settings, run:
 ```bash
-# From: hello-proj/HiNamespace/FirstDeployment
+# From: hello-project/HiNamespace/FirstDeployment
 % fprime-gds
 ```
 
@@ -738,7 +738,7 @@ controlled it through the F´ GDS!
 In order for your code to conform to the FPrime coding practices
 (whitespace, etc), run the utility to format them.
 ```bash
-# From: hello-proj/
+# From: hello-project/
 % source fprime-venv/bin/activate   # Or activate.csh in C-like shells
 % fprime-util format  -f HiNamespace/Components/HiComponent/*pp
 % fprime-util format  -f HiNamespace/FirstDeployment/Top/*fpp
@@ -746,7 +746,7 @@ In order for your code to conform to the FPrime coding practices
 
 And to be sure no errors crept in, purge the build directory (accept offered defaults) and build the whole project again from scratch, and test it again.
 ```bash
-# From: hello-proj/
+# From: hello-project/
 % fprime-util  purge
 % fprime-util  generate
 % fprime-util  build
@@ -792,7 +792,7 @@ For example, you could:
 - **HINTS**
   - Edit `HiComponent.fpp` and run `fprime-impl`
   - Then copy code from the template implementation files to your existing `HiComponent.hpp` and `HiComponent.cpp` and flesh out the cpp code.<br>
-  - Re-build the entire project from hello-proj/
+  - Re-build the entire project from hello-project/
 
 
 ### 6d. Add a new component `YourComponent` to `FirstDeployment`
