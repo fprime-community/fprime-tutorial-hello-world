@@ -373,8 +373,6 @@ This shows that the empty code compiles and links
 ```bash
 # From: hello-proj/HiNamespace/Components/HiComponent
 % fprime-util build
-...
-Linking CXX static library lib/Darwin/libHiNamespace_Components_HiComponent.a
 ```
 
 > [!NOTE]
@@ -504,11 +502,12 @@ changes will not be included in the build.
 ```bash
 # From: hello-proj/HiNamespace/Components/HiComponent
 % fprime-util build
-...
-Linking CXX static library lib/Darwin/libHiNamespace_Components_HiComponent.a
 ```
 
-Resolve any errors that occur before proceeding to the next section.
+That should result in linking a static library named `libHiNamespace_Components_HiComponent.a` in the build directory.
+
+> [!WARNING]
+> Resolve any errors that occur before proceeding to the next section.
 
 
 
@@ -543,9 +542,10 @@ by hitting `<ENTER>`
 % fprime-util new --deployment
   [1/3] Deployment name (MyDeployment): FirstDeployment
   [2/3] Deployment namespace (HiNamespace):
-...
-[INFO] New deployment successfully created: hello-proj/HiNamespace/FirstDeployment
 ```
+
+That should complete with a line like<br>
+`New deployment successfully created: hello-proj/HiNamespace/FirstDeployment`
 
 At this point, the `FirstDeployment` has been created, but our
 `HiComponent` component has not been added to the deployment.
@@ -659,12 +659,11 @@ deployment can now be set up and built using the following commands:
 ```
 # From: hello-proj/HiNamespace/FirstDeployment
 % fprime-util build
-...
-Linking CXX static library lib...n/libHiNamespace_FirstDeployment_Top.a
 ```
+That should result in linking a static library named `libHiNamespace_FirstDeployment_Top.a` in the build directory.
 
 > [!WARNING]
-> Resolve any errors that occur before continuing to the running section.
+> Resolve any errors that occur before proceeding to the next section.
 
 
 
