@@ -115,13 +115,10 @@ If at any point during this tutorial you encounter issues:
 - **Check your current directory**: Ensure you are in the correct
   directory as specified in each step of the tutorial
 
-- **Activate your virtual environment**: Always make sure your F´
-  project's virtual environment is activated with<br>
-  `source hello-proj/fprime-venv/bin/activate`
-
-- **Refer to the F´ troubleshooting guide**: Visit
-[F´ Installation and Troubleshooting](https://fprime.jpl.nasa.gov/latest/docs/getting-started/installing-fprime/#troubleshooting)
-  for common installation and setup issues
+- **Ensure your F´ project's virtual environment is activated**:
+  Each terminal / shell needs to activate with<br>
+  - `source hello-proj/fprime-venv/bin/activate` for Bourne-like shells
+  - `source hello-proj/fprime-venv/bin/activate.csh` For C-shells
 
 - **Verify your F´ installation**: Run `fprime-util --help` to
   ensure F´ tools are properly installed
@@ -130,9 +127,12 @@ If at any point during this tutorial you encounter issues:
   previous steps were completed successfully
 
 - **Refer to the utility help text**: For example, run any of
-  - `fprime-util  --help`
   - `fprime-util  generate  --help`
   - `fprime-util  build  --help`
+
+- **Refer to the F´ troubleshooting guide**: Visit
+[F´ Installation and Troubleshooting](https://fprime.jpl.nasa.gov/latest/docs/getting-started/installing-fprime/#troubleshooting)
+  for common installation and setup issues
 
 
 
@@ -213,15 +213,13 @@ This will show the following files:
 
 
 ### 1d. Activate the virtual environment
-Activate the virtual environment to use the F´ tool suite.
+Activate the virtual environment to use the F´ tool suite in each terminal / shell whenever you work with an F´ project.
 
 ```bash
 # in hello-proj/
-% source fprime-venv/bin/activate
+% source fprime-venv/bin/activate       # For Bourne-like shells
+% source fprime-venv/bin/activate.csh   # For C-like shells
 ```
-
-> [!TIP]
-> Always remember to activate the virtual environment whenever you work with an F´  project.
 
 
 ### 1e. Generate the Build Cache Directory
@@ -742,7 +740,7 @@ In order for your code to conform to the FPrime coding practices
 (whitespace, etc), run the utility to format them.
 ```bash
 # From: hello-proj/
-% source fprime-venv/bin/activate
+% source fprime-venv/bin/activate   # Or activate.csh in C-like shells
 % fprime-util format  -f HiNamespace/Components/HiComponent/*pp
 % fprime-util format  -f HiNamespace/FirstDeployment/Top/*fpp
 ```
