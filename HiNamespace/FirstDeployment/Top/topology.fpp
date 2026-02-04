@@ -1,4 +1,4 @@
-module Hello {
+module HiNamespace {
 
   # ----------------------------------------------------------------------
   # Symbolic constants for port numbers
@@ -10,7 +10,7 @@ module Hello {
     rateGroup3
   }
 
-  topology HelloWorldDeployment {
+  topology FirstDeployment {
 
   # ----------------------------------------------------------------------
   # Subtopology imports
@@ -29,11 +29,11 @@ module Hello {
     instance rateGroup3
     instance rateGroupDriver
     instance systemResources
-    instance linuxTimer
+    instance timer
     instance comDriver
     instance cmdSeq
-    instance helloWorld
-    
+    instance hiCmpntInstance
+
   # ----------------------------------------------------------------------
   # Pattern graph specifiers
   # ----------------------------------------------------------------------
@@ -50,7 +50,7 @@ module Hello {
   # Telemetry packets (only used when TlmPacketizer is used)
   # ----------------------------------------------------------------------
 
-  #  include "HelloWorldDeploymentPackets.fppi"
+    # include "FirstDeploymentPackets.fppi"
 
   # ----------------------------------------------------------------------
   # Direct graph specifiers
@@ -64,6 +64,7 @@ module Hello {
       # Router to Command Dispatcher
       ComCcsds.fprimeRouter.commandOut -> CdhCore.cmdDisp.seqCmdBuff
       CdhCore.cmdDisp.seqCmdStatus -> ComCcsds.fprimeRouter.cmdResponseIn
+      
     }
 
     connections ComCcsds_FileHandling {
@@ -97,8 +98,8 @@ module Hello {
     }
 
     connections RateGroups {
-      # LinuxTimer to drive rate group
-      linuxTimer.CycleOut -> rateGroupDriver.CycleIn
+      # timer to drive rate group
+      timer.CycleOut -> rateGroupDriver.CycleIn
 
       # Rate group 1
       rateGroupDriver.CycleOut[Ports_RateGroups.rateGroup1] -> rateGroup1.CycleIn
@@ -127,7 +128,7 @@ module Hello {
       CdhCore.cmdDisp.seqCmdStatus -> cmdSeq.cmdResponseIn
     }
 
-    connections HelloWorldDeployment {
+    connections FirstDeployment {
 
     }
 

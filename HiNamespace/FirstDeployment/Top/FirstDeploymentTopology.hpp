@@ -1,15 +1,15 @@
 // ======================================================================
-// \title  HelloWorldDeploymentTopology.hpp
+// \title  FirstDeploymentTopology.hpp
 // \brief header file containing the topology instantiation definitions
 //
 // ======================================================================
-#ifndef HELLOWORLDDEPLOYMENT_HELLOWORLDDEPLOYMENTTOPOLOGY_HPP
-#define HELLOWORLDDEPLOYMENT_HELLOWORLDDEPLOYMENTTOPOLOGY_HPP
-// Included for access to HelloWorldDeployment::TopologyState and HelloWorldDeployment::ConfigObjects::pingEntries.
-// These definitions are required by the autocoder, but are also used in this hand-coded topology.
-#include <Hello/HelloWorldDeployment/Top/HelloWorldDeploymentTopologyDefs.hpp>
+#ifndef FIRSTDEPLOYMENT_FIRSTDEPLOYMENTTOPOLOGY_HPP
+#define FIRSTDEPLOYMENT_FIRSTDEPLOYMENTTOPOLOGY_HPP
+// Included for access to FirstDeployment::TopologyState and FirstDeployment::ConfigObjects::pingEntries. These definitions are required by the
+// autocoder, but are also used in this hand-coded topology.
+#include <HiNamespace/FirstDeployment/Top/FirstDeploymentTopologyDefs.hpp>
 
-namespace Hello {
+namespace HiNamespace {
 /**
  * \brief initialize and run the F´ topology
  *
@@ -30,7 +30,7 @@ namespace Hello {
  * custom tasks often start radio communication it is convenient to start them last.
  *
  * The state argument carries command line inputs used to setup the topology. For an explanation of the required type
- * Hello::TopologyState see: HelloWorldDeploymentTopologyDefs.hpp.
+ * FirstDeployment::TopologyState see: FirstDeploymentTopologyDefs.hpp.
  *
  * \param state: object shuttling CLI arguments (e.g. hostname/port, or UART baudrate) needed to construct the topology
  */
@@ -51,8 +51,7 @@ void setupTopology(const TopologyState& state);
  * Step 1, 2, 3, and 4 must occur in-order as the tasks must be stopped before being joined. These tasks must be stopped
  * and joined before any active resources may be deallocated.
  *
- * For an explanation of the required type Hello::TopologyState see:
- * HelloWorldDeploymentTopologyDefs.hpp.
+ * For an explanation of the required type HiNamespace::TopologyState see: HiNamespaceTopologyDefs.hpp.
  *
  * \param state: state object provided to setupTopology
  */
@@ -70,15 +69,14 @@ void teardownTopology(const TopologyState& state);
  * This loop is stopped via a stopRateGroups call.
  *
  */
-void startRateGroups(const Fw::TimeInterval& interval = Fw::TimeInterval(1, 0));
+void startRateGroups(const Fw::TimeInterval& interval = Fw::TimeInterval(1,0));
 
 /**
- * \brief stop the rate groups
+ * \brief stop the rate groups 
  *
  * This stops the cycle started by startRateGroups.
  */
 void stopRateGroups();
 
-}  // namespace Hello
-
+} // namespace HiNamespace
 #endif

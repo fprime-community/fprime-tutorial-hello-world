@@ -1,4 +1,4 @@
-module Hello {
+module HiNamespace {
 
   # ----------------------------------------------------------------------
   # Base ID Convention
@@ -29,28 +29,27 @@ module Hello {
   instance rateGroup1: Svc.ActiveRateGroup base id 0x10001000 \
     queue size Default.QUEUE_SIZE \
     stack size Default.STACK_SIZE \
-    priority 120
+    priority 43
 
   instance rateGroup2: Svc.ActiveRateGroup base id 0x10002000 \
     queue size Default.QUEUE_SIZE \
     stack size Default.STACK_SIZE \
-    priority 119
+    priority 42
 
   instance rateGroup3: Svc.ActiveRateGroup base id 0x10003000 \
     queue size Default.QUEUE_SIZE \
     stack size Default.STACK_SIZE \
-    priority 118
+    priority 41
 
   instance cmdSeq: Svc.CmdSequencer base id 0x10004000 \
     queue size Default.QUEUE_SIZE \
     stack size Default.STACK_SIZE \
-    priority 117
+    priority 40
 
-  instance helloWorld: Hello.HelloWorld base id 0x10005000 \
+  instance hiCmpntInstance: HiComponent base id 0x10005000 \
     queue size Default.QUEUE_SIZE \
     stack size Default.STACK_SIZE \
     priority 50
-
 
   # ----------------------------------------------------------------------
   # Queued component instances
@@ -67,7 +66,7 @@ module Hello {
 
   instance systemResources: Svc.SystemResources base id 0x10012000
 
-  instance linuxTimer: Svc.LinuxTimer base id 0x10013000
+  instance timer: Svc.LinuxTimer base id 0x10013000
 
   instance comDriver: Drv.TcpClient base id 0x10014000
 

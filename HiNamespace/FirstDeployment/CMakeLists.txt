@@ -1,7 +1,7 @@
 #####
-# 'HelloWorldDeployment' Deployment:
+# 'FirstDeployment' Deployment:
 #
-# This registers the 'HelloWorldDeployment' deployment to the build system. 
+# This registers the 'FirstDeployment' deployment to the build system. 
 # Custom components that have not been added at the project-level should be added to 
 # the list below.
 #

@@ -1,30 +1,30 @@
 // ======================================================================
-// \title  HelloWorld.cpp
-// \author borjigin
-// \brief  cpp file for HelloWorld component implementation class
+// \title  HiComponent.cpp
+// \author djbyrne
+// \brief  cpp file for HiComponent component implementation class
 // ======================================================================
 
-#include "Hello/Components/HelloWorld/HelloWorld.hpp"
+#include "HiNamespace/Components/HiComponent/HiComponent.hpp"
 
-namespace Hello {
+namespace HiNamespace {
 
 // ----------------------------------------------------------------------
 // Component construction and destruction
 // ----------------------------------------------------------------------
 
-HelloWorld ::HelloWorld(const char* const compName) : HelloWorldComponentBase(compName) {}
+HiComponent ::HiComponent(const char* const compName) : HiComponentComponentBase(compName) {}
 
-HelloWorld ::~HelloWorld() {}
+HiComponent ::~HiComponent() {}
 
 // ----------------------------------------------------------------------
 // Handler implementations for commands
 // ----------------------------------------------------------------------
 
-void HelloWorld:: SAY_HELLO_cmdHandler(FwOpcodeType opCode, U32 cmdSeq, const Fw::CmdStringArg& greeting) {
-    // Copy the command string input into an event string for the Hello event
+void HiComponent ::SAY_HI_cmdHandler(FwOpcodeType opCode, U32 cmdSeq, const Fw::CmdStringArg& greeting) {
+    // Copy the command string input into an event string for the SayHiEvent event
     Fw::LogStringArg eventGreeting(greeting.toChar());
-    // Emit the Hello event with the copied string
-    this->log_ACTIVITY_HI_Hello(eventGreeting);
+    // Emit the SayHiEvent event with the copied string
+    this->log_ACTIVITY_HI_SayHiEvent(eventGreeting);
 
     this->tlmWrite_GreetingCount(++this->m_greetingCount);
 
@@ -32,4 +32,4 @@ void HelloWorld:: SAY_HELLO_cmdHandler(FwOpcodeType opCode, U32 cmdSeq, const Fw
     this->cmdResponse_out(opCode, cmdSeq, Fw::CmdResponse::OK);
 }
 
-}  // namespace Hello
+}  // namespace HiNamespace

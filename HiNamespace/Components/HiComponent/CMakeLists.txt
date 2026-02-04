@@ -11,14 +11,14 @@
 ####
 
 # Module names are derived from the path from the nearest project/library/framework
-# root when not specifically overridden by the developer. i.e. The module defined by
-# `Ref/SignalGen/CMakeLists.txt` will be named `Ref_SignalGen`.
+# root when not specifically overridden by the developer, i.e. the module defined by
+# `MyProj/Some/Path/CMakeLists.txt` will be named `MyProj_Some_Path`.
 
 register_fprime_library(
     AUTOCODER_INPUTS
-        "${CMAKE_CURRENT_LIST_DIR}/HelloWorld.fpp"
+        "${CMAKE_CURRENT_LIST_DIR}/HiComponent.fpp"
     SOURCES
-        "${CMAKE_CURRENT_LIST_DIR}/HelloWorld.cpp"
+        "${CMAKE_CURRENT_LIST_DIR}/HiComponent.cpp"
 #   DEPENDS
 #       MyPackage_MyOtherModule
 )
@@ -26,10 +26,10 @@ register_fprime_library(
 ### Unit Tests ###
 # register_fprime_ut(
 #     AUTOCODER_INPUTS
-#         "${CMAKE_CURRENT_LIST_DIR}/HelloWorld.fpp"
+#         "${CMAKE_CURRENT_LIST_DIR}/HiComponent.fpp"
 #     SOURCES
-#         "${CMAKE_CURRENT_LIST_DIR}/test/ut/HelloWorldTestMain.cpp"
-#         "${CMAKE_CURRENT_LIST_DIR}/test/ut/HelloWorldTester.cpp"
+#         "${CMAKE_CURRENT_LIST_DIR}/test/ut/HiComponentTestMain.cpp"
+#         "${CMAKE_CURRENT_LIST_DIR}/test/ut/HiComponentTester.cpp"
 #     DEPENDS
 #         STest # For rules-based testing
 #     UT_AUTO_HELPERS

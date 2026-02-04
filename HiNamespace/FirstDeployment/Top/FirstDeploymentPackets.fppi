@@ -1,7 +1,8 @@
-telemetry packets HelloWorldDeploymentPackets {
+telemetry packets FirstDeploymentPackets {
 
   packet CDH id 1 group 1 {
     CdhCore.cmdDisp.CommandsDispatched
+    CdhCore.cmdDisp.CommandsDropped
 
     FileHandling.fileUplink.FilesReceived
     FileHandling.fileUplink.PacketsReceived
@@ -9,10 +10,10 @@ telemetry packets HelloWorldDeploymentPackets {
     FileHandling.fileDownlink.PacketsSent
     FileHandling.fileManager.CommandsExecuted
 
-    HelloWorldDeployment.cmdSeq.CS_LoadCommands
-    HelloWorldDeployment.cmdSeq.CS_CancelCommands
-    HelloWorldDeployment.cmdSeq.CS_CommandsExecuted
-    HelloWorldDeployment.cmdSeq.CS_SequencesCompleted
+    HiNamespace.cmdSeq.CS_LoadCommands
+    HiNamespace.cmdSeq.CS_CancelCommands
+    HiNamespace.cmdSeq.CS_CommandsExecuted
+    HiNamespace.cmdSeq.CS_SequencesCompleted
     ComCcsds.comQueue.comQueueDepth
     ComCcsds.comQueue.buffQueueDepth
     ComCcsds.commsBufferManager.TotalBuffs
@@ -20,10 +21,9 @@ telemetry packets HelloWorldDeploymentPackets {
     ComCcsds.commsBufferManager.HiBuffs
     #ComCcsds.tlmSend.SendLevel
 
-
-    HelloWorldDeployment.rateGroup1.RgMaxTime
-    HelloWorldDeployment.rateGroup2.RgMaxTime
-    HelloWorldDeployment.rateGroup3.RgMaxTime
+    HiNamespace.rateGroup1.RgMaxTime
+    HiNamespace.rateGroup2.RgMaxTime
+    HiNamespace.rateGroup3.RgMaxTime
   }
 
   packet CDHErrors id 2 group 1 {
@@ -33,40 +33,40 @@ telemetry packets HelloWorldDeploymentPackets {
     FileHandling.fileDownlink.Warnings
     FileHandling.fileManager.Errors
 
-    HelloWorldDeployment.cmdSeq.CS_Errors
+    HiNamespace.cmdSeq.CS_Errors
     ComCcsds.commsBufferManager.NoBuffs
     ComCcsds.commsBufferManager.EmptyBuffs
 
-    HelloWorldDeployment.rateGroup1.RgCycleSlips
-    HelloWorldDeployment.rateGroup2.RgCycleSlips
-    HelloWorldDeployment.rateGroup3.RgCycleSlips
+    HiNamespace.rateGroup1.RgCycleSlips
+    HiNamespace.rateGroup2.RgCycleSlips
+    HiNamespace.rateGroup3.RgCycleSlips
   }
 
   packet SystemRes1 id 5 group 2 {
-    HelloWorldDeployment.systemResources.MEMORY_TOTAL
-    HelloWorldDeployment.systemResources.MEMORY_USED
-    HelloWorldDeployment.systemResources.NON_VOLATILE_TOTAL
-    HelloWorldDeployment.systemResources.NON_VOLATILE_FREE
+    HiNamespace.systemResources.MEMORY_TOTAL
+    HiNamespace.systemResources.MEMORY_USED
+    HiNamespace.systemResources.NON_VOLATILE_TOTAL
+    HiNamespace.systemResources.NON_VOLATILE_FREE
   }
 
   packet SystemRes3 id 6 group 2 {
-    HelloWorldDeployment.systemResources.CPU
-    HelloWorldDeployment.systemResources.CPU_00
-    HelloWorldDeployment.systemResources.CPU_01
-    HelloWorldDeployment.systemResources.CPU_02
-    HelloWorldDeployment.systemResources.CPU_03
-    HelloWorldDeployment.systemResources.CPU_04
-    HelloWorldDeployment.systemResources.CPU_05
-    HelloWorldDeployment.systemResources.CPU_06
-    HelloWorldDeployment.systemResources.CPU_07
-    HelloWorldDeployment.systemResources.CPU_08
-    HelloWorldDeployment.systemResources.CPU_09
-    HelloWorldDeployment.systemResources.CPU_10
-    HelloWorldDeployment.systemResources.CPU_11
-    HelloWorldDeployment.systemResources.CPU_12
-    HelloWorldDeployment.systemResources.CPU_13
-    HelloWorldDeployment.systemResources.CPU_14
-    HelloWorldDeployment.systemResources.CPU_15
+    HiNamespace.systemResources.CPU
+    HiNamespace.systemResources.CPU_00
+    HiNamespace.systemResources.CPU_01
+    HiNamespace.systemResources.CPU_02
+    HiNamespace.systemResources.CPU_03
+    HiNamespace.systemResources.CPU_04
+    HiNamespace.systemResources.CPU_05
+    HiNamespace.systemResources.CPU_06
+    HiNamespace.systemResources.CPU_07
+    HiNamespace.systemResources.CPU_08
+    HiNamespace.systemResources.CPU_09
+    HiNamespace.systemResources.CPU_10
+    HiNamespace.systemResources.CPU_11
+    HiNamespace.systemResources.CPU_12
+    HiNamespace.systemResources.CPU_13
+    HiNamespace.systemResources.CPU_14
+    HiNamespace.systemResources.CPU_15
   }
 
   packet DataProducts id 21 group 3 {

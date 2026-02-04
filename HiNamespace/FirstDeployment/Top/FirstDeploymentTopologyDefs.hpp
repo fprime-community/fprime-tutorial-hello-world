@@ -1,10 +1,10 @@
 // ======================================================================
-// \title  HelloWorldDeploymentTopologyDefs.hpp
+// \title  FirstDeploymentTopologyDefs.hpp
 // \brief required header file containing the required definitions for the topology autocoder
 //
 // ======================================================================
-#ifndef HELLOWORLDDEPLOYMENT_HELLOWORLDDEPLOYMENTTOPOLOGYDEFS_HPP
-#define HELLOWORLDDEPLOYMENT_HELLOWORLDDEPLOYMENTTOPOLOGYDEFS_HPP
+#ifndef FIRSTDEPLOYMENT_FIRSTDEPLOYMENTTOPOLOGYDEFS_HPP
+#define FIRSTDEPLOYMENT_FIRSTDEPLOYMENTTOPOLOGYDEFS_HPP
 
 // Subtopology PingEntries includes
 #include "Svc/Subtopologies/CdhCore/PingEntries.hpp"
@@ -23,7 +23,7 @@
 #include "Svc/Subtopologies/ComCcsds/Ports_ComBufferQueueEnumAc.hpp"
 
 // Include autocoded FPP constants
-#include "Hello/HelloWorldDeployment/Top/FppConstantsAc.hpp"
+#include "HiNamespace/FirstDeployment/Top/FppConstantsAc.hpp"
 
 /**
  * \brief required ping constants
@@ -45,19 +45,19 @@
  * ```
  */
 namespace PingEntries {
-    namespace Hello_rateGroup1 {enum { WARN = 3, FATAL = 5 };}
-    namespace Hello_rateGroup2 {enum { WARN = 3, FATAL = 5 };}
-    namespace Hello_rateGroup3 {enum { WARN = 3, FATAL = 5 };}
-    namespace Hello_cmdSeq {enum { WARN = 3, FATAL = 5 };}
+    namespace HiNamespace_rateGroup1 {enum { WARN = 3, FATAL = 5 };}
+    namespace HiNamespace_rateGroup2 {enum { WARN = 3, FATAL = 5 };}
+    namespace HiNamespace_rateGroup3 {enum { WARN = 3, FATAL = 5 };}
+    namespace HiNamespace_cmdSeq {enum { WARN = 3, FATAL = 5 };}
 }  // namespace PingEntries
 
-// Definitions are placed within a namespace named after the deployment
-namespace Hello {
+// Definitions are placed within the same namespace as the FPP module that contains the topology.
+namespace HiNamespace {
 
 /**
  * \brief required type definition to carry state
  *
- * The topology autocoder requires an object that carries state with the name `Hello::TopologyState`. Only the type
+ * The topology autocoder requires an object that carries state with the name `HiNamespace::TopologyState`. Only the type
  * definition is required by the autocoder and the contents of this object are otherwise opaque to the autocoder. The
  * contents are entirely up to the definition of the project. This deployment uses subtopologies.
  */
@@ -71,6 +71,6 @@ struct TopologyState {
 };
 
 namespace PingEntries = ::PingEntries;
-}  // namespace Hello
+}  // namespace HiNamespace
 
 #endif

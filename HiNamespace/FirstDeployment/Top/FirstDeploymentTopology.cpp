@@ -1,18 +1,19 @@
 // ======================================================================
-// \title  HelloWorldDeploymentTopology.cpp
+// \title  FirstDeploymentTopology.cpp
 // \brief cpp file containing the topology instantiation code
 //
 // ======================================================================
 // Provides access to autocoded functions
-#include <Hello/HelloWorldDeployment/Top/HelloWorldDeploymentTopologyAc.hpp>
+#include <HiNamespace/FirstDeployment/Top/FirstDeploymentTopologyAc.hpp>
 // Note: Uncomment when using Svc:TlmPacketizer
-// #include <HelloWorldDeployment/Top/HelloWorldDeploymentPacketsAc.hpp>
+//#include <HiNamespace/FirstDeployment/Top/FirstDeploymentPacketsAc.hpp>
 
 // Necessary project-specified types
 #include <Fw/Types/MallocAllocator.hpp>
 
-// Allows easy reference to objects in FPP/autocoder required namespaces
-using namespace Hello;
+// Public functions for use in main program are namespaced with deployment module HiNamespace
+// This is also the namespace where the topology components are instantiated by FPP.
+namespace HiNamespace {
 
 // Instantiate a malloc allocator for cmdSeq buffer allocation
 Fw::MallocAllocator mallocator;
@@ -27,7 +28,7 @@ U32 rateGroup2Context[Svc::ActiveRateGroup::CONNECTION_COUNT_MAX] = {};
 U32 rateGroup3Context[Svc::ActiveRateGroup::CONNECTION_COUNT_MAX] = {};
 
 enum TopologyConstants {
-    COMM_PRIORITY = 100,
+    COMM_PRIORITY = 34,
 };
 
 /**
@@ -50,8 +51,6 @@ void configureTopology() {
     cmdSeq.allocateBuffer(0, mallocator, 5 * 1024);
 }
 
-// Public functions for use in main program are namespaced with deployment name Hello
-namespace Hello {
 void setupTopology(const TopologyState& state) {
     // Autocoded initialization. Function provided by autocoder.
     initComponents(state);
@@ -81,15 +80,15 @@ void setupTopology(const TopologyState& state) {
 }
 
 void startRateGroups(const Fw::TimeInterval& interval) {
-    // This timer drives the fundamental tick rate of the system.
+    // The timer component drives the fundamental tick rate of the system.
     // Svc::RateGroupDriver will divide this down to the slower rate groups.
     // This call will block until the stopRateGroups() call is made.
     // For this Linux demo, that call is made from a signal handler.
-    linuxTimer.startTimer(interval);
+    timer.startTimer(interval);
 }
 
 void stopRateGroups() {
-    linuxTimer.quit();
+    timer.quit();
 }
 
 void teardownTopology(const TopologyState& state) {
@@ -106,4 +105,4 @@ void teardownTopology(const TopologyState& state) {
 
     tearDownComponents(state);
 }
-};  // namespace Hello
+};  // namespace HiNamespace

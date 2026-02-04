@@ -4,7 +4,7 @@
 //
 // ======================================================================
 // Used to access topology functions
-#include <Hello/HelloWorldDeployment/Top/HelloWorldDeploymentTopology.hpp>
+#include <HiNamespace/FirstDeployment/Top/FirstDeploymentTopology.hpp>
 // OSAL initialization
 #include <Os/Os.hpp>
 // Used for signal handling shutdown
@@ -34,7 +34,7 @@ void print_usage(const char* app) {
  * @param signum
  */
 static void signalHandler(int signum) {
-    Hello::stopRateGroups();
+    HiNamespace::stopRateGroups();
 }
 
 /**
@@ -76,7 +76,7 @@ int main(int argc, char* argv[]) {
         }
     }
     // Object for communicating state to the topology
-    Hello::TopologyState inputs;
+    HiNamespace::TopologyState inputs;
     inputs.hostname = hostname;
     inputs.port = port_number;
 
@@ -86,9 +86,9 @@ int main(int argc, char* argv[]) {
     (void)printf("Hit Ctrl-C to quit\n");
 
     // Setup, cycle, and teardown topology
-    Hello::setupTopology(inputs);
-    Hello::startRateGroups(Fw::TimeInterval(1, 0));  // Program loop cycling rate groups at 1Hz
-    Hello::teardownTopology(inputs);
+    HiNamespace::setupTopology(inputs);
+    HiNamespace::startRateGroups(Fw::TimeInterval(1,0));  // Program loop cycling rate groups at 1Hz
+    HiNamespace::teardownTopology(inputs);
     (void)printf("Exiting...\n");
     return 0;
 }
