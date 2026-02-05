@@ -62,8 +62,10 @@ defined in a command handler defined in the component's
 implementation.
 
 This tutorial defines one command `SAY_HI` with a single argument
-`greeting`. This command will be sent via the ground system and will
-echo the greeting back via the `SayHiEvent` event.
+`greeting`.  This command will be sent via the ground system, and the
+flight system will echo the greeting back within an event, and also
+incrememt a telemetry channel counting the number of these commands
+sent.
 
 #### Event
 
@@ -117,8 +119,8 @@ If at any point during this tutorial you encounter issues:
 
 - **Ensure your F´ project's virtual environment is activated**:
   Each terminal / shell needs to activate with<br>
-  - `source hello-project/fprime-venv/bin/activate` for Bourne-like shells
-  - `source hello-project/fprime-venv/bin/activate.csh` For C-shells
+    - `source hello-project/fprime-venv/bin/activate` for Bourne-like shells
+    - `source hello-project/fprime-venv/bin/activate.csh` For C-shells
 
 - **Verify your F´ installation**: Run `fprime-util --help` to
   ensure F´ tools are properly installed
@@ -127,8 +129,8 @@ If at any point during this tutorial you encounter issues:
   previous steps were completed successfully
 
 - **Refer to the utility help text**: For example, run any of
-  - `fprime-util  generate  --help`
-  - `fprime-util  build  --help`
+    - `fprime-util  generate  --help`
+    - `fprime-util  build  --help`
 
 - **Refer to the F´ troubleshooting guide**: Visit
 [F´ Installation and Troubleshooting](https://fprime.jpl.nasa.gov/latest/docs/getting-started/installing-fprime/#troubleshooting)
@@ -186,6 +188,8 @@ Project repository name [my-fprime-project]: hello-project
 Project top-level namespace [HelloProject]: HiNamespace
 ```
 
+This step takes tens of seconds to complete.
+
 
 ### 1c. Understand the project structure
 
@@ -195,7 +199,7 @@ well as the
 [virtual environment](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/)
 containing the tools to work with F´.
 
-We should navigate to the project's directory and look around:
+Let's navigate to the project directory and look around:
 
 ```bash
 % cd hello-project
@@ -203,12 +207,19 @@ We should navigate to the project's directory and look around:
 ```
 
 This will show the following files:
+
 - `CMakeList.txt` and `CMakePresets.json`: CMake files defining the build system
+
 - `fprime-venv/`: this folder is the virtual environment containing the Python tools to work with F´
+
 - `lib/`: Library folder, holding libraries the project will use. This is also where the `fprime` code lives, as a git submodule that points to https://github.com/nasa/fprime. Contains core F´ components, the API for the build system, among others
+
 - `HiNamespace/`: top-level source folder for the project. This is where you will create components, deployments, and other project-specific code.
+
 - `README.md` where you can document work on this project.
+
 - `requirements.txt`: List of Python packages needed for this project
+
 - `settings.ini`: allows users to modify various settings that control the build
 
 
@@ -362,6 +373,7 @@ We should navigate to the component's directory and look around:
 ```
 
 This will show the following files, which you will edit shortly:
+
 - `CMakeList.txt`: build definitions for the component.
 - `docs` folder to place component documentation
 - `HiComponent.fpp`: design model for the component
@@ -388,6 +400,7 @@ A component model defines the interface of the component with the rest
 of the F´ system and with the ground system F´ communicates with.
 
 Recall that in defining the requirements above, we specified
+
 - Command `SAY_HI`
 - Event `SayHiEvent`
 - Telemetry channel `GreetingCount`
@@ -435,6 +448,7 @@ Generate a template implementation with the following command:
 
 That created the following files which contain empty functions based
 on what we have edited into the FPP file above:
+
 - `HiComponent.template.cpp`
 - `HiComponent.template.hpp`
 
@@ -451,6 +465,7 @@ edited them yet. To do this:
 ### 2e. Implement Component Behavior
 
 F´ behavior is implemented with two kinds of handlers:
+
 - Command handler functions
 - Port handler functions (as described in the next tutorial,
   [`LED Blinker`](https://github.com/fprime-community/fprime-workshop-led-blinker)).
@@ -577,6 +592,7 @@ component has specific configuration.
 
 In order to add a component to the topology, the topology model must
 be updated by adding both:
+
 - An instance definition
 - An instance initializer
 
@@ -773,8 +789,8 @@ For example, you could:
 - Look for separate Events from each instance
 - Look for separate `GreetingCount` telemetry channels incrementing only with their respective commands
 - **HINTS**
-  - Edit `instances.fpp` and `topology.fpp`<br>
-  - Re-build just FirstDeployment
+    - Edit `instances.fpp` and `topology.fpp`<br>
+    - Re-build just FirstDeployment
 
 
 ### 6c. Add a new command `INTRODUCE_ME` within `HiComponent`
@@ -784,9 +800,9 @@ For example, you could:
 - Look for their events each time
 - See that the `GreetingCount` telemetry channel only increments on SAY_HI and not INTRODUCE_ME.
 - **HINTS**
-  - Edit `HiComponent.fpp` and run `fprime-impl`
-  - Then copy code from the template implementation files to your existing `HiComponent.hpp` and `HiComponent.cpp` and flesh out the cpp code.<br>
-  - Re-build the entire project from hello-project/
+    - Edit `HiComponent.fpp` and run `fprime-impl`
+    - Then copy code from the template implementation files to your existing `HiComponent.hpp` and `HiComponent.cpp` and flesh out the cpp code.<br>
+    - Re-build the entire project from hello-project/
 
 
 ### 6d. Add a new component `YourComponent` to `FirstDeployment`
@@ -802,9 +818,11 @@ For example, you could:
 
 ### 6f. Create a Unit Test for `HiComponent`
 Unit Testing is described as an [F' Development Process](https://fprime.jpl.nasa.gov/latest/docs/user-manual/overview/development-practice/).  The topic is also covered in tutorials such as
+
 - [math-component](https://fprime.jpl.nasa.gov/latest/tutorials-math-component/docs/math-component/#writing-unit-tests-part-1-creating-the-implementation-stub)
 - [led-blinker](https://fprime.jpl.nasa.gov/latest/tutorials-led-blinker/docs/led-blinker/#6-led-blinker-unit-testing)
 
 For examples, see
+
 - [LedTester.cpp](https://github.com/fprime-community/fprime-workshop-led-blinker/blob/devel/LedBlinker/Components/Led/test/ut/LedTester.cpp)
 - And the math-component tutorial's [two components](https://github.com/fprime-community/fprime-tutorial-math-component/tree/devel/MathProject/Components)
