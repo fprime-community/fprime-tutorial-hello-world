@@ -110,8 +110,14 @@ files. Each deployment has a topology that defines the system.
 This tutorial will create the `FirstDeployment` deployment, run this
 deployment, and test it through the F´ GDS (Ground Data System).
 
+
+
 ---
+
+
+
 ## Troubleshooting
+
 If at any point during this tutorial you encounter issues:
 
 - **Check your current directory**: Ensure you are in the correct
@@ -119,6 +125,7 @@ If at any point during this tutorial you encounter issues:
 
 - **Ensure your F´ project's virtual environment is activated**:
   Each terminal / shell needs to activate with<br>
+
     - `source hello-project/fprime-venv/bin/activate` for Bourne-like shells
     - `source hello-project/fprime-venv/bin/activate.csh` For C-shells
 
@@ -129,12 +136,13 @@ If at any point during this tutorial you encounter issues:
   previous steps were completed successfully
 
 - **Refer to the utility help text**: For example, run any of
+
     - `fprime-util  generate  --help`
     - `fprime-util  build  --help`
 
 - **Refer to the F´ troubleshooting guide**: Visit
 [F´ Installation and Troubleshooting](https://fprime.jpl.nasa.gov/latest/docs/getting-started/installing-fprime/#troubleshooting)
-  for common installation and setup issues
+ for common installation and setup issues
 
 
 
@@ -156,17 +164,18 @@ work with F´. The F´ Bootstrap tool is responsible for creating a new
 F´ project and installing the Python dependencies within the project's
 virtual environment.
 
-Install the fprime-bootstrap tool with:
+Install the fprime-bootstrap tool, and verify that its version is 1.5.2 or later, with:
 ```bash
-% pip install fprime-bootstrap
+% pip install --upgrade fprime-bootstrap
+% pip list | grep fprime
 ```
 
 > [!NOTE]
 > `pip` needs to be version 3.6 or higher, or you can use `pipx`
 
 > [!NOTE]
-> If you see the msg below,then in the following step you may need to give the full path to fprime-bootstrap.<br>
-> `WARNING: The script fprime-bootstrap is installed in '/home/skroese/.local/bin' which is not on PATH`
+> If you see a msg like the one below,then in the following step you may need to give the full path to fprime-bootstrap.<br>
+> `WARNING: The script fprime-bootstrap is installed in '~/.local/bin' which is not on PATH`
 
 
 ### 1b. Create a new project repository
@@ -224,6 +233,7 @@ This will show the following files:
 
 
 ### 1d. Activate the virtual environment
+
 Activate the virtual environment to use the F´ tool suite in each terminal / shell whenever you work with an F´ project.
 
 ```bash
@@ -236,8 +246,8 @@ Activate the virtual environment to use the F´ tool suite in each terminal / sh
 ### 1e. Generate the Build Cache Directory
 
 The next step is to set up a build cache directory for the newly
-created project. This will serve as a build environment compiled code,
-libraries, and linked executables.
+created project. This will serve as a build environment holding
+compiled code, libraries, and linked executables.
 
 ```bash
 # in hello-project/
@@ -381,6 +391,7 @@ This will show the following files, which you will edit shortly:
 
 
 ### 2c. Build this component
+
 This shows that the empty code compiles and links
 ```bash
 # From: hello-project/HiNamespace/Components/HiComponent
@@ -625,9 +636,8 @@ names, component instance names should be descriptive and are
 typically named in camel or snake case.
 
 > [!TIP]
-> Reference the [F Prime Style Guidelines]
-> (https://github.com/nasa/fprime/wiki/F%C2%B4-Style-Guidelines)
-> for more
+> For more style recommendations, refer to the
+> [F Prime Style Guidelines](https://github.com/nasa/fprime/wiki/F%C2%B4-Style-Guidelines)
 
 
 **Add instance initializer to the model**
@@ -773,7 +783,9 @@ CTRL-C
 
 ## 6. More to Explore
 
-### 6a. When you created HiComponent, the tool also created the outline of a Software Design Document.  Consider how you would expand on `HiComponent/docs/sdd.md`
+### 6a. Software Design Document (SDD)
+
+When you created HiComponent, the tool also created the outline of an SDD.  Consider how you would expand on `HiComponent/docs/sdd.md`
 
 ---
 
@@ -784,39 +796,46 @@ components.
 For example, you could:
 
 ### 6b. Add an additional instance of `HiComponent` to `FirstDeployment`
+
 - Named `duplicateCmpntInstance`
 - Test with `fprime-gds` by repeatedly issuing both SAY_HI commands
 - Look for separate Events from each instance
 - Look for separate `GreetingCount` telemetry channels incrementing only with their respective commands
 - **HINTS**
+
     - Edit `instances.fpp` and `topology.fpp`<br>
     - Re-build just FirstDeployment
 
 
 ### 6c. Add a new command `INTRODUCE_ME` within `HiComponent`
+
 - To create a new event `IntroEvent` with string "Nice to meet you, {}." but does not increment m_greetingCount.
 - Remember to rebuild both `HiComponent` and `FirstDeployment`
 - Test with `fprime-gds` by repeatedly issuing both SAY_HI and INTRODUCE_ME
 - Look for their events each time
 - See that the `GreetingCount` telemetry channel only increments on SAY_HI and not INTRODUCE_ME.
 - **HINTS**
+
     - Edit `HiComponent.fpp` and run `fprime-impl`
     - Then copy code from the template implementation files to your existing `HiComponent.hpp` and `HiComponent.cpp` and flesh out the cpp code.<br>
     - Re-build the entire project from hello-project/
 
 
 ### 6d. Add a new component `YourComponent` to `FirstDeployment`
+
 - With command SAY_HOLA that creates a new event `HolaEvent`
 - Test with `fprime-gds` by repeatedly each of SAY_HI, INTRODUCE_ME, and SAY_HOLA
 
 
 ### 6e. Add a new deployment `SecondDeployment`
+
 - Include `YourComponent` but not `HiComponent`
 - Test with `fprime-gds` noticing that SAY_HOLA still works, but
   neither SAY_HI nor INTRODUCE_ME is listed as a command
 
 
 ### 6f. Create a Unit Test for `HiComponent`
+
 Unit Testing is described as an [F' Development Process](https://fprime.jpl.nasa.gov/latest/docs/user-manual/overview/development-practice/).  The topic is also covered in tutorials such as
 
 - [math-component](https://fprime.jpl.nasa.gov/latest/tutorials-math-component/docs/math-component/#writing-unit-tests-part-1-creating-the-implementation-stub)
