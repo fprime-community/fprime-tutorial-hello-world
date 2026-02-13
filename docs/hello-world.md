@@ -165,7 +165,7 @@ F´ project and installing the Python dependencies within the project's
 virtual environment.
 
 Install the fprime-bootstrap tool, and verify that its version is 1.5.2 or later, with:
-```bash
+```shell
 % pip install --upgrade fprime-bootstrap
 % pip list | grep fprime
 ```
@@ -185,7 +185,7 @@ will clone the F´ repository and install the full tool suite of the
 specified version for working with the selected version of F´. To
 create this new project, run:
 
-```bash
+```shell
 % fprime-bootstrap project
 ```
 
@@ -210,7 +210,7 @@ containing the tools to work with F´.
 
 Let's navigate to the project directory and look around:
 
-```bash
+```shell
 % cd hello-project
 % ls
 ```
@@ -236,9 +236,10 @@ This will show the following files:
 
 Activate the virtual environment to use the F´ tool suite in each terminal / shell whenever you work with an F´ project.
 
-```bash
+```shell
 # in hello-project/
 % source fprime-venv/bin/activate       # For Bourne-like shells
+% .      fprime-venv/bin/activate       # For POSIX shells without the source cmd
 % source fprime-venv/bin/activate.csh   # For C-like shells
 ```
 
@@ -249,7 +250,7 @@ The next step is to set up a build cache directory for the newly
 created project. This will serve as a build environment holding
 compiled code, libraries, and linked executables.
 
-```bash
+```shell
 # in hello-project/
 % fprime-util generate
 % ls
@@ -266,7 +267,7 @@ You should see one new directory, `build-fprime-automatic-native`
 
 Now, build the newly created project. This will build the F´ framework supplied components.
 
-```bash
+```shell
 # in hello-project/
 % fprime-util build
 ```
@@ -326,7 +327,7 @@ The next step is to create the new component. The project contains a
 `Components/` directory to create components in. Change to that
 directory and issue the following commands:
 
-```bash
+```shell
 # From: hello-project
 % cd HiNamespace/Components
 % ls
@@ -337,7 +338,7 @@ This command will ask for some input. You should respond with the
 following answers (you can just hit `<ENTER>` when accepting the
 offered defaults:
 
-```bash
+```shell
 [INFO] Cookiecutter source: using builtin
   [1/8] Component name (MyComponent): HiComponent
   [2/8] Component short description (Component for F Prime FSW framework.): Hello World Tutorial Component
@@ -376,7 +377,7 @@ channels, and parameters.
 
 We should navigate to the component's directory and look around:
 
-```bash
+```shell
 # From: hello-project/HiNamespace/Components
 % cd HiComponent
 % ls
@@ -393,7 +394,7 @@ This will show the following files, which you will edit shortly:
 ### 2c. Build this component
 
 This shows that the empty code compiles and links
-```bash
+```shell
 # From: hello-project/HiNamespace/Components/HiComponent
 % fprime-util build
 ```
@@ -452,7 +453,7 @@ telemetry GreetingCount: U32
 
 Generate a template implementation with the following command:
 
-```bash
+```shell
 # From: hello-project/HiNamespace/Components/HiComponent
 % fprime-util impl
 ```
@@ -467,7 +468,7 @@ While normally one would manually merge new templates with the existing code,
 we will instead overwrite the existing implementations as we have not
 edited them yet. To do this:
 
-```bash
+```shell
 % mv HiComponent.template.cpp HiComponent.cpp
 % mv HiComponent.template.hpp HiComponent.hpp
 ```
@@ -520,7 +521,7 @@ The component should build without errors using the same command as
 before your edits. Remember to always save before you build; unsaved
 changes will not be included in the build.
 
-```bash
+```shell
 # From: hello-project/HiNamespace/Components/HiComponent
 % fprime-util build
 ```
@@ -557,7 +558,7 @@ following command. It will ask for some input. Respond with the
 answers shown. For all further questions, select the default response
 by hitting `<ENTER>`
 
-```bash
+```shell
 % cd ../..
 # From: hello-project/HiNamespace/
 % fprime-util new --deployment
@@ -571,7 +572,7 @@ That should complete with a line like<br>
 At this point, the `FirstDeployment` has been created, but our
 `HiComponent` component has not been added to the deployment.
 
-```bash
+```shell
 % cd FirstDeployment
 % ls -R1
 CMakeLists.txt
@@ -697,7 +698,7 @@ SAY_HI command and verifying that the `SayHiEvent` event and
 `GreetingCount` channel appears.
 
 To start the deployment with default settings, run:
-```bash
+```shell
 # From: hello-project/HiNamespace/FirstDeployment
 % fprime-gds
 ```
@@ -739,7 +740,7 @@ list. Ensure it has recorded the number of times a
 In the terminal window where you ran `fprime-gds`, kill the running
 application and deactivate the virtual environment:
 
-```bash
+```shell
 CTRL-C
 % deactivate
 ```
@@ -758,14 +759,14 @@ controlled it through the F´ GDS!
 
 In order for your code to conform to the F´ coding practices
 (whitespace, etc), run the utility to format them.
-```bash
+```shell
 # From: hello-project/
 % source fprime-venv/bin/activate   # Or activate.csh in C-like shells
 % fprime-util format  --dirs HiNamespace
 ```
 
 And to be sure no errors crept in, purge the build directory (accept offered defaults) and build the whole project again from scratch, and test it again.
-```bash
+```shell
 # From: hello-project/
 % fprime-util purge
 % fprime-util generate
