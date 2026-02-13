@@ -741,9 +741,18 @@ In the terminal window where you ran `fprime-gds`, kill the running
 application and deactivate the virtual environment:
 
 ```shell
-CTRL-C
+CTRL-c
 % deactivate
 ```
+
+<detail><summary>If CTRL-C does not work</summary>
+Try one or more of:
+
+- CTRL-\ (Backslash): Send the SIGQUIT signal (a "harder" interrupt than the CTRL-C SIGINT)
+- CTRL-z: Suspend the process.  Then type kill %1 to end it or fg to bring it back
+- macOS COMMAND-. (Period): macOS equivalent for a "break"
+- Open another terminal, use `ps -ef | grep gds` and `kill <process ID>`
+</detail>
 
 
 
