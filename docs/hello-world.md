@@ -62,8 +62,10 @@ defined in a command handler defined in the component's
 implementation.
 
 This tutorial defines one command `SAY_HI` with a single argument
-`greeting`. This command will be sent via the ground system and will
-echo the greeting back via the `SayHiEvent` event.
+`greeting`.  This command will be sent via the ground system, and the
+flight system will echo the greeting back within an event, and also
+incrememt a telemetry channel counting the number of these commands
+sent.
 
 #### Event
 
@@ -108,8 +110,14 @@ files. Each deployment has a topology that defines the system.
 This tutorial will create the `FirstDeployment` deployment, run this
 deployment, and test it through the F´ GDS (Ground Data System).
 
+
+
 ---
+
+
+
 ## Troubleshooting
+
 If at any point during this tutorial you encounter issues:
 
 - **Check your current directory**: Ensure you are in the correct
@@ -117,8 +125,9 @@ If at any point during this tutorial you encounter issues:
 
 - **Ensure your F´ project's virtual environment is activated**:
   Each terminal / shell needs to activate with<br>
-  - `source hello-project/fprime-venv/bin/activate` for Bourne-like shells
-  - `source hello-project/fprime-venv/bin/activate.csh` For C-shells
+
+    - `source hello-project/fprime-venv/bin/activate` for Bourne-like shells
+    - `source hello-project/fprime-venv/bin/activate.csh` For C-shells
 
 - **Verify your F´ installation**: Run `fprime-util --help` to
   ensure F´ tools are properly installed
@@ -127,12 +136,13 @@ If at any point during this tutorial you encounter issues:
   previous steps were completed successfully
 
 - **Refer to the utility help text**: For example, run any of
-  - `fprime-util  generate  --help`
-  - `fprime-util  build  --help`
+
+    - `fprime-util  generate  --help`
+    - `fprime-util  build  --help`
 
 - **Refer to the F´ troubleshooting guide**: Visit
 [F´ Installation and Troubleshooting](https://fprime.jpl.nasa.gov/latest/docs/getting-started/installing-fprime/#troubleshooting)
-  for common installation and setup issues
+ for common installation and setup issues
 
 
 
@@ -154,17 +164,18 @@ work with F´. The F´ Bootstrap tool is responsible for creating a new
 F´ project and installing the Python dependencies within the project's
 virtual environment.
 
-Install the fprime-bootstrap tool with:
-```bash
-% pip install fprime-bootstrap
+Install the fprime-bootstrap tool, and verify that its version is 1.5.2 or later, with:
+```shell
+% pip install --upgrade fprime-bootstrap
+% pip list | grep fprime
 ```
 
 > [!NOTE]
 > `pip` needs to be version 3.6 or higher, or you can use `pipx`
 
 > [!NOTE]
-> If you see the msg below,then in the following step you may need to give the full path to fprime-bootstrap.<br>
-> `WARNING: The script fprime-bootstrap is installed in '/home/skroese/.local/bin' which is not on PATH`
+> If you see a msg like the one below,then in the following step you may need to give the full path to fprime-bootstrap.<br>
+> `WARNING: The script fprime-bootstrap is installed in '~/.local/bin' which is not on PATH`
 
 
 ### 1b. Create a new project repository
@@ -174,7 +185,7 @@ will clone the F´ repository and install the full tool suite of the
 specified version for working with the selected version of F´. To
 create this new project, run:
 
-```bash
+```shell
 % fprime-bootstrap project
 ```
 
@@ -186,6 +197,8 @@ Project repository name [my-fprime-project]: hello-project
 Project top-level namespace [HelloProject]: HiNamespace
 ```
 
+This step takes tens of seconds to complete.
+
 
 ### 1c. Understand the project structure
 
@@ -195,29 +208,38 @@ well as the
 [virtual environment](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/)
 containing the tools to work with F´.
 
-We should navigate to the project's directory and look around:
+Let's navigate to the project directory and look around:
 
-```bash
+```shell
 % cd hello-project
 % ls
 ```
 
 This will show the following files:
+
 - `CMakeList.txt` and `CMakePresets.json`: CMake files defining the build system
+
 - `fprime-venv/`: this folder is the virtual environment containing the Python tools to work with F´
+
 - `lib/`: Library folder, holding libraries the project will use. This is also where the `fprime` code lives, as a git submodule that points to https://github.com/nasa/fprime. Contains core F´ components, the API for the build system, among others
+
 - `HiNamespace/`: top-level source folder for the project. This is where you will create components, deployments, and other project-specific code.
+
 - `README.md` where you can document work on this project.
+
 - `requirements.txt`: List of Python packages needed for this project
+
 - `settings.ini`: allows users to modify various settings that control the build
 
 
 ### 1d. Activate the virtual environment
+
 Activate the virtual environment to use the F´ tool suite in each terminal / shell whenever you work with an F´ project.
 
-```bash
+```shell
 # in hello-project/
 % source fprime-venv/bin/activate       # For Bourne-like shells
+% .      fprime-venv/bin/activate       # For POSIX shells without the source cmd
 % source fprime-venv/bin/activate.csh   # For C-like shells
 ```
 
@@ -225,10 +247,10 @@ Activate the virtual environment to use the F´ tool suite in each terminal / sh
 ### 1e. Generate the Build Cache Directory
 
 The next step is to set up a build cache directory for the newly
-created project. This will serve as a build environment compiled code,
-libraries, and linked executables.
+created project. This will serve as a build environment holding
+compiled code, libraries, and linked executables.
 
-```bash
+```shell
 # in hello-project/
 % fprime-util generate
 % ls
@@ -245,7 +267,7 @@ You should see one new directory, `build-fprime-automatic-native`
 
 Now, build the newly created project. This will build the F´ framework supplied components.
 
-```bash
+```shell
 # in hello-project/
 % fprime-util build
 ```
@@ -305,7 +327,7 @@ The next step is to create the new component. The project contains a
 `Components/` directory to create components in. Change to that
 directory and issue the following commands:
 
-```bash
+```shell
 # From: hello-project
 % cd HiNamespace/Components
 % ls
@@ -316,7 +338,7 @@ This command will ask for some input. You should respond with the
 following answers (you can just hit `<ENTER>` when accepting the
 offered defaults:
 
-```bash
+```shell
 [INFO] Cookiecutter source: using builtin
   [1/8] Component name (MyComponent): HiComponent
   [2/8] Component short description (Component for F Prime FSW framework.): Hello World Tutorial Component
@@ -355,13 +377,14 @@ channels, and parameters.
 
 We should navigate to the component's directory and look around:
 
-```bash
+```shell
 # From: hello-project/HiNamespace/Components
 % cd HiComponent
 % ls
 ```
 
 This will show the following files, which you will edit shortly:
+
 - `CMakeList.txt`: build definitions for the component.
 - `docs` folder to place component documentation
 - `HiComponent.fpp`: design model for the component
@@ -369,8 +392,9 @@ This will show the following files, which you will edit shortly:
 
 
 ### 2c. Build this component
+
 This shows that the empty code compiles and links
-```bash
+```shell
 # From: hello-project/HiNamespace/Components/HiComponent
 % fprime-util build
 ```
@@ -388,6 +412,7 @@ A component model defines the interface of the component with the rest
 of the F´ system and with the ground system F´ communicates with.
 
 Recall that in defining the requirements above, we specified
+
 - Command `SAY_HI`
 - Event `SayHiEvent`
 - Telemetry channel `GreetingCount`
@@ -428,13 +453,14 @@ telemetry GreetingCount: U32
 
 Generate a template implementation with the following command:
 
-```bash
+```shell
 # From: hello-project/HiNamespace/Components/HiComponent
 % fprime-util impl
 ```
 
 That created the following files which contain empty functions based
 on what we have edited into the FPP file above:
+
 - `HiComponent.template.cpp`
 - `HiComponent.template.hpp`
 
@@ -442,7 +468,7 @@ While normally one would manually merge new templates with the existing code,
 we will instead overwrite the existing implementations as we have not
 edited them yet. To do this:
 
-```bash
+```shell
 % mv HiComponent.template.cpp HiComponent.cpp
 % mv HiComponent.template.hpp HiComponent.hpp
 ```
@@ -451,6 +477,7 @@ edited them yet. To do this:
 ### 2e. Implement Component Behavior
 
 F´ behavior is implemented with two kinds of handlers:
+
 - Command handler functions
 - Port handler functions (as described in the next tutorial,
   [`LED Blinker`](https://github.com/fprime-community/fprime-workshop-led-blinker)).
@@ -494,7 +521,7 @@ The component should build without errors using the same command as
 before your edits. Remember to always save before you build; unsaved
 changes will not be included in the build.
 
-```bash
+```shell
 # From: hello-project/HiNamespace/Components/HiComponent
 % fprime-util build
 ```
@@ -531,7 +558,7 @@ following command. It will ask for some input. Respond with the
 answers shown. For all further questions, select the default response
 by hitting `<ENTER>`
 
-```bash
+```shell
 % cd ../..
 # From: hello-project/HiNamespace/
 % fprime-util new --deployment
@@ -545,7 +572,7 @@ That should complete with a line like<br>
 At this point, the `FirstDeployment` has been created, but our
 `HiComponent` component has not been added to the deployment.
 
-```bash
+```shell
 % cd FirstDeployment
 % ls -R1
 CMakeLists.txt
@@ -577,6 +604,7 @@ component has specific configuration.
 
 In order to add a component to the topology, the topology model must
 be updated by adding both:
+
 - An instance definition
 - An instance initializer
 
@@ -609,9 +637,8 @@ names, component instance names should be descriptive and are
 typically named in camel or snake case.
 
 > [!TIP]
-> Reference the [F Prime Style Guidelines]
-> (https://github.com/nasa/fprime/wiki/F%C2%B4-Style-Guidelines)
-> for more
+> For more style recommendations, refer to the
+> [F Prime Style Guidelines](https://github.com/nasa/fprime/wiki/F%C2%B4-Style-Guidelines)
 
 
 **Add instance initializer to the model**
@@ -671,7 +698,7 @@ SAY_HI command and verifying that the `SayHiEvent` event and
 `GreetingCount` channel appears.
 
 To start the deployment with default settings, run:
-```bash
+```shell
 # From: hello-project/HiNamespace/FirstDeployment
 % fprime-gds
 ```
@@ -713,10 +740,19 @@ list. Ensure it has recorded the number of times a
 In the terminal window where you ran `fprime-gds`, kill the running
 application and deactivate the virtual environment:
 
-```bash
-CTRL-C
+```shell
+CTRL-c
 % deactivate
 ```
+
+<detail><summary>If CTRL-C does not work</summary>
+Try one or more of:
+
+- CTRL-\ (Backslash): Send the SIGQUIT signal (a "harder" interrupt than the CTRL-C SIGINT)
+- CTRL-z: Suspend the process.  Then type kill %1 to end it or fg to bring it back
+- macOS COMMAND-. (Period): macOS equivalent for a "break"
+- Open another terminal, use `ps -ef | grep gds` and `kill <process ID>`
+</detail>
 
 
 
@@ -732,14 +768,14 @@ controlled it through the F´ GDS!
 
 In order for your code to conform to the F´ coding practices
 (whitespace, etc), run the utility to format them.
-```bash
+```shell
 # From: hello-project/
 % source fprime-venv/bin/activate   # Or activate.csh in C-like shells
 % fprime-util format  --dirs HiNamespace
 ```
 
 And to be sure no errors crept in, purge the build directory (accept offered defaults) and build the whole project again from scratch, and test it again.
-```bash
+```shell
 # From: hello-project/
 % fprime-util purge
 % fprime-util generate
@@ -757,7 +793,9 @@ CTRL-C
 
 ## 6. More to Explore
 
-### 6a. When you created HiComponent, the tool also created the outline of a Software Design Document.  Consider how you would expand on `HiComponent/docs/sdd.md`
+### 6a. Software Design Document (SDD)
+
+When you created HiComponent, the tool also created the outline of an SDD.  Consider how you would expand on `HiComponent/docs/sdd.md`
 
 ---
 
@@ -768,43 +806,52 @@ components.
 For example, you could:
 
 ### 6b. Add an additional instance of `HiComponent` to `FirstDeployment`
+
 - Named `duplicateCmpntInstance`
 - Test with `fprime-gds` by repeatedly issuing both SAY_HI commands
 - Look for separate Events from each instance
 - Look for separate `GreetingCount` telemetry channels incrementing only with their respective commands
 - **HINTS**
-  - Edit `instances.fpp` and `topology.fpp`<br>
-  - Re-build just FirstDeployment
+
+    - Edit `instances.fpp` and `topology.fpp`<br>
+    - Re-build just FirstDeployment
 
 
 ### 6c. Add a new command `INTRODUCE_ME` within `HiComponent`
+
 - To create a new event `IntroEvent` with string "Nice to meet you, {}." but does not increment m_greetingCount.
 - Remember to rebuild both `HiComponent` and `FirstDeployment`
 - Test with `fprime-gds` by repeatedly issuing both SAY_HI and INTRODUCE_ME
 - Look for their events each time
 - See that the `GreetingCount` telemetry channel only increments on SAY_HI and not INTRODUCE_ME.
 - **HINTS**
-  - Edit `HiComponent.fpp` and run `fprime-impl`
-  - Then copy code from the template implementation files to your existing `HiComponent.hpp` and `HiComponent.cpp` and flesh out the cpp code.<br>
-  - Re-build the entire project from hello-project/
+
+    - Edit `HiComponent.fpp` and run `fprime-impl`
+    - Then copy code from the template implementation files to your existing `HiComponent.hpp` and `HiComponent.cpp` and flesh out the cpp code.<br>
+    - Re-build the entire project from hello-project/
 
 
 ### 6d. Add a new component `YourComponent` to `FirstDeployment`
+
 - With command SAY_HOLA that creates a new event `HolaEvent`
 - Test with `fprime-gds` by repeatedly each of SAY_HI, INTRODUCE_ME, and SAY_HOLA
 
 
 ### 6e. Add a new deployment `SecondDeployment`
+
 - Include `YourComponent` but not `HiComponent`
 - Test with `fprime-gds` noticing that SAY_HOLA still works, but
   neither SAY_HI nor INTRODUCE_ME is listed as a command
 
 
 ### 6f. Create a Unit Test for `HiComponent`
+
 Unit Testing is described as an [F' Development Process](https://fprime.jpl.nasa.gov/latest/docs/user-manual/overview/development-practice/).  The topic is also covered in tutorials such as
+
 - [math-component](https://fprime.jpl.nasa.gov/latest/tutorials-math-component/docs/math-component/#writing-unit-tests-part-1-creating-the-implementation-stub)
 - [led-blinker](https://fprime.jpl.nasa.gov/latest/tutorials-led-blinker/docs/led-blinker/#6-led-blinker-unit-testing)
 
 For examples, see
+
 - [LedTester.cpp](https://github.com/fprime-community/fprime-workshop-led-blinker/blob/devel/LedBlinker/Components/Led/test/ut/LedTester.cpp)
 - And the math-component tutorial's [two components](https://github.com/fprime-community/fprime-tutorial-math-component/tree/devel/MathProject/Components)
