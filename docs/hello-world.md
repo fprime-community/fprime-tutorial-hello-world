@@ -505,7 +505,7 @@ void HiComponent ::SAY_HI_cmdHandler(FwOpcodeType opCode, U32 cmdSeq, const Fw::
 **`HiComponent.hpp`: Declare Counting Variable**
 
 Add the m_greetingCount member variable to the class defined in
-`HiComponent.hpp` and the constructor defined in `HiComponent.cpp`.
+`HiComponent.hpp` and initialize it to zero.
 This is done by adding the following two lines inside
 the `class` definition in `HiComponent.hpp`:
 
