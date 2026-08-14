@@ -10,7 +10,7 @@ module HiNamespace {
     rateGroup3
   }
 
-  topology FirstDeployment {
+  deployment topology FirstDeployment {
 
   # ----------------------------------------------------------------------
   # Subtopology imports
