@@ -64,7 +64,7 @@ implementation.
 This tutorial defines one command `SAY_HI` with a single argument
 `greeting`.  This command will be sent via the ground system, and the
 flight system will echo the greeting back within an event, and also
-incrememt a telemetry channel counting the number of these commands
+increment a telemetry channel counting the number of these commands
 sent.
 
 #### Event
@@ -420,9 +420,10 @@ Recall that in defining the requirements above, we specified
 
 **Edit the Model**
 
-In the file `HiComponent.fpp` replace the line:
+In the file `HiComponent.fpp` replace the placeholder command marked as TODO:
 
 ```
+@ TODO
 async command TODO opcode 0
 ```
 
@@ -826,7 +827,7 @@ For example, you could:
 - See that the `GreetingCount` telemetry channel only increments on SAY_HI and not INTRODUCE_ME.
 - **HINTS**
 
-    - Edit `HiComponent.fpp` and run `fprime-impl`
+    - Edit `HiComponent.fpp` and run `fprime-util impl`
     - Then copy code from the template implementation files to your existing `HiComponent.hpp` and `HiComponent.cpp` and flesh out the cpp code.<br>
     - Re-build the entire project from hello-project/
 
