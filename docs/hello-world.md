@@ -199,34 +199,6 @@ Project top-level namespace [HelloProject]: HiNamespace
 
 This step takes tens of seconds to complete.
 
-> [!NOTE]
-> By default `fprime-bootstrap` uses the latest *released* version of F´.
-> To target a specific release instead, pass its tag:
->
-> ```shell
-> % fprime-bootstrap project --tag v4.2.2
-> ```
->
-> To work against a version that is not a release (for example the
-> in-development `devel` branch), repoint the F´ submodule in the
-> generated project and then reinstall the Python tools from that
-> checkout:
->
-> ```shell
-> # From: hello-project/
-> % cd lib/fprime
-> % git fetch origin && git checkout origin/devel
-> % cd ../..
-> % source fprime-venv/bin/activate
-> % pip install -r requirements.txt
-> ```
->
-> The Python tools and the framework source must come from the same
-> version of F´. Changing the submodule without reinstalling the
-> requirements leaves the previously installed tools driving the new
-> framework source, which leads to confusing build and code-generation
-> errors.
-
 
 ### 1c. Understand the project structure
 
@@ -448,8 +420,7 @@ Recall that in defining the requirements above, we specified
 
 **Edit the Model**
 
-In the file `HiComponent.fpp` replace the placeholder command, that is,
-both the `@ TODO` annotation line and the command line that follows it:
+In the file `HiComponent.fpp` replace the placeholder command marked as TODO:
 
 ```
 @ TODO
@@ -477,11 +448,6 @@ telemetry GreetingCount: U32
 > You should ensure to replace any existing command, event, and
 > channel definitions with those supplied above but leave the
 > 'Standard AC Ports' section untouched.
-
-> [!NOTE]
-> Leaving the generated `@ TODO` annotation in place would attach it to
-> `SAY_HI`, and the ground system would then display the command's
-> description as "TODO Command to issue greeting...".
 
 
 **Implement the Model**
@@ -721,13 +687,6 @@ That should result in linking a static library named `libHiNamespace_FirstDeploy
 
 > [!WARNING]
 > Resolve any errors that occur before proceeding to the next section.
-
-> [!NOTE]
-> The build may print deprecation warnings pointing at generated
-> topology code, for example
-> `FirstDeploymentTopology.cpp: warning: 'void Svc::ActiveRateGroup::configure(const U32*, FwIndexType)' is deprecated`.
-> These come from the deployment template rather than from your code and
-> do not need to be fixed to finish this tutorial.
 
 
 
