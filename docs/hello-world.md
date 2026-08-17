@@ -64,7 +64,7 @@ implementation.
 This tutorial defines one command `SAY_HI` with a single argument
 `greeting`.  This command will be sent via the ground system, and the
 flight system will echo the greeting back within an event, and also
-incrememt a telemetry channel counting the number of these commands
+increment a telemetry channel counting the number of these commands
 sent.
 
 #### Event
@@ -198,6 +198,34 @@ Project top-level namespace [HelloProject]: HiNamespace
 ```
 
 This step takes tens of seconds to complete.
+
+> [!NOTE]
+> By default `fprime-bootstrap` uses the latest *released* version of F´.
+> To target a specific release instead, pass its tag:
+>
+> ```shell
+> % fprime-bootstrap project --tag v4.2.2
+> ```
+>
+> To work against a version that is not a release (for example the
+> in-development `devel` branch), repoint the F´ submodule in the
+> generated project and then reinstall the Python tools from that
+> checkout:
+>
+> ```shell
+> # From: hello-project/
+> % cd lib/fprime
+> % git fetch origin && git checkout origin/devel
+> % cd ../..
+> % source fprime-venv/bin/activate
+> % pip install -r requirements.txt
+> ```
+>
+> The Python tools and the framework source must come from the same
+> version of F´. Changing the submodule without reinstalling the
+> requirements leaves the previously installed tools driving the new
+> framework source, which leads to confusing build and code-generation
+> errors.
 
 
 ### 1c. Understand the project structure
@@ -420,9 +448,11 @@ Recall that in defining the requirements above, we specified
 
 **Edit the Model**
 
-In the file `HiComponent.fpp` replace the line:
+In the file `HiComponent.fpp` replace the placeholder command, that is,
+both the `@ TODO` annotation line and the command line that follows it:
 
 ```
+@ TODO
 async command TODO opcode 0
 ```
 
@@ -447,6 +477,11 @@ telemetry GreetingCount: U32
 > You should ensure to replace any existing command, event, and
 > channel definitions with those supplied above but leave the
 > 'Standard AC Ports' section untouched.
+
+> [!NOTE]
+> Leaving the generated `@ TODO` annotation in place would attach it to
+> `SAY_HI`, and the ground system would then display the command's
+> description as "TODO Command to issue greeting...".
 
 
 **Implement the Model**
@@ -687,6 +722,13 @@ That should result in linking a static library named `libHiNamespace_FirstDeploy
 > [!WARNING]
 > Resolve any errors that occur before proceeding to the next section.
 
+> [!NOTE]
+> The build may print deprecation warnings pointing at generated
+> topology code, for example
+> `FirstDeploymentTopology.cpp: warning: 'void Svc::ActiveRateGroup::configure(const U32*, FwIndexType)' is deprecated`.
+> These come from the deployment template rather than from your code and
+> do not need to be fixed to finish this tutorial.
+
 
 
 ## 4. Testing With `fprime-gds`
@@ -826,7 +868,7 @@ For example, you could:
 - See that the `GreetingCount` telemetry channel only increments on SAY_HI and not INTRODUCE_ME.
 - **HINTS**
 
-    - Edit `HiComponent.fpp` and run `fprime-impl`
+    - Edit `HiComponent.fpp` and run `fprime-util impl`
     - Then copy code from the template implementation files to your existing `HiComponent.hpp` and `HiComponent.cpp` and flesh out the cpp code.<br>
     - Re-build the entire project from hello-project/
 
