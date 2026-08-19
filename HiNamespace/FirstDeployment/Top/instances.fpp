@@ -26,17 +26,17 @@ module HiNamespace {
   # Active component instances
   # ----------------------------------------------------------------------
 
-  instance rateGroup1: Svc.ActiveRateGroup base id 0x10001000 \
+  instance rateGroup_1Hz: Svc.ActiveRateGroup base id 0x10001000 \
     queue size Default.QUEUE_SIZE \
     stack size Default.STACK_SIZE \
     priority 43
 
-  instance rateGroup2: Svc.ActiveRateGroup base id 0x10002000 \
+  instance rateGroup_0_5Hz: Svc.ActiveRateGroup base id 0x10002000 \
     queue size Default.QUEUE_SIZE \
     stack size Default.STACK_SIZE \
     priority 42
 
-  instance rateGroup3: Svc.ActiveRateGroup base id 0x10003000 \
+  instance rateGroup_0_25Hz: Svc.ActiveRateGroup base id 0x10003000 \
     queue size Default.QUEUE_SIZE \
     stack size Default.STACK_SIZE \
     priority 41
