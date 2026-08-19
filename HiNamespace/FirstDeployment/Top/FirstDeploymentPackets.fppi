@@ -21,9 +21,9 @@ telemetry packets FirstDeploymentPackets {
     ComCcsds.commsBufferManager.HiBuffs
     #ComCcsds.tlmSend.SendLevel
 
-    HiNamespace.rateGroup1.RgMaxTime
-    HiNamespace.rateGroup2.RgMaxTime
-    HiNamespace.rateGroup3.RgMaxTime
+    HiNamespace.rateGroup_1Hz.RgMaxTime
+    HiNamespace.rateGroup_0_5Hz.RgMaxTime
+    HiNamespace.rateGroup_0_25Hz.RgMaxTime
   }
 
   packet CDHErrors id 2 group 1 {
@@ -37,9 +37,9 @@ telemetry packets FirstDeploymentPackets {
     ComCcsds.commsBufferManager.NoBuffs
     ComCcsds.commsBufferManager.EmptyBuffs
 
-    HiNamespace.rateGroup1.RgCycleSlips
-    HiNamespace.rateGroup2.RgCycleSlips
-    HiNamespace.rateGroup3.RgCycleSlips
+    HiNamespace.rateGroup_1Hz.RgCycleSlips
+    HiNamespace.rateGroup_0_5Hz.RgCycleSlips
+    HiNamespace.rateGroup_0_25Hz.RgCycleSlips
   }
 
   packet SystemRes1 id 5 group 2 {
