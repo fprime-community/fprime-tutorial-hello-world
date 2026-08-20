@@ -45,9 +45,9 @@
  * ```
  */
 namespace PingEntries {
-    namespace HiNamespace_rateGroup1 {enum { WARN = 3, FATAL = 5 };}
-    namespace HiNamespace_rateGroup2 {enum { WARN = 3, FATAL = 5 };}
-    namespace HiNamespace_rateGroup3 {enum { WARN = 3, FATAL = 5 };}
+    namespace HiNamespace_rateGroup_1Hz {enum { WARN = 3, FATAL = 5 };}
+    namespace HiNamespace_rateGroup_0_5Hz {enum { WARN = 3, FATAL = 5 };}
+    namespace HiNamespace_rateGroup_0_25Hz {enum { WARN = 3, FATAL = 5 };}
     namespace HiNamespace_cmdSeq {enum { WARN = 3, FATAL = 5 };}
 }  // namespace PingEntries
 

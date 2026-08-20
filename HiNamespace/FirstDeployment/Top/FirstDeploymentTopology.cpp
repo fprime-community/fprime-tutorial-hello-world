@@ -6,7 +6,7 @@
 // Provides access to autocoded functions
 #include <HiNamespace/FirstDeployment/Top/FirstDeploymentTopologyAc.hpp>
 // Note: Uncomment when using Svc:TlmPacketizer
-//#include <HiNamespace/FirstDeployment/Top/FirstDeploymentPacketsAc.hpp>
+// #include <HiNamespace/FirstDeployment/Top/FirstDeploymentPacketsAc.hpp>
 
 // Necessary project-specified types
 #include <Fw/Types/MallocAllocator.hpp>
@@ -23,9 +23,9 @@ Svc::RateGroupDriver::DividerSet rateGroupDivisorsSet{{{1, 0}, {2, 0}, {4, 0}}};
 
 // Rate groups may supply a context token to each of the attached children whose purpose is set by the project. The
 // reference topology sets each token to zero as these contexts are unused in this project.
-U32 rateGroup1Context[Svc::ActiveRateGroup::CONNECTION_COUNT_MAX] = {};
-U32 rateGroup2Context[Svc::ActiveRateGroup::CONNECTION_COUNT_MAX] = {};
-U32 rateGroup3Context[Svc::ActiveRateGroup::CONNECTION_COUNT_MAX] = {};
+Svc::ActiveRateGroup::ContextArray rateGroup_1HzContext(0);
+Svc::ActiveRateGroup::ContextArray rateGroup_0_5HzContext(0);
+Svc::ActiveRateGroup::ContextArray rateGroup_0_25HzContext(0);
 
 enum TopologyConstants {
     COMM_PRIORITY = 34,
@@ -43,12 +43,15 @@ void configureTopology() {
     rateGroupDriver.configure(rateGroupDivisorsSet);
 
     // Rate groups require context arrays.
-    rateGroup1.configure(rateGroup1Context, FW_NUM_ARRAY_ELEMENTS(rateGroup1Context));
-    rateGroup2.configure(rateGroup2Context, FW_NUM_ARRAY_ELEMENTS(rateGroup2Context));
-    rateGroup3.configure(rateGroup3Context, FW_NUM_ARRAY_ELEMENTS(rateGroup3Context));
+    rateGroup_1Hz.configure(rateGroup_1HzContext);
+    rateGroup_0_5Hz.configure(rateGroup_0_5HzContext);
+    rateGroup_0_25Hz.configure(rateGroup_0_25HzContext);
 
     // Command sequencer needs to allocate memory to hold contents of command sequences
     cmdSeq.allocateBuffer(0, mallocator, 5 * 1024);
+
+    // PrmDb file name must be supplied by the using topology
+    FileHandling::prmDb.configure("PrmDb.dat");
 }
 
 void setupTopology(const TopologyState& state) {

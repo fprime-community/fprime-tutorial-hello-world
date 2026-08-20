@@ -617,7 +617,7 @@ Edit `hello-project/HiNamespace/FirstDeployment/Top/topology.fpp` to add
 
 ```
 ...
-  topology FirstDeployment {
+  deployment topology FirstDeployment {
     [ ... other code ...]
     # ----------------------------------------------------------------------
     # Instances used in the topology

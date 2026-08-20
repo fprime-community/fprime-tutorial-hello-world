@@ -5,9 +5,9 @@ module HiNamespace {
   # ----------------------------------------------------------------------
 
   enum Ports_RateGroups {
-    rateGroup1
-    rateGroup2
-    rateGroup3
+    rateGroup_1Hz
+    rateGroup_0_5Hz
+    rateGroup_0_25Hz
   }
 
   deployment topology FirstDeployment {
@@ -24,9 +24,9 @@ module HiNamespace {
   # Instances used in the topology
   # ----------------------------------------------------------------------
     instance chronoTime
-    instance rateGroup1
-    instance rateGroup2
-    instance rateGroup3
+    instance rateGroup_1Hz
+    instance rateGroup_0_5Hz
+    instance rateGroup_0_25Hz
     instance rateGroupDriver
     instance systemResources
     instance timer
@@ -102,24 +102,24 @@ module HiNamespace {
       timer.CycleOut -> rateGroupDriver.CycleIn
 
       # Rate group 1
-      rateGroupDriver.CycleOut[Ports_RateGroups.rateGroup1] -> rateGroup1.CycleIn
-      rateGroup1.RateGroupMemberOut[0] -> CdhCore.tlmSend.Run
-      rateGroup1.RateGroupMemberOut[1] -> FileHandling.fileDownlink.Run
-      rateGroup1.RateGroupMemberOut[2] -> systemResources.run
-      rateGroup1.RateGroupMemberOut[3] -> ComCcsds.comQueue.run
-      rateGroup1.RateGroupMemberOut[4] -> ComCcsds.aggregator.timeout
+      rateGroupDriver.CycleOut[Ports_RateGroups.rateGroup_1Hz] -> rateGroup_1Hz.CycleIn
+      rateGroup_1Hz.RateGroupMemberOut[0] -> CdhCore.tlmSend.Run
+      rateGroup_1Hz.RateGroupMemberOut[1] -> FileHandling.fileDownlink.Run
+      rateGroup_1Hz.RateGroupMemberOut[2] -> systemResources.run
+      rateGroup_1Hz.RateGroupMemberOut[3] -> ComCcsds.comQueue.run
+      rateGroup_1Hz.RateGroupMemberOut[4] -> ComCcsds.aggregator.timeout
 
       # Rate group 2
-      rateGroupDriver.CycleOut[Ports_RateGroups.rateGroup2] -> rateGroup2.CycleIn
-      rateGroup2.RateGroupMemberOut[0] -> cmdSeq.schedIn
+      rateGroupDriver.CycleOut[Ports_RateGroups.rateGroup_0_5Hz] -> rateGroup_0_5Hz.CycleIn
+      rateGroup_0_5Hz.RateGroupMemberOut[0] -> cmdSeq.schedIn
 
       # Rate group 3
-      rateGroupDriver.CycleOut[Ports_RateGroups.rateGroup3] -> rateGroup3.CycleIn
-      rateGroup3.RateGroupMemberOut[0] -> CdhCore.$health.Run
-      rateGroup3.RateGroupMemberOut[1] -> ComCcsds.commsBufferManager.schedIn
-      rateGroup3.RateGroupMemberOut[2] -> DataProducts.dpBufferManager.schedIn
-      rateGroup3.RateGroupMemberOut[3] -> DataProducts.dpWriter.schedIn
-      rateGroup3.RateGroupMemberOut[4] -> DataProducts.dpMgr.schedIn
+      rateGroupDriver.CycleOut[Ports_RateGroups.rateGroup_0_25Hz] -> rateGroup_0_25Hz.CycleIn
+      rateGroup_0_25Hz.RateGroupMemberOut[0] -> CdhCore.$health.Run
+      rateGroup_0_25Hz.RateGroupMemberOut[1] -> ComCcsds.commsBufferManager.schedIn
+      rateGroup_0_25Hz.RateGroupMemberOut[2] -> DataProducts.dpBufferManager.schedIn
+      rateGroup_0_25Hz.RateGroupMemberOut[3] -> DataProducts.dpWriter.schedIn
+      rateGroup_0_25Hz.RateGroupMemberOut[4] -> DataProducts.dpMgr.schedIn
     }
 
     connections CdhCore_cmdSeq {
