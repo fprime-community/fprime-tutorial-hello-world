@@ -1,5 +1,5 @@
 # Source tag requirements:
-# -r https://raw.githubusercontent.com/nasa/fprime/refs/tags/v4.1.1/requirements.txt
+# -r https://raw.githubusercontent.com/nasa/fprime/refs/tags/v4.3.0/requirements.txt
 
 # Local requirements:
 -r ./lib/fprime/requirements.txt
